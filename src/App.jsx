@@ -1,35 +1,42 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { useState } from 'react';
+import './App.css';
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [count, setCount] = useState(0);
 
   return (
     <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+      <div id="header">
+        <video autoPlay muted loop id="header-video">
+          <source src="/1.mp4" type="video/mp4" />
+        </video>
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
+      <div id="site-control" className="text inline">
+        <div className="links">
+          <a className="home" title="Home" href="/">
+          <span>Home</span>
+          </a>
+          <a className="menu" href="#page-menu" data-modal-toggle="#page-menu">
+            <span>Menu</span>
+          </a>
+          <a id="losi" href="/">
+            <h1>LOSI</h1>
+          </a>
+          <a className="cart" href="/cart">
+            <span>Cart</span>
+          </a>
+          <a
+            className="search"
+            title="Search"
+            href="/search"
+            data-modal-toggle="#search-modal"
+          >
+           <span>Search</span>
+          </a>
+        </div>
       </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
     </>
-  )
+  );
 }
 
-export default App
+export default App;
