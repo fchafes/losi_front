@@ -1,0 +1,11 @@
+.center-container{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+}
+.logo{
+    display: flex;
+    justify-content: center;
+    
+}
