@@ -1,11 +1,11 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import "./Navbar.css"; // Create a separate CSS file for styling
+import "./Navbar.css"; 
 
 const Navbar = () => {
   return (
     <nav className="navbar">
-      <ul className="nav-list">
+      <ul className="nav-list center-links">
         <li className="nav-item">
           <Link to="/">Home</Link>
         </li>
@@ -16,7 +16,7 @@ const Navbar = () => {
           <img
             src="./losiFlor.png"
             alt="logo"
-            style={{ width: "50px", height: "50px" }}
+            style={{ width: "100px", height: "auto" }}
           />
         </li>
         <li className="nav-item">

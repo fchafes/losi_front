@@ -1,29 +1,46 @@
-.navbar {
-    display: flex;
-    justify-content: center;
-    text-align: center; /* Center the text horizontally */
-    padding: 10px; /* Add some padding for better visual appearance */
-  }
-  
-  .nav-list {
-    vertical-align: middle;
-    list-style: none; /* Remove default list styling */
-    display: flex; /* Use flexbox to align items */
-    justify-content: center; /* Center items horizontally */
-    margin: 0; /* Remove default margin */
-    padding: 0; 
-  }
-  
-  .nav-item {
-    vertical-align: middle;
-    align-items: center;
-    margin: 0 10px; /* Add some spacing between items */
-  }
-  
-  .nav-item a {
-    text-decoration: none; /* Remove underline from links */
-  }
+@import url("https://fonts.googleapis.com/css2?family=Oswald:wght@300;400&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Faster+One&family=Gochi+Hand&family=Rajdhani:wght@700&family=Teko:wght@600&display=swap");
 
-  .logo {
-    vertical-align: middle;
-  }
+body {
+  font-family: Oswald, sans-serif;
+  font-size: 16px;
+  line-height: 1.5em;
+  color: #6f6f6f;
+  overflow: auto;
+  background: white;
+  margin: 0;
+}
+
+.navbar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 10px;
+  margin-top: -15px;
+}
+
+.nav-list {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-item {
+  margin: 0 10px;
+}
+
+.nav-item a {
+  text-decoration: none;
+}
+
+.logo img {
+  vertical-align: middle;
+}
+
+.center-links {
+  display: flex;
+  align-items: center;
+}
