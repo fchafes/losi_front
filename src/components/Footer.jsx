@@ -29,21 +29,21 @@ FREE STANDARD SHIPPING</p>
 </div>
       <div className="footer-content">
         <div className="footer-section">
-          <h4>Enlaces Rápidos</h4>
+          <h4>LINKS</h4>
           <ul>
-            <li><a href="#">Inicio</a></li>
-            <li><a href="#">Productos</a></li>
-            <li><a href="#">Sobre Nosotros</a></li>
+            <li><a href="#">Home</a></li>
+            <li><a href="#">Products</a></li>
+            <li><a href="#">About Us</a></li>
           </ul>
         </div>
         <div className="footer-section">
-          <h4>Contacto</h4>
-          <p>Dirección: 123 Calle Principal, Ciudad</p>
+          <h4>Contact</h4>
+          <p>Address: 123 Calle Principal, Ciudad</p>
           <p>Email: info@example.com</p>
-          <p>Teléfono: (123) 456-7890</p>
+          <p>Phone: (123) 456-7890</p>
         </div>
         <div className="footer-section">
-          <h4>Redes Sociales</h4>
+          <h4>Social Media</h4>
           <ul>
             <li><a href="#" target="_blank" rel="noopener noreferrer">Facebook</a></li>
             <li><a href="#" target="_blank" rel="noopener noreferrer">Twitter</a></li>
@@ -53,7 +53,7 @@ FREE STANDARD SHIPPING</p>
       </div>
       
       <div className="footer-bottom">
-        <p>&copy; 2024 Losi. Todos los derechos reservados.</p>
+        <p>&copy; 2024 Losi. All rights reserved.</p>
       </div>
     </footer>
   );
