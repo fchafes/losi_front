@@ -1,0 +1,7 @@
+.parallax {
+  background: url("public/picture3.webp") no-repeat center;
+  background-size: cover;
+  background-attachment: fixed;
+  height: 500px;
+  width: 100%;
+}
