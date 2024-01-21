@@ -10,7 +10,7 @@ const ProductCategories = () => {
       </a>
       <a href="#" className="photo-link">
         <img src="/public/picture4.webp" alt="Bottoms" />
-        <span className="text-overlay">BOTTOMS</span>
+        <span className="text-overlay">SKATES</span>
       </a>
     </div>
   );
