@@ -11,3 +11,9 @@ header {
   height: 100%;
   object-fit: cover;
 }
+
+.carousel-image {
+  max-width: 100%;
+  height: auto;
+  max-height: 600px;
+}
