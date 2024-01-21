@@ -51,3 +51,23 @@ body {
   display: flex;
   align-items: center;
 }
+
+.nav-item.dropdown {
+  position: relative;
+}
+
+.menu-toggle {
+  cursor: pointer;
+}
+
+.dropdown-menu {
+  position: absolute;
+  top: 100%;
+  left: -90%;
+  background-color: #ffffff; /* Puedes cambiar el color de fondo según tu preferencia */
+  padding: 20px;
+}
+
+.dropdown-menu li {
+  list-style: none;
+}
