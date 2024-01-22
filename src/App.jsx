@@ -3,8 +3,6 @@ import { Routes, Route, Outlet, Navigate } from "react-router-dom";
 import "./App.css";
 import Home from "./pages/Home";
 import Featured from "./pages/Featured";
-import ProductDetails from "./components/ProductDetails";
-import ShowProducts from "./components/ShowProducts";
 function App() {
   return (
     <>
