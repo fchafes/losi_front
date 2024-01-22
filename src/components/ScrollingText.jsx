@@ -1,9 +1,11 @@
 import React from "react";
-import "./ScrollingText.css"; 
+import Marquee from "react-fast-marquee";
+import "./ScrollingText.css";
 
 const ScrollingText = () => {
-    return (
-        <div className="scrolling-text">
+  return (
+    <div className="scrolling-text">
+      <Marquee>
         <div className="scrolling-text--inner direction-left">
           <div className="scrolling-text--item">
             <span>* SPECIAL SALE *</span>
@@ -11,10 +13,10 @@ const ScrollingText = () => {
           <div className="scrolling-text--item">
             <span className="skate-text">SKATEBOARDING PROMO</span>
           </div>
-          
         </div>
-      </div>
-    );
+      </Marquee>
+    </div>
+  );
 };
-    
-    export default ScrollingText;
+
+export default ScrollingText;
