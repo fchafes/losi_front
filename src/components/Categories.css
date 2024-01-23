@@ -45,6 +45,7 @@
   max-width: 400px;
   position: relative;
   overflow: hidden;
+  margin-right: 50px;
 }
 
 .category-item img {
