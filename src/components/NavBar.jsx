@@ -1,6 +1,6 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import SearchModal from "./SearchModal"; // Importa tu componente de modal
+import SearchModal from "./SearchModal";
 import "./Navbar.css";
 
 const Navbar = () => {
@@ -19,28 +19,42 @@ const Navbar = () => {
     setSearchModalOpen(false);
   };
 
-  return (
+  useEffect(() => {
+    const closeMenuOnOutsideClick = (e) => {
+      if (isMenuOpen && !e.target.closest(".navbar")) {
+        setMenuOpen(false);
+      }
+    };
+
+    document.addEventListener("click", closeMenuOnOutsideClick);
+
+    return () => {
+      document.removeEventListener("click", closeMenuOnOutsideClick);
+    };
+  }, [isMenuOpen]);
+
+     return (
     <nav className="navbar">
       <ul className="nav-list center-links">
         <li className="nav-item">
-          <Link to="/">Home</Link>
+          <Link to="/">HOME</Link>
         </li>
         <li className={`nav-item dropdown ${isMenuOpen ? "open" : ""}`}>
           <div className="menu-toggle" onClick={toggleMenu}>
-            <span>Menu</span>
+            <span className="nav-span">MENU</span>
           </div>
           {isMenuOpen && (
             <ul className="dropdown-menu">
-              <li><Link to="#">Accessories</Link></li>
-              <li><Link to="#">Tops</Link></li>
-              <li><Link to="#">Bottoms</Link></li>
-              <li><Link to="#">Decks</Link></li>
-              <li><Link to="#">Wheels</Link></li>
-              <li><Link to="#">Others</Link></li>
+              <li><Link to="#">ACCESORIES</Link></li>
+              <li><Link to="#">TOPS</Link></li>
+              <li><Link to="#">BOTTOMS</Link></li>
+              <li><Link to="#">DECKS</Link></li>
+              <li><Link to="#">WHEELS</Link></li>
+              <li><Link to="#">OTHERS</Link></li>
                <hr />
-              <li><Link to="#">About Us</Link></li>
-              <li><Link to="#">Contact</Link></li>
-              <li><Link to="#">Shipping</Link></li>
+              <li><Link to="#">ABOUT US</Link></li>
+              <li><Link to="#">CONTACT</Link></li>
+              <li><Link to="#">SHIPPING</Link></li>
             </ul>
           )}
         </li>
@@ -52,17 +66,17 @@ const Navbar = () => {
           />
         </li>
         <li className="nav-item">
-          <Link to="#">Cart</Link>
+          <Link to="#">CART</Link>
         </li>
         <li className="nav-item">
-          <Link to="#" onClick={openSearchModal}>Search</Link>
+          <Link to="#" onClick={openSearchModal}>SEARCH</Link>
         </li>
       </ul>
       {isSearchModalOpen && (
         <SearchModal onClose={closeSearchModal} />
       )}
     </nav>
-  );
+     );
 };
 
 export default Navbar;

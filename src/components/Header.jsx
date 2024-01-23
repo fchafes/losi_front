@@ -1,32 +1,39 @@
 import React from "react";
 import "./Header.css"; 
 import { Carousel } from "react-responsive-carousel";
-import "react-responsive-carousel/lib/styles/carousel.min.css"; // Asegúrate de importar los estilos
+import "react-responsive-carousel/lib/styles/carousel.min.css";
 
-import foto2 from "/public/picture5.jpg";
-import foto3 from "/public/picture2.jpg";
-import foto4 from "/public/picture.webp";
+import foto2 from "/public/pic12.jpg";
+import foto3 from "/public/pic1.jpg";
+import foto4 from "/public/pic4.jpg";
 
 const Header = () => {
     return (
         <div className="header">
-                <div className="carousel-wrapper">
-          <Carousel autoPlay infiniteLoop interval={3000} showThumbs={false}>
-        <div>
-          <img  className="carousel-image" src={foto2} alt="Slide 1" />
+            <div className="carousel-wrapper">
+                <Carousel autoPlay infiniteLoop interval={3000} showThumbs={false}>
+                    <div className="carousel-slide">
+                        <img className="carousel-image" src={foto2} alt="Slide 1" />
+                        <div className="carousel-image-overlay">
+                            <button className="discover-button">Discover</button>
+                        </div>
+                    </div>
+                    <div className="carousel-slide">
+                        <img className="carousel-image" src={foto3} alt="Slide 2" />
+                        <div className="carousel-image-overlay">
+                            <button className="discover-button">Discover</button>
+                        </div>
+                    </div>
+                    <div className="carousel-slide">
+                        <img className="carousel-image" src={foto4} alt="Slide 3" />
+                        <div className="carousel-image-overlay">
+                            <button className="discover-button">Discover</button>
+                        </div>
+                    </div>
+                </Carousel>
+            </div>
         </div>
-        <div>
-          <img className="carousel-image" src={foto3} alt="Slide 2" />
-        </div>
-        <div>
-          <img className="carousel-image" src={foto4} alt="Slide 3" />
-        </div>
-      </Carousel>
-      <div className="carousel-image-overlay"></div>
-      </div>
-      </div>
-        );
+    );
 };
-
 
 export default Header;

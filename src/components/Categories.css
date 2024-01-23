@@ -1,8 +1,9 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter+Tight:wght@300&family=Inter:wght@300&display=swap");
+
 .featured-categories {
   text-align: center;
   margin-top: 80px;
   color: #000000;
-  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
 
 .category-container {
@@ -18,7 +19,7 @@
   margin-bottom: 10px;
   font-weight: 100;
   font-size: 22px;
-  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  font-family: "Inter Tight", sans-serif;
 }
 
 .featured-title:before {

@@ -37,13 +37,13 @@ FREE STANDARD SHIPPING</p>
           </ul>
         </div>
         <div className="footer-section">
-          <h4>Contact</h4>
+          <h4>CONTACT</h4>
           <p>Address: 123 Calle Principal, Ciudad</p>
           <p>Email: info@example.com</p>
           <p>Phone: (123) 456-7890</p>
         </div>
         <div className="footer-section">
-          <h4>Social Media</h4>
+          <h4>SOCIAL MEDIA</h4>
           <ul>
             <li><a href="#" target="_blank" rel="noopener noreferrer">Facebook</a></li>
             <li><a href="#" target="_blank" rel="noopener noreferrer">Twitter</a></li>

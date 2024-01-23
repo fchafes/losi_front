@@ -1,15 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Oswald:wght@300;400&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Faster+One&family=Gochi+Hand&family=Rajdhani:wght@700&family=Teko:wght@600&display=swap");
-
-body {
-  font-family: Oswald, sans-serif;
-  font-size: 16px;
-  line-height: 1.5em;
-  color: #6f6f6f;
-  overflow: auto;
-  background: white;
-  margin: 0;
-}
+@import url("https://fonts.googleapis.com/css2?family=Inter+Tight:wght@300&family=Inter:wght@300&display=swap");
 
 .navbar {
   display: flex;
@@ -23,6 +14,7 @@ body {
   top: 0;
   width: 100%;
   z-index: 1000;
+  font-family: "Inter Tight", sans-serif;
   border-bottom: 1px solid rgba(0, 0, 0, 0.041);
 }
 
@@ -41,6 +33,15 @@ body {
 
 .nav-item a {
   text-decoration: none;
+  color: rgb(0, 0, 0);
+}
+
+.nav-item a:hover {
+  color: gray;
+}
+
+.nav-span:hover {
+  color: gray;
 }
 
 .logo img {
@@ -64,7 +65,7 @@ body {
   position: absolute;
   top: 100%;
   left: -90%;
-  background-color: #ffffff; /* Puedes cambiar el color de fondo según tu preferencia */
+  background-color: #ffffff;
   padding: 20px;
 }
 
