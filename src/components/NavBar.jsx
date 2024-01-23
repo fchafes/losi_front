@@ -60,7 +60,7 @@ const Navbar = () => {
         </li>
         <li className="nav-item logo">
           <img
-            src="./losiFlor.png"
+            src="/public/losiFlor.png"
             alt="logo"
             style={{ width: "100px", height: "auto" }}
           />

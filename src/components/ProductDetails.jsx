@@ -2,7 +2,9 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { useParams } from 'react-router-dom';
-import "./ProductDetails.css"
+import "./ProductDetails.css";
+import Navbar from './Navbar';
+import Footer from './Footer';
 
 const ProductDetail = () => {
   const [productDetails, setProductDetails] = useState({});
@@ -23,19 +25,21 @@ const ProductDetail = () => {
   }, [id]);
 
   return (
-    <div className="product-details-container">
-      <div className="product-details">
-        <h2>{productDetails.name}</h2>
-        <p>Price: ${productDetails.price}</p>
-        <p>Description: {productDetails.description}</p>
+    <div>
+      <div className="product-details-container">
+        <Navbar />
+        <div className="product-details">
+          <h2>{productDetails.name}</h2>
+          <p>Price: ${productDetails.price}</p>
+          <p>Description: {productDetails.description}</p>
+        </div>
+        <div className="product-image">
+          <img src={productDetails.photo} alt={productDetails.name} />
+        </div>
       </div>
-      <div className="product-image">
-        <img src={productDetails.photo} alt={productDetails.name} />
-      </div>
+      <Footer />
     </div>
-
   );
 };
 
 export default ProductDetail;
-
