@@ -1,7 +1,7 @@
-// ProductDetails.js
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { useParams } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import "./ProductDetails.css";
 import Navbar from './Navbar';
 import Footer from './Footer';
@@ -9,6 +9,8 @@ import Footer from './Footer';
 const ProductDetail = () => {
   const [productDetails, setProductDetails] = useState({});
   const { id } = useParams();
+  const navigate = useNavigate();
+
 
   const fetchProductDetails = async (productId) => {
     try {
@@ -24,6 +26,11 @@ const ProductDetail = () => {
     fetchProductDetails(id);
   }, [id]);
 
+  const handleGoBack = () => {
+    navigate(-1);
+  };
+
+
   return (
     <div>
       <div className="product-details-container">
@@ -31,11 +38,14 @@ const ProductDetail = () => {
         <div className="product-details">
           <h2>{productDetails.name}</h2>
           <p>Price: ${productDetails.price}</p>
-          <p>Description: {productDetails.description}</p>
+          <p>{productDetails.description}</p>
         </div>
         <div className="product-image">
           <img src={productDetails.photo} alt={productDetails.name} />
         </div>
+        <button className="return-home-button" onClick={handleGoBack}>
+          Home
+        </button>
       </div>
       <Footer />
     </div>

@@ -1,6 +1,13 @@
 body {
   margin: 0;
-  font-family: "Inter ", sans-serif;
+}
+
+.skate-promo {
+  font-family: "Inter Tight", sans-serif;
+}
+
+.skate-text {
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
 }
 
 .scrolling-text {
