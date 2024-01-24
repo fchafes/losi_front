@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import "./Accesories.css";
+import "./Accessories.css";
 
-const Accesories = () => {
+const Accessories = () => {
   const [accesories, setAccesories] = useState([]);
 
   useEffect(() => {
@@ -40,4 +40,4 @@ const Accesories = () => {
   );
 };
 
-export default Accesories;
+export default Accessories;
