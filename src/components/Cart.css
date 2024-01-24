@@ -1,9 +1,15 @@
-p {
+.cart-container p {
     font-family: "Inter", sans-serif;
     font-size: 0.9em;
 }
 
-ul, li {
+.cart-main ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.cart-main li {
     list-style: none;
     margin: 0;
     padding: 0;
