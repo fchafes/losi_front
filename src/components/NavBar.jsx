@@ -45,22 +45,22 @@ const Navbar = () => {
           </div>
           {isMenuOpen && (
             <ul className="dropdown-menu">
-              <li><Link to="#">ACCESORIES</Link></li>
-              <li><Link to="#">TOPS</Link></li>
-              <li><Link to="#">BOTTOMS</Link></li>
-              <li><Link to="#">DECKS</Link></li>
+              <li><Link to="/accesories">ACCESORIES</Link></li>
+              <li><Link to="/tops">TOPS</Link></li>
+              <li><Link to="/bottoms">BOTTOMS</Link></li>
+              <li><Link to="/decks">DECKS</Link></li>
               <li><Link to="#">WHEELS</Link></li>
-              <li><Link to="#">OTHERS</Link></li>
+              <li><Link to="/others">OTHERS</Link></li>
                <hr />
-              <li><Link to="#">ABOUT US</Link></li>
-              <li><Link to="#">CONTACT</Link></li>
-              <li><Link to="#">SHIPPING</Link></li>
+              <li><Link to="/about-us">ABOUT US</Link></li>
+              <li><Link to="/contact">CONTACT</Link></li>
+              <li><Link to="/shipping">SHIPPING</Link></li>
             </ul>
           )}
         </li>
         <li className="nav-item logo">
           <img
-            src="./losiFlor.png"
+            src="/public/losiFlor.png"
             alt="logo"
             style={{ width: "100px", height: "auto" }}
           />

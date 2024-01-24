@@ -8,7 +8,7 @@ const ScrollingText = () => {
       <Marquee>
         <div className="scrolling-text--inner direction-left">
           <div className="scrolling-text--item">
-            <span>* SPECIAL SALE *</span>
+            <span className="skate-promo">* SPECIAL SALE *</span>
           </div>
           <div className="scrolling-text--item">
             <span className="skate-text">SKATEBOARDING PROMO</span>

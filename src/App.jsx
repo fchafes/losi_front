@@ -5,6 +5,7 @@ import Home from "./pages/Home";
 import Featured from "./pages/Featured";
 import ProductDetails from "./components/ProductDetails";
 import Cart from "./components/Cart";
+import Accessories from "./pages/Accesories";
 
 function App() {
   
@@ -12,9 +13,10 @@ function App() {
     <>
       <Cart />
       <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/featured" element={<Featured />} />
-          <Route path="/product/:id" element={<ProductDetails />} />
+        <Route path="/" element={<Home />} />
+        <Route path="/featured" element={<Featured />} />
+        <Route path="/product/:id" element={<ProductDetails />} />
+        <Route path="/accesories" element={<Accessories />} />
       </Routes>
     </>
   );
