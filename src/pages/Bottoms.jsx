@@ -23,7 +23,7 @@ const Bottoms = () => {
 
   return (
     <div>
-        <h2>Bottoms</h2>
+        <h2 className="accesories-text">Bottoms</h2>
         <div className="bottoms-container">
             {bottoms.map((product) => (
                 <div key={product.id} className="bottoms-item">

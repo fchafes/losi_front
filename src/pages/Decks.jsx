@@ -23,7 +23,7 @@ const Decks = () => {
 
   return (
     <div>
-        <h2>Decks</h2>
+        <h2 className="accesories-text">Decks</h2>
         <div className="decks-container">
             {decks.map((product) => (
                 <div key={product.id} className="decks-item">

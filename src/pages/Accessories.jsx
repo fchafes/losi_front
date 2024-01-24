@@ -23,7 +23,7 @@ const Accessories = () => {
 
   return (
     <div>
-      <h2>Accesories</h2>
+      <h2 className="accesories-text">Accesories</h2>
       <div className="accesories-container">
         {accesories.map((product) => (
           <div key={product.id} className="accesory-item">

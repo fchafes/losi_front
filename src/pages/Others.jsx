@@ -23,7 +23,7 @@ const Others = () => {
 
   return (
     <div>
-        <h2>Others</h2>
+        <h2 className="accesories-text">Others</h2>
         <div className="others-container">
             {others.map((product) => (
                 <div key={product.id} className="others-item">
