@@ -3,7 +3,7 @@ import axios from 'axios';
 import { useParams } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 import "./ProductDetails.css";
-import Navbar from './Navbar';
+import Navbar from './NavBar';
 import Footer from './Footer';
 
 const ProductDetail = () => {

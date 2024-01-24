@@ -49,7 +49,6 @@ const Navbar = ({ toggleCart }) => {
               <li><Link to="/tops">TOPS</Link></li>
               <li><Link to="/bottoms">BOTTOMS</Link></li>
               <li><Link to="/decks">DECKS</Link></li>
-              <li><Link to="#">WHEELS</Link></li>
               <li><Link to="/others">OTHERS</Link></li>
                <hr />
               <li><Link to="/about-us">ABOUT US</Link></li>

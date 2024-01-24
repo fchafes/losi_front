@@ -9,6 +9,7 @@ const Accessories = () => {
       try {
         const response = await axios.get('http://localhost:3000/category/accesories');
         setAccessories(response.data);
+        console.log(response.data)
       } catch (error) {
         console.error('Error fetching accessories:', error);
       }

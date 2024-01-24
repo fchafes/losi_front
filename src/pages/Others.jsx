@@ -1,31 +1,31 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 
-const Tops = () => {
-  const [tops, setTops] = useState([]);
+const Others = () => {
+  const [others, setOthers] = useState([]);
 
   useEffect(() => {
-    const fetchTops = async () => {
+    const fetchOthers = async () => {
       try {
         const response = await axios.get(
-          "http://localhost:3000/category/tops"
+          "http://localhost:3000/category/others"
         );
-        setTops(response.data);
+        setOthers(response.data);
         console.log(response.data);
       } catch (error) {
         console.error("Error fetching accessories:", error);
       }
     };
 
-    fetchTops();
+    fetchOthers();
   }, []);
 
   return (
     <div>
         <h2>Decks</h2>
-        <div className="tops-container">
-            {tops.map((product) => (
-                <div key={product.id} className="tops-item">
+        <div className="others-container">
+            {others.map((product) => (
+                <div key={product.id} className="others-item">
                     <img src={product.photo} alt={product.name} />
                     <div>
                         <h3>{product.name}</h3>
@@ -39,4 +39,4 @@ const Tops = () => {
   );
 };
 
-export default Tops;
+export default Others;
