@@ -5,11 +5,11 @@
     margin: 2rem;
   }
   
-  .accesories-item {
+  .accesory-item {
     width: 30%; /* Adjust as needed */
     margin-bottom: 20px; /* Adjust spacing between items */
   }
-  .accesories-item img {
+  .accesory-item img {
     width: 100%;
     height: auto; /* Adjust as needed */
     object-fit: fill; /* Preserve aspect ratio and cover container */
