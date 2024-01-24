@@ -34,7 +34,6 @@ const ProductDetail = () => {
   return (
     <div>
       <div className="product-details-container">
-        <Navbar />
         <div className="product-details">
           <h2>{productDetails.name}</h2>
           <p>Price: ${productDetails.price}</p>

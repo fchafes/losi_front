@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import SearchModal from "./SearchModal";
 import "./Navbar.css";
 
-const Navbar = () => {
+const Navbar = ({ toggleCart }) => {
   const [isMenuOpen, setMenuOpen] = useState(false);
   const [isSearchModalOpen, setSearchModalOpen] = useState(false);
 
@@ -66,7 +66,7 @@ const Navbar = () => {
           />
         </li>
         <li className="nav-item">
-          <Link to="#">CART</Link>
+          <Link to="#" onClick={toggleCart}>CART</Link>
         </li>
         <li className="nav-item">
           <Link to="#" onClick={openSearchModal}>SEARCH</Link>

@@ -1,14 +1,7 @@
-import { useState } from "react";
 import './Cart.css';
 import CartArticle from './CartArticle';
 
-const Cart = () => {
-
-  const [cartOpen, setCartOpen] = useState(false);
-
-  const toggleCart = () => {
-    setCartOpen(!cartOpen);
-  };
+const Cart = ({ cartOpen, toggleCart }) => {
 
   return (
     <>
