@@ -3,14 +3,20 @@ import axios from 'axios';
 import { useParams } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 import "./ProductDetails.css";
-import Navbar from './Navbar';
 import Footer from './Footer';
+import { useDispatch } from 'react-redux';
+import { addToCart } from '../redux/cartReducer';
 
-const ProductDetail = () => {
+const ProductDetails = ({ toggleCart }) => {
   const [productDetails, setProductDetails] = useState({});
   const { id } = useParams();
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
+  const handleAddToCart = () => {
+    dispatch(addToCart(productDetails));
+    toggleCart();
+  };
 
   const fetchProductDetails = async (productId) => {
     try {
@@ -30,7 +36,6 @@ const ProductDetail = () => {
     navigate(-1);
   };
 
-
   return (
     <div>
       <div className="product-details-container">
@@ -38,6 +43,7 @@ const ProductDetail = () => {
           <h2>{productDetails.name}</h2>
           <p>Price: ${productDetails.price}</p>
           <p>{productDetails.description}</p>
+          <button onClick={handleAddToCart} >Add to cart</button>
         </div>
         <div className="product-image">
           <img src={productDetails.photo} alt={productDetails.name} />
@@ -51,4 +57,4 @@ const ProductDetail = () => {
   );
 };
 
-export default ProductDetail;
+export default ProductDetails;

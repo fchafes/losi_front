@@ -1,10 +1,14 @@
 import './Cart.css';
 import CartArticle from './CartArticle';
+import { useSelector } from 'react-redux';
 
 const Cart = ({ cartOpen, toggleCart }) => {
 
+  const cartItems = useSelector(state => state.cart.items);
+
   return (
     <>
+    <div className={`${cartOpen ? 'cart-context-shadow' : ''}`} onClick={toggleCart}></div>
     <div className={`cart-container ${cartOpen ? 'cart-open' : ''}`}>
       <div className='cart-header'>
         <h3 className='cart-header-title'>CART</h3>
@@ -12,21 +16,23 @@ const Cart = ({ cartOpen, toggleCart }) => {
       </div>
       {cartOpen && (
       <div className='cart-main'>
-        <CartArticle
-          source="https://bakerskateboards.com/cdn/shop/files/bkhasadwboard_240x.jpg?v=1704836092"
-          name="Losi Mapple Board"
-          price="$75"
-        />
-        <CartArticle
-          source="https://bakerskateboards.com/cdn/shop/files/shopify_240x.jpg?v=1704835572"
-          name="Black Hoodie Losi"
-          price="$105"
-        />
-        <CartArticle
-          source="https://bakerskateboards.com/cdn/shop/files/trimmed_TB-Brand-Name-8-B660-8.125-mock-shopify_064ccded-85a2-4d9e-bbf8-44b4db475288_240x.jpg?v=1696876125"
-          name="Baker Deck 8.125"
-          price="$95"
-        />
+        {console.log("esto es cartItems", cartItems)}
+        {cartItems.length === 0 && (
+          <p className='cart-main-empty'>No hay nada en tu carrito</p>
+        )}
+        <ul>
+          {cartItems.map(item => (
+            <li key={item.id}>
+              <CartArticle
+                source={item.photo}
+                name={item.name}
+                price={item.price}
+                quantity={item.quantity}
+                id={item.id}
+              />
+            </li>
+          ))}
+        </ul>
       </div>
       )}
       <div className='cart-footer'>
