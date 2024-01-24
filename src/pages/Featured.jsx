@@ -10,7 +10,6 @@ const Featured = () => {
 
     return (
         <div>
-        <Navbar/>
         <Header/>
         <Categories/>
         <CategoryItem/>
