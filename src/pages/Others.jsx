@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import "./Others.css"
 
 const Others = () => {
   const [others, setOthers] = useState([]);
@@ -22,7 +23,7 @@ const Others = () => {
 
   return (
     <div>
-        <h2>Decks</h2>
+        <h2>Others</h2>
         <div className="others-container">
             {others.map((product) => (
                 <div key={product.id} className="others-item">

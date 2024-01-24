@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import "./Tops.css"
 
 const Tops = () => {
   const [tops, setTops] = useState([]);
@@ -22,7 +23,7 @@ const Tops = () => {
 
   return (
     <div>
-        <h2>Decks</h2>
+        <h2>Tops</h2>
         <div className="tops-container">
             {tops.map((product) => (
                 <div key={product.id} className="tops-item">

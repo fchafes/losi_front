@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import "./Decks.css"
 
 const Decks = () => {
   const [decks, setDecks] = useState([]);
@@ -26,7 +27,7 @@ const Decks = () => {
         <div className="decks-container">
             {decks.map((product) => (
                 <div key={product.id} className="decks-item">
-                    <img src={product.photo} alt={product.name} />
+                    <img className= "img-fluid" src={product.photo} alt={product.name} />
                     <div>
                         <h3>{product.name}</h3>
                         <p>{product.description}</p>

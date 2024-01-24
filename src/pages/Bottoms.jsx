@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import "./Bottoms.css"
 
 const Bottoms = () => {
   const [bottoms, setBottoms] = useState([]);
@@ -22,7 +23,7 @@ const Bottoms = () => {
 
   return (
     <div>
-        <h2>Decks</h2>
+        <h2>Bottoms</h2>
         <div className="bottoms-container">
             {bottoms.map((product) => (
                 <div key={product.id} className="bottoms-item">

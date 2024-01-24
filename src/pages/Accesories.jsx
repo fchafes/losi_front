@@ -1,29 +1,32 @@
-import React, { useEffect, useState } from 'react';
-import axios from 'axios';
+import React, { useEffect, useState } from "react";
+import axios from "axios";
+import "./Accesories.css";
 
-const Accessories = () => {
-  const [accessories, setAccessories] = useState([]);
+const Accesories = () => {
+  const [accesories, setAccesories] = useState([]);
 
   useEffect(() => {
     const fetchAccessories = async () => {
       try {
-        const response = await axios.get('http://localhost:3000/category/accesories');
-        setAccessories(response.data);
-        console.log(response.data)
+        const response = await axios.get(
+          "http://localhost:3000/category/accesories"
+        );
+        setAccesories(response.data);
+        console.log(response.data);
       } catch (error) {
-        console.error('Error fetching accessories:', error);
+        console.error("Error fetching accessories:", error);
       }
     };
 
-    fetchAccessories();
+    fetchAccesories();
   }, []);
 
   return (
     <div>
-      <h2>Accessories</h2>
-      <div className="accessories-container">
-        {accessories.map((product) => (
-          <div key={product.id} className="accessory-item">
+      <h2>Accesories</h2>
+      <div className="accesories-container">
+        {accesories.map((product) => (
+          <div key={product.id} className="accesory-item">
             <img src={product.photo} alt={product.name} />
             <div>
               <h3>{product.name}</h3>
@@ -37,4 +40,4 @@ const Accessories = () => {
   );
 };
 
-export default Accessories;
+export default Accesories;
