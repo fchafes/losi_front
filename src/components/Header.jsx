@@ -10,11 +10,11 @@ const Header = () => {
             <div className="carousel-wrapper">
                 <Carousel autoPlay infiniteLoop interval={3000} showThumbs={false}>
                     <div className="carousel-slide">
-                        <img className="carousel-image" src={"letter2.png"} alt="Slide 1" />
-                        <div className="carousel-image-overlay">
-                            <button className="discover-button">Discover</button>
-                        </div>
+                       <video className="carousel-video" autoPlay loop muted style={{ width: "100%" }}>
+                            <source src={"prueba.mp4"} type="video/mp4" />
+                            </video>                      
                     </div>
+                    
                     <div className="carousel-slide">
                         <img className="carousel-image" src={"P2144034.jpg"} alt="Slide 2" />
                         <div className="carousel-image-overlay">
@@ -22,7 +22,7 @@ const Header = () => {
                         </div>
                     </div>
                     <div className="carousel-slide">
-                        <img className="carousel-image" src={"/mbn.png"} alt="Slide 3" />
+                        <img className="carousel-image" src={"/4remeras.jpg"} alt="Slide 3" />
                         <div className="carousel-image-overlay">
                             <button className="discover-button">Discover</button>
                         </div>

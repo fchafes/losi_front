@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import "./Accessories.css";
+import "./Accessories.css"
 
 const Accessories = () => {
   const [accesories, setAccesories] = useState([]);
@@ -18,7 +18,7 @@ const Accessories = () => {
       }
     };
 
-    fetchAccesories();
+    fetchAccessories();
   }, []);
 
   return (

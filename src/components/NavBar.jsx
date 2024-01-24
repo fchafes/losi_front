@@ -45,7 +45,7 @@ const Navbar = ({ toggleCart }) => {
           </div>
           {isMenuOpen && (
             <ul className="dropdown-menu">
-              <li><Link to="/accesories">ACCESORIES</Link></li>
+              <li><Link to="/accessories">ACCESSORIES</Link></li>
               <li><Link to="/tops">TOPS</Link></li>
               <li><Link to="/bottoms">BOTTOMS</Link></li>
               <li><Link to="/decks">DECKS</Link></li>
