@@ -41,7 +41,7 @@ const Navbar = ({ toggleCart }) => {
         </li>
         <li className={`nav-item dropdown ${isMenuOpen ? "open" : ""}`}>
           <div className="menu-toggle" onClick={toggleMenu}>
-            <span className="nav-span">MENU</span>
+            <span className="nav-span">SHOP</span>
           </div>
           {isMenuOpen && (
             <ul className="dropdown-menu">
@@ -50,10 +50,6 @@ const Navbar = ({ toggleCart }) => {
               <li><Link to="/bottoms">BOTTOMS</Link></li>
               <li><Link to="/decks">DECKS</Link></li>
               <li><Link to="/others">OTHERS</Link></li>
-               <hr />
-              <li><Link to="/about-us">ABOUT US</Link></li>
-              <li><Link to="/contact">CONTACT</Link></li>
-              <li><Link to="/shipping">SHIPPING</Link></li>
             </ul>
           )}
         </li>
@@ -65,10 +61,10 @@ const Navbar = ({ toggleCart }) => {
           />
         </li>
         <li className="nav-item">
-          <Link to="#" onClick={toggleCart}>CART</Link>
+          <Link to="#" onClick={toggleCart}>ABOUT</Link>
         </li>
         <li className="nav-item">
-          <Link to="#" onClick={openSearchModal}>SEARCH</Link>
+          <Link to="#">CONTACT</Link>
         </li>
       </ul>
       {isSearchModalOpen && (
