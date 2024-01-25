@@ -3,7 +3,7 @@
   justify-content: space-around;
   align-items: center;
   margin: 100px;
-  font-family: "Inter", sans-serif;
+  font-family: "Inter Tight", sans-serif;
 }
 
 .product-details {
@@ -19,20 +19,17 @@
   height: auto;
 }
 
-.return-home-button {
-  position: absolute;
-  top: 32px;
-  right: 10%;
-  z-index: 1001;
+.cart-button {
   background-color: #fff;
   padding: 5px 10px;
   border: 1px solid #ccc;
   cursor: pointer;
+  margin-top: 10px;
 }
 
 .product-details p {
   white-space: pre-line;
-  font-family: "Inter ", sans-serif;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
 
 @media screen and (max-width: 638px) {
