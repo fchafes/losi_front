@@ -1,34 +1,24 @@
-import React from "react";
-import "./Home.css";
-import { Link } from "react-router-dom";
+import Categories from "../components/Categories"
+import CategoryItem from "../components/CategoryItem"
+import Footer from "../components/Footer"
+import Header from "../components/Header"
+import Parallax from "../components/Parallax"
+import ProductCategories from "../components/ProductCategories"
+import ScrollingText from "../components/ScrollingText"
 
 const Home = () => {
-  return (
-    <div className="center-container">
-      <div className="logo">
-        <img
-          src="./losiFlor.png"
-          alt="logo"
-          style={{ width: "120px", height: "auto" }}
-        />
-      </div>
-      <div className="video-container" >
-      <iframe
-      className="fullscreen-video"
-            width="100%"
-            height="100%"
-            src="https://www.youtube.com/embed/VmTwY5r_ShQ"
-            frameborder="0"
-            allowfullscreen
-        ></iframe>
-        </div>
-        <div className="button-container">
-        <Link to="/featured" className="overlay-link">
-          <h1>ENTER</h1>
-        </Link>
-      </div>
-    </div>
-  );
-};
 
-export default Home;
+    return (
+        <div>
+        <Header/>
+        <Categories/>
+        <CategoryItem/>
+        <Parallax/>
+        <ScrollingText/>
+        <ProductCategories/>
+        <Footer/>
+        </div>
+    )
+}
+
+export default Home

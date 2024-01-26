@@ -1,8 +1,8 @@
 import { useState } from "react";
 import { Routes, Route, Outlet, Navigate } from "react-router-dom";
 import "./App.css";
+import Video from "./pages/Video";
 import Home from "./pages/Home";
-import Featured from "./pages/Featured";
 import ProductDetails from "./components/ProductDetails";
 import Cart from "./components/Cart";
 
@@ -24,8 +24,8 @@ function App() {
       <Cart cartOpen={cartOpen} toggleCart={toggleCart} />
       <NavBar toggleCart={toggleCart} />
       <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/featured" element={<Featured />} />
+        <Route path="/" element={<Video />} />
+        <Route path="/home" element={<Home />} />
         <Route path="/product/:id" element={<ProductDetails toggleCart={toggleCart}/>} />
         <Route path="/:categoryName" element={<Category />} />
         {/* <Route path="/decks" element={<Decks />} />

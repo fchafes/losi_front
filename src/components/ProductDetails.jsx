@@ -43,14 +43,11 @@ const ProductDetails = ({ toggleCart }) => {
           <h2>{productDetails.name}</h2>
           <p>Price: ${productDetails.price}</p>
           <p>{productDetails.description}</p>
-          <button onClick={handleAddToCart} >Add to cart</button>
+          <button className='cart-button' onClick={handleAddToCart} >Add to cart</button>
         </div>
         <div className="product-image">
           <img src={productDetails.photo} alt={productDetails.name} />
         </div>
-        <button className="return-home-button" onClick={handleGoBack}>
-          Home
-        </button>
       </div>
       <Footer />
     </div>

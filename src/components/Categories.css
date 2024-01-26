@@ -46,6 +46,7 @@
   position: relative;
   overflow: hidden;
   margin-right: 50px;
+  font-family: "Inter Tight", sans-serif;
 }
 
 .category-item img {
