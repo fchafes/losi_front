@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import "./Category.css"
+import CategoryItem from "../components/CategoryItem";
+import Footer from '../components/Footer';
 import { useParams } from 'react-router-dom';
 
 const Category = () => {
@@ -22,23 +24,22 @@ const Category = () => {
     };
 
     fetchCategory();
-  }, [categoryName]); // Added categoryName as a dependency
+  }, [categoryName]); 
 
   return (
     <div>
       <h2 className="category-text">{categoryName}</h2>
       <div className="category-container">
         {category.map((product) => (
-          <div key={product.id} className="category-item">
-            <img src={product.photo} alt={product.name} />
-            <div>
-              <h3>{product.name}</h3>
-              <p>{product.description}</p>
-              <p>Price: ${product.price}</p>
-            </div>
-          </div>
+          <CategoryItem
+          key={product.id}
+          imageSrc={product.photo}
+          categoryLink={`/product/${product.id}`}
+          description={`${product.name}\n$${product.price}`}
+        />
         ))}
       </div>
+      <Footer />
     </div>
   );
 };

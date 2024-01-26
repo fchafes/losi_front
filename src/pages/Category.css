@@ -4,18 +4,11 @@
   text-align: center;
   margin: 2rem;
   font-family: "Inter Tight", sans-serif;
-  margin-left: 80px;
 }
 
-<<<<<<< HEAD:src/pages/Tops.css
 .tops-item {
   width: 30%;
   margin-bottom: 20px;
-=======
-.category-item {
-  width: 30%; /* Adjust as needed */
-  margin-bottom: 20px; /* Adjust spacing between items */
->>>>>>> f2898811350cbc3a9579d0f450bcb67d998b3293:src/pages/Category.css
 }
 .category-item img {
   width: 100%;
