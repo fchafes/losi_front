@@ -1,6 +1,9 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import "./Accessories.css"
+import Footer from '../components/Footer';
+import CategoryItem from "../components/CategoryItem"; 
+
 
 const Accessories = () => {
   const [accesories, setAccesories] = useState([]);
@@ -26,18 +29,18 @@ const Accessories = () => {
       <h2 className="accesories-text">Accesories</h2>
       <div className="accesories-container">
         {accesories.map((product) => (
-          <div key={product.id} className="accesory-item">
-            <img src={product.photo} alt={product.name} />
-            <div>
-              <h3>{product.name}</h3>
-              <p>{product.description}</p>
-              <p>Price: ${product.price}</p>
-            </div>
-          </div>
+          <CategoryItem
+          key={product.id}
+          imageSrc={product.photo}
+          categoryLink={`/product/${product.id}`}
+          description={`${product.name}\n$${product.price}`}
+        />
         ))}
       </div>
+      <Footer />
     </div>
   );
 };
 
 export default Accessories;
+

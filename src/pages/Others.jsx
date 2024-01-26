@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import "./Others.css"
+import Footer from '../components/Footer';
+import CategoryItem from "../components/CategoryItem"; 
 
 const Others = () => {
   const [others, setOthers] = useState([]);
@@ -26,16 +28,15 @@ const Others = () => {
         <h2 className="accesories-text">Others</h2>
         <div className="others-container">
             {others.map((product) => (
-                <div key={product.id} className="others-item">
-                    <img src={product.photo} alt={product.name} />
-                    <div>
-                        <h3>{product.name}</h3>
-                        <p>{product.description}</p>
-                        <p>Price: ${product.price}</p>
-                    </div>
-                </div>
+                <CategoryItem
+                key={product.id}
+                imageSrc={product.photo}
+                categoryLink={`/product/${product.id}`}
+                description={`${product.name}\n$${product.price}`}
+              />
             ))}
         </div>
+        <Footer />
     </div>
   );
 };

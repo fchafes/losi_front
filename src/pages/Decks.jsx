@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import "./Decks.css"
+import Footer from '../components/Footer';
+import CategoryItem from "../components/CategoryItem"; 
 
 const Decks = () => {
   const [decks, setDecks] = useState([]);
@@ -25,17 +27,16 @@ const Decks = () => {
     <div>
         <h2 className="accesories-text">Decks</h2>
         <div className="decks-container">
-            {decks.map((product) => (
-                <div key={product.id} className="decks-item">
-                    <img className= "img-fluid" src={product.photo} alt={product.name} />
-                    <div>
-                        <h3>{product.name}</h3>
-                        <p>{product.description}</p>
-                        <p>Price: ${product.price}</p>
-                    </div>
-                </div>
+        {decks.map((product) => (
+          <CategoryItem
+          key={product.id}
+          imageSrc={product.photo}
+          categoryLink={`/product/${product.id}`}
+          description={`${product.name}\n$${product.price}`}
+        />
             ))}
-        </div>
+        </div>    
+          <Footer />
     </div>
   );
 };

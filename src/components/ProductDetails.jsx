@@ -32,9 +32,6 @@ const ProductDetails = ({ toggleCart }) => {
     fetchProductDetails(id);
   }, [id]);
 
-  const handleGoBack = () => {
-    navigate(-1);
-  };
 
   return (
     <div>
