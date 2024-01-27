@@ -37,7 +37,7 @@ const Navbar = ({ toggleCart }) => {
     <nav className="navbar">
       <ul className="nav-list center-links">
         <li className="nav-item">
-          <Link to="/">HOME</Link>
+          <Link to="/home">HOME</Link>
         </li>
         <li className={`nav-item dropdown ${isMenuOpen ? "open" : ""}`}>
           <div className="menu-toggle" onClick={toggleMenu}>
@@ -61,7 +61,7 @@ const Navbar = ({ toggleCart }) => {
           />
         </li>
         <li className="nav-item">
-          <Link to="#" onClick={toggleCart}>ABOUT</Link>
+          <Link to="#" onClick={toggleCart}>CART</Link>
         </li>
         <li className="nav-item">
           <Link to="#">CONTACT</Link>

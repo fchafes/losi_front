@@ -1,15 +1,15 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import "./Category.css"
-import { useParams } from 'react-router-dom';
+import "./Category.css";
+import { Link, useParams } from "react-router-dom";
 
 const Category = () => {
   const [category, setCategory] = useState([]);
-  const { categoryName } = useParams(); 
+  const { categoryName } = useParams();
 
   useEffect(() => {
-    console.log("Category Name:", categoryName);
-    const fetchCategory = async () => { 
+    console.log("categories name:", categoryName);
+    const fetchCategory = async () => {
       try {
         const response = await axios.get(
           `http://localhost:3000/category/${categoryName}`
@@ -22,21 +22,26 @@ const Category = () => {
     };
 
     fetchCategory();
-  }, [categoryName]); // Added categoryName as a dependency
+  }, [categoryName]);
 
   return (
     <div>
-      <h2 className="category-text">{categoryName}</h2>
+      <h2 className="category-text">
+        {categoryName &&
+          categoryName.charAt(0).toUpperCase() + categoryName.slice(1)}
+      </h2>
+
       <div className="category-container">
         {category.map((product) => (
-          <div key={product.id} className="category-item">
-            <img src={product.photo} alt={product.name} />
-            <div>
-              <h3>{product.name}</h3>
-              <p>{product.description}</p>
-              <p>Price: ${product.price}</p>
+          <Link className="category-item" to={`/product/${product.id}`}>
+            <div key={product.id} >
+              <img src={product.photo} alt={product.name} />
+              <div>
+                <h3>{product.name}</h3>
+                <p>Price: ${product.price}</p>
+              </div>
             </div>
-          </div>
+           </Link>
         ))}
       </div>
     </div>

@@ -6,17 +6,18 @@
 }
 
 .category-item {
-  width: 30%; /* Adjust as needed */
-  margin-bottom: 20px; /* Adjust spacing between items */
+  width: 30%; 
+  margin-bottom: 20px; 
 }
 .category-item img {
   width: 100%;
-  height: auto; /* Adjust as needed */
-  object-fit: fill; /* Preserve aspect ratio and cover container */
+  height: auto; 
+  object-fit: fill; 
 }
 .category-text {
   display: flex;
   margin-top: 10%;
+  margin-right: 4%;
   justify-content: center;
   align-items: center;
   padding-bottom: 1rem;
