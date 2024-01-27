@@ -34,15 +34,15 @@ const Category = () => {
 
       <div className="category-container">
         {category.map((product) => (
-          <Link className="category-item" to={`/product/${product.id}`}>
-            <div key={product.id}>
+          <div key={product.id} className="category-item">
+            <Link to={`/product/${product.id}`}>
               <img src={product.photo} alt={product.name} />
-              <div>
-                <h3>{product.name}</h3>
-                <p>Price: ${product.price}</p>
-              </div>
+            </Link>
+            <div className="product-details">
+              <h3>{product.name}</h3>
+              <p>Price: ${product.price}</p>
             </div>
-          </Link>
+          </div>
         ))}
       </div>
       <Footer />

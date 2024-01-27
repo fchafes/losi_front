@@ -8,8 +8,10 @@
 }
 
 .category-item {
-  width: 33.33%; 
-  margin-bottom: 20px; 
+  position: relative; /* Add position relative to use absolute positioning for details */
+  width: calc(33.33% - 20px); /* Adjusted for margin */
+  margin-bottom: 20px;
+  box-sizing: border-box; /* Include padding and border in the total width */
 }
 .category-item img {
   width: 100%;
@@ -26,4 +28,22 @@
   font-family: "Inter Tight", sans-serif;
   font-weight: 400;
   text-transform: uppercase;
+}
+.product-details {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(255, 255, 255, 0.8); /* Semi-transparent background */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  opacity: 0; /* Initially hidden */
+  transition: opacity 0.3s ease-in-out; /* Add a smooth transition effect */
+}
+
+.category-item:hover .product-details {
+  opacity: .5; /* Show on hover */
 }
