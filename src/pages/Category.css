@@ -1,12 +1,13 @@
 .category-container {
   display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
+  justify-content: center;
+  text-align: center;
   margin: 2rem;
+  font-family: "Inter Tight", sans-serif;
 }
 
 .category-item {
-  width: 30%; 
+  width: 33.33%; 
   margin-bottom: 20px; 
 }
 .category-item img {
@@ -21,4 +22,7 @@
   justify-content: center;
   align-items: center;
   padding-bottom: 1rem;
+  font-family: "Inter Tight", sans-serif;
+  font-weight: 400;
+  text-transform: uppercase;
 }

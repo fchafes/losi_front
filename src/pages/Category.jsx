@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import "./Category.css";
 import { Link, useParams } from "react-router-dom";
+import Footer from "../components/Footer";
 
 const Category = () => {
   const [category, setCategory] = useState([]);
@@ -34,16 +35,17 @@ const Category = () => {
       <div className="category-container">
         {category.map((product) => (
           <Link className="category-item" to={`/product/${product.id}`}>
-            <div key={product.id} >
+            <div key={product.id}>
               <img src={product.photo} alt={product.name} />
               <div>
                 <h3>{product.name}</h3>
                 <p>Price: ${product.price}</p>
               </div>
             </div>
-           </Link>
+          </Link>
         ))}
       </div>
+      <Footer />
     </div>
   );
 };
