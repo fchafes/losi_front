@@ -1,6 +1,7 @@
 .category-container {
   display: flex;
-  justify-content: center;
+  flex-wrap: wrap;
+  justify-content: space-between;
   text-align: center;
   margin: 2rem;
   font-family: "Inter Tight", sans-serif;
