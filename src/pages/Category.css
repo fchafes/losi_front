@@ -35,15 +35,16 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background: rgba(255, 255, 255, 0.8); /* Semi-transparent background */
+  /* background: rgba(255, 255, 255, 0.8); Semi-transparent background */
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
   opacity: 0; /* Initially hidden */
   transition: opacity 0.3s ease-in-out; /* Add a smooth transition effect */
+  margin-left: 25%;
 }
 
 .category-item:hover .product-details {
-  opacity: .5; /* Show on hover */
+  opacity: 1; /* Show on hover */
 }

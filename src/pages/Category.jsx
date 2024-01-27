@@ -34,11 +34,11 @@ const Category = () => {
 
       <div className="category-container">
         {category.map((product) => (
-          <div key={product.id} className="category-item">
+          <div key={product.id} className="category-item ">
             <Link to={`/product/${product.id}`}>
               <img src={product.photo} alt={product.name} />
             </Link>
-            <div className="product-details">
+            <div className="product-details category-text">
               <h3>{product.name}</h3>
               <p>Price: ${product.price}</p>
             </div>
