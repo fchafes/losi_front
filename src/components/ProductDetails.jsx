@@ -35,14 +35,14 @@ const ProductDetails = ({ toggleCart }) => {
 
   return (
     <div>
-      <div className="product-details-container">
-        <div className="product-details">
+      <div className="products-details-container">
+        <div className="products-details">
           <h2>{productDetails.name}</h2>
           <p>Price: ${productDetails.price}</p>
           <p>{productDetails.description}</p>
           <button className='cart-button' onClick={handleAddToCart} >Add to cart</button>
         </div>
-        <div className="product-image">
+        <div className="products-image">
           <img src={productDetails.photo} alt={productDetails.name} />
         </div>
       </div>

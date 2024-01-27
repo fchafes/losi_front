@@ -37,11 +37,12 @@ const Category = () => {
           <div key={product.id} className="category-item ">
             <Link to={`/product/${product.id}`}>
               <img src={product.photo} alt={product.name} />
+
+              <div className="product-details category-text">
+                <h3>{product.name}</h3>
+                <p>Price: ${product.price}</p>
+              </div>
             </Link>
-            <div className="product-details category-text">
-              <h3>{product.name}</h3>
-              <p>Price: ${product.price}</p>
-            </div>
           </div>
         ))}
       </div>
