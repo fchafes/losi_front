@@ -4,6 +4,7 @@ import "./App.css";
 import Video from "./pages/Video";
 import Home from "./pages/Home";
 import ContactPage from "./pages/ContactPage"
+import AboutUs from "./pages/AboutUs"
 import ProductDetails from "./components/ProductDetails";
 import Cart from "./components/Cart";
 import NavBar from "./components/NavBar";
@@ -28,6 +29,7 @@ function App() {
         <Route path="/product/:id" element={<ProductDetails toggleCart={toggleCart}/>} />
         <Route path="/:categoryName" element={<Category />} />
         <Route path="/contact" element={<ContactPage />} />
+        <Route path="/aboutUs" element={<AboutUs />} />
         {/* <Route path="/decks" element={<Decks />} />
         <Route path="/bottoms" element={<Bottoms />} />
         <Route path="/tops" element={<Tops />} />
