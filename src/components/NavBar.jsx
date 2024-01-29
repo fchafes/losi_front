@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation  } from "react-router-dom";
 import SearchModal from "./SearchModal";
 import "./Navbar.css";
 
 const Navbar = ({ toggleCart }) => {
   const [isMenuOpen, setMenuOpen] = useState(false);
   const [isSearchModalOpen, setSearchModalOpen] = useState(false);
+
+  const location = useLocation();
 
   const toggleMenu = () => {
     setMenuOpen(!isMenuOpen);
@@ -32,6 +34,11 @@ const Navbar = ({ toggleCart }) => {
       document.removeEventListener("click", closeMenuOnOutsideClick);
     };
   }, [isMenuOpen]);
+
+  const isIntroPage = location.pathname === "/"; 
+  if (isIntroPage) {
+    return null;
+  }
 
      return (
     <nav className="navbar">
