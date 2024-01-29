@@ -20,17 +20,26 @@
 }
 
 .cart-button {
-  background-color: #fff;
+  background: rgb(0, 0, 0);
+  color: rgb(255, 255, 255) !important;
   padding: 5px 10px;
-  border: 1px solid #ccc;
+  font-size: 14px;
+  border: 1px dashed rgb(0, 0, 0);
   cursor: pointer;
+  color: black;
   margin-top: 10px;
+}
+
+.cart-button:hover {
+  background: rgb(235, 235, 235);
+  color: rgb(104, 103, 103) !important;
+  font-weight: bold;
 }
 
 .products-details p {
   white-space: pre-line;
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-} 
+}
 
 @media screen and (max-width: 638px) {
   .return-home-button {

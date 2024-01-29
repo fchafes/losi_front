@@ -3,11 +3,10 @@ import { Routes, Route, Outlet, Navigate } from "react-router-dom";
 import "./App.css";
 import Video from "./pages/Video";
 import Home from "./pages/Home";
+import ContactPage from "./pages/ContactPage"
 import ProductDetails from "./components/ProductDetails";
 import Cart from "./components/Cart";
-
 import NavBar from "./components/NavBar";
-
 import Category from "./pages/Category";
 
 
@@ -28,6 +27,7 @@ function App() {
         <Route path="/home" element={<Home />} />
         <Route path="/product/:id" element={<ProductDetails toggleCart={toggleCart}/>} />
         <Route path="/:categoryName" element={<Category />} />
+        <Route path="/contact" element={<ContactPage />} />
         {/* <Route path="/decks" element={<Decks />} />
         <Route path="/bottoms" element={<Bottoms />} />
         <Route path="/tops" element={<Tops />} />

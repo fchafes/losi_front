@@ -71,7 +71,7 @@ const Navbar = ({ toggleCart }) => {
           <Link to="#" onClick={toggleCart}>CART</Link>
         </li>
         <li className="nav-item">
-          <Link to="#">CONTACT</Link>
+          <Link to="/contact">CONTACT</Link>
         </li>
       </ul>
       {isSearchModalOpen && (
