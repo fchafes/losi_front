@@ -5,7 +5,7 @@ import Video from "./pages/Video";
 import Home from "./pages/Home";
 import ProductDetails from "./components/ProductDetails";
 import Cart from "./components/Cart";
-
+import AboutUs from "./pages/AboutUs";
 import NavBar from "./components/NavBar";
 
 import Category from "./pages/Category";
@@ -28,6 +28,7 @@ function App() {
         <Route path="/home" element={<Home />} />
         <Route path="/product/:id" element={<ProductDetails toggleCart={toggleCart}/>} />
         <Route path="/:categoryName" element={<Category />} />
+        <Route path="/aboutUs" element={<AboutUs />} />
         {/* <Route path="/decks" element={<Decks />} />
         <Route path="/bottoms" element={<Bottoms />} />
         <Route path="/tops" element={<Tops />} />
