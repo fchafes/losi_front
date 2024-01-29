@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import "./Category.css";
+import FeaturedItem from "../components/FeaturedItem";
 import { Link, useParams } from "react-router-dom";
 import Footer from "../components/Footer";
 
@@ -36,12 +37,11 @@ const Category = () => {
         {category.map((product) => (
           <div key={product.id} className="category-item ">
             <Link to={`/product/${product.id}`}>
-              <img src={product.photo} alt={product.name} />
-
-              <div className="product-details category-text">
-                <h3>{product.name}</h3>
-                <p>Price: ${product.price}</p>
-              </div>
+            <FeaturedItem
+              key={product.id}
+              imageSrc={product.photo}
+              description={`${product.name}\n$${product.price}`}
+            />
             </Link>
           </div>
         ))}

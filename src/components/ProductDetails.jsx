@@ -13,6 +13,11 @@ const ProductDetails = ({ toggleCart }) => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
+  // Scroll al principio cuando la página se carga
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   const handleAddToCart = () => {
     dispatch(addToCart(productDetails));
     toggleCart();
@@ -31,7 +36,6 @@ const ProductDetails = ({ toggleCart }) => {
   useEffect(() => {
     fetchProductDetails(id);
   }, [id]);
-
 
   return (
     <div>
