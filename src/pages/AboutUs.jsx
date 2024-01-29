@@ -8,8 +8,8 @@ const AboutUs = () => {
       <div>
         <Navbar />
         <div className="container-aboutUs">
-          <h2>About Us</h2>
-          <p>
+          <h2 className="aboutus-title">About Us</h2>
+          <p className="aboutus-description">
             Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sit,
             molestiae perferendis. Consequatur recusandae nam quibusdam, ad
             voluptatum officia? Vero, eum earum! Autem totam expedita accusantium
