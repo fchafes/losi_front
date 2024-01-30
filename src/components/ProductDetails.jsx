@@ -13,6 +13,11 @@ const ProductDetails = ({ toggleCart }) => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
+  // Scroll al principio cuando la página se carga
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   const handleAddToCart = () => {
     dispatch(addToCart(productDetails));
     toggleCart();
@@ -32,25 +37,18 @@ const ProductDetails = ({ toggleCart }) => {
     fetchProductDetails(id);
   }, [id]);
 
-  const handleGoBack = () => {
-    navigate(-1);
-  };
-
   return (
     <div>
-      <div className="product-details-container">
-        <div className="product-details">
+      <div className="products-details-container">
+        <div className="products-details">
           <h2>{productDetails.name}</h2>
           <p>Price: ${productDetails.price}</p>
           <p>{productDetails.description}</p>
-          <button onClick={handleAddToCart} >Add to cart</button>
+          <button className='cart-button' onClick={handleAddToCart} >Add to cart</button>
         </div>
-        <div className="product-image">
+        <div className="products-image">
           <img src={productDetails.photo} alt={productDetails.name} />
         </div>
-        <button className="return-home-button" onClick={handleGoBack}>
-          Home
-        </button>
       </div>
       <Footer />
     </div>

@@ -1,17 +1,19 @@
-import React from 'react';
-import './ProductCategories.css'; 
+import React from "react";
+import "./ProductCategories.css";
+import { Link } from "react-router-dom";
 
 const ProductCategories = () => {
   return (
     <div className="photo-links-container">
-      <a href="#" className="photo-link">
-        <img src="/public/hoddie.webp" alt="Tops" />
+      <Link className="photo-link" to={"/tops"}>
+        <img src="/public/ppp.jpg" alt="Tops" />
         <span className="text-overlay">TOPS</span>
-      </a>
-      <a href="#" className="photo-link">
-        <img src="/public/picture4.webp" alt="Bottoms" />
-        <span className="text-overlay">SKATES</span>
-      </a>
+      </Link>
+      <Link className="photo-link" to={"/bottoms"}>
+        <img src="/public/4pants.jpg" alt="Bottoms" />
+        <span className="text-overlay">Bottoms</span>
+      </Link>
+      
     </div>
   );
 };

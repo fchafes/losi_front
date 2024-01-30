@@ -14,12 +14,12 @@ const Video = () => {
       </div>
       <div className="video-container" >
       <iframe
-      className="fullscreen-video"
+      className=""
             width="100%"
             height="100%"
             src="https://www.youtube.com/embed/VmTwY5r_ShQ"
-            frameborder="0"
-            allowfullscreen
+            frameBorder="0"
+            allowFullScreen
         ></iframe>
         </div>
         <div className="button-container">
