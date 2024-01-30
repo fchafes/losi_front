@@ -62,14 +62,16 @@ const Navbar = ({ toggleCart }) => {
           )}
         </li>
         <li className="nav-item logo">
+        <Link to="/">
           <img
             src="/public/losiFlor.png"
             alt="logo"
             style={{ width: "100px", height: "auto" }}
           />
+        </Link>
         </li>
         <li className="nav-item">
-          <Link to="#" onClick={toggleCart}>CART</Link>
+          <Link to="/aboutUs">ABOUT</Link>
         </li>
         <li className="nav-item">
           <Link to="/contact">CONTACT</Link>
