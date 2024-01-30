@@ -32,9 +32,11 @@ const Header = () => {
               src={"P2144034.jpg"}
               alt="Slide 2"
             />
+            <Link to={"/aboutUs"}>
             <div className="carousel-image-overlay">
               <button className="discover-button">About Us</button>
             </div>
+            </Link>
           </div>
           <div className="carousel-slide">
             <img
@@ -42,9 +44,11 @@ const Header = () => {
               src={"/4remeras.jpg"}
               alt="Slide 3"
             />
+            <Link to={"/aboutUs"}>
             <div className="carousel-image-overlay">
               <button className="discover-button">About Us</button>
             </div>
+            </Link>
           </div>
         </Carousel>
       </div>
