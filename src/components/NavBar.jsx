@@ -35,6 +35,7 @@ const Navbar = ({ toggleCart }) => {
 
      return (
     <nav className="navbar">
+      <Link to="#"><img src="/public/search-icon.png" alt="" className="nav-search-icon"/></Link>
       <ul className="nav-list center-links">
         <li className="nav-item">
           <Link to="/">HOME</Link>
@@ -67,6 +68,7 @@ const Navbar = ({ toggleCart }) => {
           <Link to="#">CONTACT</Link>
         </li>
       </ul>
+      <Link to="#" onClick={toggleCart}><img src="/public/empty-cart-icon.png" alt="" className="nav-cart-icon"/></Link>
       {isSearchModalOpen && (
         <SearchModal onClose={closeSearchModal} />
       )}

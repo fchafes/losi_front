@@ -4,7 +4,7 @@
 
 .navbar {
   display: flex;
-  justify-content: center;
+  justify-content: space-around;
   align-items: center;
   text-align: center;
   background-color: white;
@@ -44,6 +44,16 @@
 
 .logo img {
   vertical-align: middle;
+}
+
+.nav-cart-icon {
+  width: 25px;
+  margin-top: 2px;
+}
+
+.nav-search-icon {
+  width: 20px;
+  margin-top: 2px;
 }
 
 .center-links {
