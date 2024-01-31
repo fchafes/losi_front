@@ -21,10 +21,17 @@ const Navbar = ({ toggleCart }) => {
     setSearchModalOpen(false);
   };
 
+  const closeMenu = () => {
+    if (isMenuOpen) {
+      setMenuOpen(false);
+    }
+  };
+
+
   useEffect(() => {
     const closeMenuOnOutsideClick = (e) => {
       if (isMenuOpen && !e.target.closest(".navbar")) {
-        setMenuOpen(false);
+        closeMenu();
       }
     };
 
@@ -42,6 +49,7 @@ const Navbar = ({ toggleCart }) => {
 
      return (
     <nav className="navbar">
+      <Link to="#"><img src="/public/search-icon.png" alt="" className="nav-search-icon"/></Link>
       <ul className="nav-list center-links">
         <li className="nav-item">
           <Link to="/home">HOME</Link>
@@ -52,28 +60,31 @@ const Navbar = ({ toggleCart }) => {
           </div>
           {isMenuOpen && (
             <ul className="dropdown-menu">
-              <li><Link to="/accessories">ACCESSORIES</Link></li>
-              <li><Link to="/tops">TOPS</Link></li>
-              <li><Link to="/bottoms">BOTTOMS</Link></li>
-              <li><Link to="/decks">DECKS</Link></li>
-              <li><Link to="/others">OTHERS</Link></li>
+              <li onClick={closeMenu}><Link to="/accessories">ACCESSORIES</Link></li>
+              <li onClick={closeMenu}><Link to="/tops">TOPS</Link></li>
+              <li onClick={closeMenu}><Link to="/bottoms">BOTTOMS</Link></li>
+              <li onClick={closeMenu}><Link to="/decks">DECKS</Link></li>
+              <li onClick={closeMenu}><Link to="/others">OTHERS</Link></li>
             </ul>
           )}
         </li>
         <li className="nav-item logo">
+        <Link to="/">
           <img
             src="/public/losiFlor.png"
             alt="logo"
             style={{ width: "100px", height: "auto" }}
           />
+        </Link>
         </li>
         <li className="nav-item">
-          <Link to="#" onClick={toggleCart}>CART</Link>
+          <Link to="/aboutUs">ABOUT</Link>
         </li>
         <li className="nav-item">
           <Link to="/contact">CONTACT</Link>
         </li>
       </ul>
+      <Link to="#" onClick={toggleCart}><img src="/public/empty-cart-icon.png" alt="" className="nav-cart-icon"/></Link>
       {isSearchModalOpen && (
         <SearchModal onClose={closeSearchModal} />
       )}
