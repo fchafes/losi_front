@@ -9,6 +9,8 @@ import ProductDetails from "./components/ProductDetails";
 import Cart from "./components/Cart";
 import NavBar from "./components/NavBar";
 import Category from "./pages/Category";
+import ScrollToTop from "./components/ScrollToTop";
+
 
 
 function App() {
@@ -23,6 +25,7 @@ function App() {
     <>
       <Cart cartOpen={cartOpen} toggleCart={toggleCart} />
       <NavBar toggleCart={toggleCart} />
+      <ScrollToTop />
       <Routes>
         <Route path="/" element={<Video />} />
         <Route path="/home" element={<Home />} />
