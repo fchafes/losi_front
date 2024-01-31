@@ -21,10 +21,17 @@ const Navbar = ({ toggleCart }) => {
     setSearchModalOpen(false);
   };
 
+  const closeMenu = () => {
+    if (isMenuOpen) {
+      setMenuOpen(false);
+    }
+  };
+
+
   useEffect(() => {
     const closeMenuOnOutsideClick = (e) => {
       if (isMenuOpen && !e.target.closest(".navbar")) {
-        setMenuOpen(false);
+        closeMenu();
       }
     };
 
@@ -53,11 +60,11 @@ const Navbar = ({ toggleCart }) => {
           </div>
           {isMenuOpen && (
             <ul className="dropdown-menu">
-              <li><Link to="/accessories">ACCESSORIES</Link></li>
-              <li><Link to="/tops">TOPS</Link></li>
-              <li><Link to="/bottoms">BOTTOMS</Link></li>
-              <li><Link to="/decks">DECKS</Link></li>
-              <li><Link to="/others">OTHERS</Link></li>
+              <li onClick={closeMenu}><Link to="/accessories">ACCESSORIES</Link></li>
+              <li onClick={closeMenu}><Link to="/tops">TOPS</Link></li>
+              <li onClick={closeMenu}><Link to="/bottoms">BOTTOMS</Link></li>
+              <li onClick={closeMenu}><Link to="/decks">DECKS</Link></li>
+              <li onClick={closeMenu}><Link to="/others">OTHERS</Link></li>
             </ul>
           )}
         </li>
