@@ -1,16 +1,15 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { useParams } from 'react-router-dom';
-import { useNavigate } from 'react-router-dom';
-import "./ProductDetails.css";
+import './ProductDetails.css';
 import Footer from './Footer';
 import { useDispatch } from 'react-redux';
 import { addToCart } from '../redux/cartReducer';
 
 const ProductDetails = ({ toggleCart }) => {
   const [productDetails, setProductDetails] = useState({});
+  const [selectedSize, setSelectedSize] = useState(''); // State to store the selected size
   const { id } = useParams();
-  const navigate = useNavigate();
   const dispatch = useDispatch();
 
   // Scroll al principio cuando la página se carga
@@ -18,8 +17,24 @@ const ProductDetails = ({ toggleCart }) => {
     window.scrollTo(0, 0);
   }, []);
 
+  const handleSizeClick = (size) => {
+    setSelectedSize(size);
+  };
+
   const handleAddToCart = () => {
-    dispatch(addToCart(productDetails));
+    if (!selectedSize) {
+      // Inform the user to select a size before adding to the cart
+      alert('Please select a size before adding to the cart.');
+      return;
+    }
+
+    // Create a new object representing the product with the selected size
+    const productToAdd = {
+      ...productDetails,
+      selectedSize: selectedSize,
+    };
+
+    dispatch(addToCart(productToAdd));
     toggleCart();
   };
 
@@ -27,12 +42,11 @@ const ProductDetails = ({ toggleCart }) => {
     try {
       const response = await axios.get(`http://localhost:3000/products/${productId}`);
       setProductDetails(response.data);
-      console.log(response.data);
     } catch (error) {
       console.error('Error fetching product details:', error);
     }
   };
-  
+
   useEffect(() => {
     fetchProductDetails(id);
   }, [id]);
@@ -44,7 +58,25 @@ const ProductDetails = ({ toggleCart }) => {
           <h2>{productDetails.name}</h2>
           <p>Price: ${productDetails.price}</p>
           <p>{productDetails.description}</p>
-          <button className='cart-button' onClick={handleAddToCart} >Add to cart</button>
+          {productDetails.sizes && (
+            <div>
+              <p>Available Sizes:</p>
+              <div className="size-buttons">
+                {productDetails.sizes.map((size) => (
+                  <button
+                    key={size.id}
+                    className={selectedSize === size.size ? 'selected' : ''}
+                    onClick={() => handleSizeClick(size.size)}
+                  >
+                    {size.size}
+                  </button>
+                ))}
+              </div>
+            </div>
+          )}
+          <button className="cart-button" onClick={handleAddToCart}>
+            Add to cart
+          </button>
         </div>
         <div className="products-image">
           <img src={productDetails.photo} alt={productDetails.name} />

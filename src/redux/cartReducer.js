@@ -1,11 +1,11 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { persistReducer } from 'redux-persist';
-import storage from 'redux-persist/lib/storage';
+import { persistReducer } from "redux-persist";
+import storage from "redux-persist/lib/storage";
 
 // Sintaxis SIN utilizar Prepare
 
 const cartPersistConfig = {
-  key: 'cart',
+  key: "cart",
   storage,
 };
 
@@ -13,11 +13,14 @@ const cartSlice = createSlice({
   name: "cart",
   initialState: {
     items: [],
-    },
+  },
   reducers: {
     addToCart: (state, action) => {
-        const existingItem = state.items.find(item => item.id === action.payload.id);
-        
+      const { id, selectedSize } = action.payload;
+      const existingItem = state.items.find(
+        (item) => item.id === id && item.selectedSize === selectedSize
+      );
+    console.log(action.payload)
       if (existingItem) {
         existingItem.quantity += 1;
       } else {
@@ -25,32 +28,47 @@ const cartSlice = createSlice({
       }
     },
     removeFromCart: (state, action) => {
-        state.items = state.items.filter(item => item.id !== action.payload);
+      const { id, selectedSize } = action.payload;
+      console.log("Removing from cart:", id, selectedSize);
+      if (typeof id === "undefined" || typeof selectedSize === "undefined") {
+        console.error("Invalid payload for removeFromCart:", action.payload);
+        return;
+      }
+      state.items = state.items.filter((item) => !(item.id === id && item.selectedSize === selectedSize));
+      console.log("After removal:", state.items);
     },
+    
     incrementQuantity: (state, action) => {
-        const existingItem = state.items.find(item => item.id === action.payload);
-        if (existingItem) {
-          existingItem.quantity += 1;
-        }
+      const existingItem = state.items.find(
+        (item) => item.id === action.payload
+      );
+      if (existingItem) {
+        existingItem.quantity += 1;
+      }
     },
     decrementQuantity: (state, action) => {
-        const existingItem = state.items.find(item => item.id === action.payload);
-        if (existingItem && existingItem.quantity > 1) {
-          existingItem.quantity -= 1;
-        } else if (existingItem.quantity === 1) {
-          state.items = state.items.filter(item => item.id !== action.payload)
-        }
+      const existingItem = state.items.find(
+        (item) => item.id === action.payload
+      );
+      if (existingItem && existingItem.quantity > 1) {
+        existingItem.quantity -= 1;
+      } else if (existingItem.quantity === 1) {
+        state.items = state.items.filter((item) => item.id !== action.payload);
+      }
     },
   },
 });
 
-const persistedCartReducer = persistReducer(cartPersistConfig, cartSlice.reducer);
+const persistedCartReducer = persistReducer(
+  cartPersistConfig,
+  cartSlice.reducer
+);
 
 export const {
-    addToCart,
-    removeFromCart,
-    incrementQuantity,
-    decrementQuantity,
-  } = cartSlice.actions;
+  addToCart,
+  removeFromCart,
+  incrementQuantity,
+  decrementQuantity,
+} = cartSlice.actions;
 
-  export default persistedCartReducer;
+export default persistedCartReducer;
