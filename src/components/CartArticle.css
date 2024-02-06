@@ -39,13 +39,18 @@
   font-size: 0.7rem;
 }
 
+.cart-article-info-section {
+  display: flex;
+  justify-content: space-between;
+}
+
 .cart-article-body-info-title {
   margin-top: 0;
   margin-bottom: 0.1em;
 }
 
-.cart-article-body-info-price {
-  margin-top: 0.3em;
+.cart-article-body-info-price, .cart-article-body-info-size {
+  margin-top: 0.5em;
 }
 
 .cart-article-body-options {

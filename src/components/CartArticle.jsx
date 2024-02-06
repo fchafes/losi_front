@@ -28,8 +28,10 @@ const CartArticle = (props) => {
       <div className='cart-article-body'>
         <div className='cart-article-body-info'>
           <p className='cart-article-body-info-title'>{props.name}</p>
-          <p className='cart-article-body-info-size'>Size: {props.selectedSize}</p>
-          <p className='cart-article-body-info-price'>${props.price}</p>
+          <div className='cart-article-info-section'>
+            <p className='cart-article-body-info-size'>Size: {props.selectedSize}</p>
+            <p className='cart-article-body-info-price'>Price: ${props.price * props.quantity}</p>
+          </div>
         </div>
         <div className='cart-article-body-options'>
           <div className='cart-article-body-options-counter'>

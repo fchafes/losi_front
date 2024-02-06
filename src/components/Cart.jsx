@@ -4,6 +4,13 @@ import { useSelector } from 'react-redux';
 
 const Cart = ({ cartOpen, toggleCart }) => {
   const cartItems = useSelector((state) => state.cart.items);
+  const calculateSubtotal = () => {
+    let subtotal = 0;
+    cartItems.forEach(item => {
+      subtotal += item.price * item.quantity;
+    });
+    return subtotal;
+  };
 
   return (
     <>
@@ -17,7 +24,6 @@ const Cart = ({ cartOpen, toggleCart }) => {
         </div>
         {cartOpen && (
           <div className='cart-main'>
-            {console.log('esto es cartItems', cartItems)}
             {cartItems.length === 0 && <p className='cart-main-empty'>No hay nada en tu carrito</p>}
             <ul>
               {cartItems.map((item) => (
@@ -35,6 +41,9 @@ const Cart = ({ cartOpen, toggleCart }) => {
             </ul>
           </div>
         )}
+        <div className='cart-subtotal'>
+          <p>Subtotal ---&gt; ${calculateSubtotal()}</p>
+        </div>
         <div className='cart-footer'>
           <p className='cart-footer-checkout'>CHECKOUT</p>
         </div>

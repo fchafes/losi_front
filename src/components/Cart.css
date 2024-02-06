@@ -52,11 +52,24 @@
 
 .cart-main {
     padding: 0.5em;
+    position: relative;
 }
 
 .cart-main-empty {
     text-align: center;
-    margin-top: 10em;
+    margin-top: 15em;
+}
+
+.cart-subtotal {
+    background-color: #f7ff84;
+    height: 2em;
+    width: 100%;
+    position: fixed;
+    bottom: 5em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
 }
 
 .cart-footer {

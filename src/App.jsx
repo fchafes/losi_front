@@ -33,10 +33,6 @@ function App() {
         <Route path="/:categoryName" element={<Category />} />
         <Route path="/contact" element={<ContactPage />} />
         <Route path="/aboutUs" element={<AboutUs />} />
-        {/* <Route path="/decks" element={<Decks />} />
-        <Route path="/bottoms" element={<Bottoms />} />
-        <Route path="/tops" element={<Tops />} />
-        <Route path="/others" element={<Others />} /> */}
       </Routes>
     </>
   );
