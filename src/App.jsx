@@ -10,6 +10,7 @@ import Cart from "./components/Cart";
 import NavBar from "./components/NavBar";
 import Category from "./pages/Category";
 import ScrollToTop from "./components/ScrollToTop";
+import Checkout from "./pages/Checkout";
 
 
 
@@ -33,6 +34,7 @@ function App() {
         <Route path="/:categoryName" element={<Category />} />
         <Route path="/contact" element={<ContactPage />} />
         <Route path="/aboutUs" element={<AboutUs />} />
+        <Route path="/checkOut" element={<Checkout />} />
       </Routes>
     </>
   );

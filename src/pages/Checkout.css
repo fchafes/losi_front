@@ -1,0 +1,46 @@
+.checkout-page-container {
+    display: flex;
+    margin-top: 10%;
+  }
+  
+  .checkout-items {
+    margin-left: 2rem;
+    padding: 0 1rem;
+    align-items: center;
+
+  }
+  
+  .customer-info {
+   width: 80%;
+    padding: 0 20px; /* Add some padding for spacing */
+  }
+
+  .checkout-item-image {
+    max-width: 20%;
+    height: auto;
+    padding-right: 10%;
+  }
+  .checkout-item-text{
+ flex: 1
+  }
+  .checkout-article-body-options-counter-action {
+    width: 5%;
+    height: 5%;
+    text-align: center;
+    cursor: pointer;
+    background-color: transparent;
+    color: black;
+    
+  }
+
+  .quantity-checkout{
+    display: flex;
+  }
+
+  .checkout-item-container {
+    display: flex;
+    width: ; /* Add display flex to arrange children */
+    flex-direction: row-reverse; /* Reverse the order of elements */
+    border: 1px solid #ccc; /* Add border to create a box */
+    padding: 10px; /* Add padding inside the box */
+    margin-bottom: 10px; /* Add margin between each item */}

@@ -1,12 +1,12 @@
-import './Cart.css';
-import CartArticle from './CartArticle';
-import { useSelector } from 'react-redux';
-
+import "./Cart.css";
+import CartArticle from "./CartArticle";
+import { useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 const Cart = ({ cartOpen, toggleCart }) => {
   const cartItems = useSelector((state) => state.cart.items);
   const calculateSubtotal = () => {
     let subtotal = 0;
-    cartItems.forEach(item => {
+    cartItems.forEach((item) => {
       subtotal += item.price * item.quantity;
     });
     return subtotal;
@@ -14,17 +14,22 @@ const Cart = ({ cartOpen, toggleCart }) => {
 
   return (
     <>
-      <div className={`${cartOpen ? 'cart-context-shadow' : ''}`} onClick={toggleCart}></div>
-      <div className={`cart-container ${cartOpen ? 'cart-open' : ''}`}>
-        <div className='cart-header'>
-          <h3 className='cart-header-title'>CART</h3>
-          <p className='cart-header-close' onClick={toggleCart}>
+      <div
+        className={`${cartOpen ? "cart-context-shadow" : ""}`}
+        onClick={toggleCart}
+      ></div>
+      <div className={`cart-container ${cartOpen ? "cart-open" : ""}`}>
+        <div className="cart-header">
+          <h3 className="cart-header-title">CART</h3>
+          <p className="cart-header-close" onClick={toggleCart}>
             X
           </p>
         </div>
         {cartOpen && (
-          <div className='cart-main'>
-            {cartItems.length === 0 && <p className='cart-main-empty'>No hay nada en tu carrito</p>}
+          <div className="cart-main">
+            {cartItems.length === 0 && (
+              <p className="cart-main-empty">No hay nada en tu carrito</p>
+            )}
             <ul>
               {cartItems.map((item) => (
                 <li key={item.id}>
@@ -41,11 +46,13 @@ const Cart = ({ cartOpen, toggleCart }) => {
             </ul>
           </div>
         )}
-        <div className='cart-subtotal'>
+        <div className="cart-subtotal">
           <p>Subtotal ---&gt; ${calculateSubtotal()}</p>
         </div>
-        <div className='cart-footer'>
-          <p className='cart-footer-checkout'>CHECKOUT</p>
+        <div className="cart-footer">
+          <Link to={"/checkOut"}>
+            <p className="cart-footer-checkout">CHECKOUT</p>
+          </Link>
         </div>
       </div>
     </>
