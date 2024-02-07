@@ -34,35 +34,25 @@ const Checkout = () => {
         <h2>Cart Items</h2>
         {cartItems.map((item) => (
           <div key={item.id}>
-            <div className="checkout-item-container">
+            <div className="checkout-item-container ">
               <div className="checkout-item-text">
                 <p>{item.name}</p>
 
                 <p>Size: {item.selectedSize}</p>
-                <div className="quantity-checkout">
-                  <p>Quantity:</p>
-                  <p
-                    className="checkout-article-body-options-counter-action"
-                    onClick={() => handleIncrementQuantity(item.id)}
-                  >
-                    +
-                  </p>
-                  <p>{item.quantity}</p>
 
+                <p>Quantity:{item.quantity}</p>
+                <div className="checkout-article-body-options-counter-action">
                   <p
-                    className="checkout-article-body-options-counter-action"
-                    onClick={() => handleDecrementQuantity(item.id)}
+                    onClick={() =>
+                      handleRemoveFromCart(item.id, item.selectedSize)
+                    }
                   >
-                    -
+                    Remove
                   </p>
                 </div>
               </div>
-              <img src={item.photo} className="checkout-item-image " alt="" />
-              <button
-                onClick={() => handleRemoveFromCart(item.id, item.selectedSize)}
-              >
-                Remove
-              </button>
+
+              <img src={item.photo} className="checkout-item-image" alt="" />
             </div>
           </div>
         ))}
