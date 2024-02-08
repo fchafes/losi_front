@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from 'react';
 import { useSelector, useDispatch } from "react-redux";
 import {
   incrementQuantity,
@@ -6,10 +6,21 @@ import {
   removeFromCart,
 } from "../redux/cartReducer";
 import "./Checkout.css";
+import axios from 'axios'
+
+
 
 const Checkout = () => {
   const cartItems = useSelector((state) => state.cart.items);
   const dispatch = useDispatch();
+  const [formData, setFormData] = useState({
+    firstname: '',
+    lastname: '',
+    email: '',
+    address: '',
+    phone: '',
+    password: ''
+  });
 
   const handleRemoveFromCart = (id, selectedSize) => {
     dispatch(removeFromCart({ id, selectedSize }));
@@ -23,9 +34,25 @@ const Checkout = () => {
     dispatch(decrementQuantity(id));
   };
 
-  const handleSubmit = (e) => {
+  
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData({ ...formData, [name]: value });
+  };
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // Handle form submission logic here
+    try {
+      const response = await axios.post('http://localhost:3000/customers', formData);
+      console.log('Signup successful:', response.data);
+
+      
+      dispatch(setUser({ user: response.data, token: response.data.token }));
+    } catch (error) {
+      console.error('Signup error:', error);
+      
+    }
   };
 
   return (
@@ -60,16 +87,14 @@ const Checkout = () => {
       <div className="customer-info">
         <h2>Customer Information</h2>
         <form onSubmit={handleSubmit}>
-          <input type="text" placeholder="First Name" />
-          <input type="text" placeholder="Last Name" />
-          <input type="email" placeholder="Email" />
-          <input type="text" placeholder="City" />
-          <input type="text" placeholder="Zip Code" />
-          <input type="text" placeholder="Address" />
-          <input type="text" placeholder="Country" />
-          <input type="text" placeholder="Phone Number" />
-          <button type="submit">Submit</button>
-        </form>
+        <input type="text" name="firstname" value={formData.firstname} onChange={handleChange} placeholder="First Name" required />
+        <input type="text" name="lastname" value={formData.lastname} onChange={handleChange} placeholder="Last Name" required />
+        <input type="email" name="email" value={formData.email} onChange={handleChange} placeholder="Email" required />
+        <input type="text" name="address" value={formData.address} onChange={handleChange} placeholder="Address" required />
+        <input type="text" name="phone" value={formData.phone} onChange={handleChange} placeholder="Phone" required />
+        <input type="password" name="password" value={formData.password} onChange={handleChange} placeholder="Password" required />
+        <button type="submit">Sign Up</button>
+      </form>
       </div>
     </div>
   );

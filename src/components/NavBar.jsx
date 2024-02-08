@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Link, useLocation  } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import SearchModal from "./SearchModal";
 import "./Navbar.css";
 
@@ -27,7 +27,6 @@ const Navbar = ({ toggleCart }) => {
     }
   };
 
-
   useEffect(() => {
     const closeMenuOnOutsideClick = (e) => {
       if (isMenuOpen && !e.target.closest(".navbar")) {
@@ -42,14 +41,19 @@ const Navbar = ({ toggleCart }) => {
     };
   }, [isMenuOpen]);
 
-  const isIntroPage = location.pathname === "/"; 
+  const isIntroPage = location.pathname === "/";
   if (isIntroPage) {
     return null;
   }
 
-     return (
+  return (
     <nav className="navbar">
-      <img onClick={openSearchModal} src="/public/search-icon.png" alt="" className="nav-search-icon"/>
+      <img
+        onClick={openSearchModal}
+        src="/public/search-icon.png"
+        alt=""
+        className="nav-search-icon"
+      />
       <ul className="nav-list center-links">
         <li className="nav-item">
           <Link to="/home">HOME</Link>
@@ -60,22 +64,32 @@ const Navbar = ({ toggleCart }) => {
           </div>
           {isMenuOpen && (
             <ul className="dropdown-menu">
-              <li onClick={closeMenu}><Link to="/accessories">ACCESSORIES</Link></li>
-              <li onClick={closeMenu}><Link to="/tops">TOPS</Link></li>
-              <li onClick={closeMenu}><Link to="/bottoms">BOTTOMS</Link></li>
-              <li onClick={closeMenu}><Link to="/decks">DECKS</Link></li>
-              <li onClick={closeMenu}><Link to="/others">OTHERS</Link></li>
+              <li onClick={closeMenu}>
+                <Link to="/accessories">ACCESSORIES</Link>
+              </li>
+              <li onClick={closeMenu}>
+                <Link to="/tops">TOPS</Link>
+              </li>
+              <li onClick={closeMenu}>
+                <Link to="/bottoms">BOTTOMS</Link>
+              </li>
+              <li onClick={closeMenu}>
+                <Link to="/decks">DECKS</Link>
+              </li>
+              <li onClick={closeMenu}>
+                <Link to="/others">OTHERS</Link>
+              </li>
             </ul>
           )}
         </li>
         <li className="nav-item logo">
-        <Link to="/">
-          <img
-            src="/public/losiFlor.png"
-            alt="logo"
-            style={{ width: "100px", height: "auto" }}
-          />
-        </Link>
+          <Link to="/">
+            <img
+              src="/public/losiFlor.png"
+              alt="logo"
+              style={{ width: "100px", height: "auto" }}
+            />
+          </Link>
         </li>
         <li className="nav-item">
           <Link to="/aboutUs">ABOUT</Link>
@@ -84,12 +98,22 @@ const Navbar = ({ toggleCart }) => {
           <Link to="/contact">CONTACT</Link>
         </li>
       </ul>
-      <Link to="#" onClick={toggleCart}><img src="/public/empty-cart-icon.png" alt="" className="nav-cart-icon"/></Link>
-      {isSearchModalOpen && (
-        <SearchModal onClose={closeSearchModal} />
-      )}
+      <div className="signup-login-container">
+        <Link to={"/signUp"}>sign up</Link>
+        <p>/</p>
+        <Link to={"/login"}>login</Link>
+      </div>
+
+      <Link to="#" onClick={toggleCart}>
+        <img
+          src="/public/empty-cart-icon.png"
+          alt=""
+          className="nav-cart-icon"
+        />
+      </Link>
+      {isSearchModalOpen && <SearchModal onClose={closeSearchModal} />}
     </nav>
-     );
+  );
 };
 
 export default Navbar;

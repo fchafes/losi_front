@@ -2,8 +2,13 @@ import "./Cart.css";
 import CartArticle from "./CartArticle";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+
+
 const Cart = ({ cartOpen, toggleCart }) => {
+
+
   const cartItems = useSelector((state) => state.cart.items);
+  
   const calculateSubtotal = () => {
     let subtotal = 0;
     cartItems.forEach((item) => {
