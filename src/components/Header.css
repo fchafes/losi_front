@@ -46,6 +46,27 @@ header {
   cursor: pointer;
 }
 
+.discover-button-video {
+  background: black;
+  color: rgb(255, 255, 255);
+  border: 1px dashed rgb(0, 0, 0);
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
 .discover-button:hover {
   background: rgba(5, 3, 3, 0.2);
+}
+
+@media (max-width: 768px) {
+  .carousel-slide video {
+    height: 523px; /* Ajusta la altura automáticamente para dispositivos más pequeños */
+    max-height: 100%; /* Limita la altura al tamaño máximo del contenedor */
+    object-fit: cover; /* Ajusta el video para cubrir el contenedor */
+  }
+
+  .discover-button-video {
+    margin-bottom: 70px;
+  }
 }

@@ -21,7 +21,7 @@ const Header = () => {
             </video>
             <Link to={"/aboutUs"}>
               <div className="carousel-image-overlay">
-                <button className="discover-button">About Us</button>
+                <button className="discover-button-video">About Us</button>
               </div>{" "}
             </Link>
           </div>
