@@ -11,7 +11,7 @@ import NavBar from "./components/NavBar";
 import Category from "./pages/Category";
 import ScrollToTop from "./components/ScrollToTop";
 import Checkout from "./pages/Checkout";
-
+import Signup from "./pages/SignUp";
 
 
 function App() {
@@ -35,6 +35,7 @@ function App() {
         <Route path="/contact" element={<ContactPage />} />
         <Route path="/aboutUs" element={<AboutUs />} />
         <Route path="/checkOut" element={<Checkout />} />
+        <Route path="/signUp" element={<Signup />} />
       </Routes>
     </>
   );

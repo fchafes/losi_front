@@ -49,7 +49,7 @@ const Navbar = ({ toggleCart }) => {
 
      return (
     <nav className="navbar">
-      <Link to="#"><img src="/public/search-icon.png" alt="" className="nav-search-icon"/></Link>
+      <img onClick={openSearchModal} src="/public/search-icon.png" alt="" className="nav-search-icon"/>
       <ul className="nav-list center-links">
         <li className="nav-item">
           <Link to="/home">HOME</Link>

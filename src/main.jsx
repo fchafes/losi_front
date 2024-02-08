@@ -7,9 +7,11 @@ import { Provider } from "react-redux";
 import { persistStore } from "redux-persist";
 import persistedCartReducer from "./redux/cartReducer.js";
 import { PersistGate } from "redux-persist/integration/react";
+import persistedCustomerReducer from "./redux/customerReducer.js";
 
 const store = configureStore({
-  reducer: { cart: persistedCartReducer },
+  reducer: { cart: persistedCartReducer ,
+  customer: persistedCustomerReducer},
 });
 const persistor = persistStore(store);
 
