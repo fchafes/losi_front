@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import { useDispatch } from 'react-redux'; // Importing useDispatch
+import { useDispatch } from 'react-redux'; // Importando useDispatch
 import { setUser } from '../redux/customerReducer';
-import "./SignUp.css";
+import "./SignUp.css"; // Importando el archivo CSS
 
 const Signup = () => {
-  const dispatch = useDispatch(); // Initializing useDispatch
+  const dispatch = useDispatch(); // Inicializando useDispatch
 
   const [formData, setFormData] = useState({
     firstname: '',
@@ -27,11 +27,11 @@ const Signup = () => {
       const response = await axios.post('http://localhost:3000/customers', formData);
       console.log('Signup successful:', response.data);
 
-      // Dispatch setUser action to save user data in Redux state
+      // Despachar la acción setUser para guardar los datos del usuario en el estado de Redux
       dispatch(setUser({ user: response.data, token: response.data.token }));
     } catch (error) {
       console.error('Signup error:', error);
-      // Handle signup failure if needed
+      // Manejar el fallo de registro si es necesario
     }
   };
 
@@ -39,13 +39,13 @@ const Signup = () => {
     <div className='signup-container'>
       <h2>Sign Up</h2>
       <form onSubmit={handleSubmit}>
-        <input type="text" name="firstname" value={formData.firstname} onChange={handleChange} placeholder="First Name" required />
-        <input type="text" name="lastname" value={formData.lastname} onChange={handleChange} placeholder="Last Name" required />
-        <input type="email" name="email" value={formData.email} onChange={handleChange} placeholder="Email" required />
-        <input type="text" name="address" value={formData.address} onChange={handleChange} placeholder="Address" required />
-        <input type="text" name="phone" value={formData.phone} onChange={handleChange} placeholder="Phone" required />
-        <input type="password" name="password" value={formData.password} onChange={handleChange} placeholder="Password" required />
-        <button type="submit">Sign Up</button>
+        <input type="text" name="firstname" value={formData.firstname} onChange={handleChange} className="signup-input" placeholder="First Name" required />
+        <input type="text" name="lastname" value={formData.lastname} onChange={handleChange} className="signup-input" placeholder="Last Name" required />
+        <input type="email" name="email" value={formData.email} onChange={handleChange} className="signup-input" placeholder="Email" required />
+        <input type="text" name="address" value={formData.address} onChange={handleChange} className="signup-input" placeholder="Address" required />
+        <input type="text" name="phone" value={formData.phone} onChange={handleChange} className="signup-input" placeholder="Phone" required />
+        <input type="password" name="password" value={formData.password} onChange={handleChange} className="signup-input" placeholder="Password" required />
+        <button type="submit" className="signup-button">Sign Up</button>
       </form>
     </div>
   );

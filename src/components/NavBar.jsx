@@ -36,6 +36,11 @@ const Navbar = ({ toggleCart }) => {
     closeMenu();
   };
 
+  const isIntroPage = location.pathname === "/";
+  if (isIntroPage) {
+    return null;
+  }
+
   return (
     <nav className="navbar">
       <img
@@ -88,12 +93,6 @@ const Navbar = ({ toggleCart }) => {
           <Link to="/contact">CONTACT</Link>
         </li>
       </ul>
-      <div className="signup-login-container">
-        <Link to={"/signUp"}>sign up</Link>
-        <p>/</p>
-        <Link to={"/login"}>login</Link>
-      </div>
-
       <Link to="#" onClick={toggleCart}>
         <img
           src="/public/empty-cart-icon.png"

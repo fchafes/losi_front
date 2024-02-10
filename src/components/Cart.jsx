@@ -1,11 +1,26 @@
-import "./Cart.css";
-import CartArticle from "./CartArticle";
-import { useSelector } from "react-redux";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import LoginSignupModal from "./LoginSignupModal";
+import CartArticle from "./CartArticle"; // Importa el componente CartArticle
 
+import { useSelector } from "react-redux"; // Asegúrate de importar correctamente useSelector
+
+import "./Cart.css";
 
 const Cart = ({ cartOpen, toggleCart }) => {
+  const [isModalOpen, setModalOpen] = useState(false);
 
+  const openModal = () => {
+    setModalOpen(true);
+  };
+
+  const closeModal = () => {
+    setModalOpen(false);
+  };
+
+  const handleCheckout = () => {
+    openModal();
+  };
 
   const cartItems = useSelector((state) => state.cart.items);
   
@@ -19,6 +34,7 @@ const Cart = ({ cartOpen, toggleCart }) => {
 
   return (
     <>
+      {isModalOpen && <LoginSignupModal onClose={closeModal} />}
       <div
         className={`${cartOpen ? "cart-context-shadow" : ""}`}
         onClick={toggleCart}
@@ -55,9 +71,9 @@ const Cart = ({ cartOpen, toggleCart }) => {
           <p>Subtotal ---&gt; ${calculateSubtotal()}</p>
         </div>
         <div className="cart-footer">
-          <Link className="cart-check" to={"/checkOut"}>
+          <button className="cart-check" onClick={handleCheckout}>
             <p className="cart-footer-checkout">CHECKOUT</p>
-          </Link>
+          </button>
         </div>
       </div>
     </>
