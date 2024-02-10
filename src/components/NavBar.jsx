@@ -6,7 +6,6 @@ import "./Navbar.css";
 const Navbar = ({ toggleCart }) => {
   const [isMenuOpen, setMenuOpen] = useState(false);
   const [isSearchModalOpen, setSearchModalOpen] = useState(false);
-
   const location = useLocation();
 
   const toggleMenu = () => {
@@ -28,23 +27,14 @@ const Navbar = ({ toggleCart }) => {
   };
 
   useEffect(() => {
-    const closeMenuOnOutsideClick = (e) => {
-      if (isMenuOpen && !e.target.closest(".navbar")) {
-        closeMenu();
-      }
-    };
+    // Cerrar el menú cuando la ubicación cambie
+    closeMenu();
+  }, [location.pathname]);
 
-    document.addEventListener("click", closeMenuOnOutsideClick);
-
-    return () => {
-      document.removeEventListener("click", closeMenuOnOutsideClick);
-    };
-  }, [isMenuOpen]);
-
-  const isIntroPage = location.pathname === "/";
-  if (isIntroPage) {
-    return null;
-  }
+  const handleLinkClick = () => {
+    // Cerrar el menú cuando se hace clic en un enlace dentro del menú
+    closeMenu();
+  };
 
   return (
     <nav className="navbar">
@@ -64,19 +54,19 @@ const Navbar = ({ toggleCart }) => {
           </div>
           {isMenuOpen && (
             <ul className="dropdown-menu">
-              <li onClick={closeMenu}>
+              <li onClick={handleLinkClick}>
                 <Link to="/accessories">ACCESSORIES</Link>
               </li>
-              <li onClick={closeMenu}>
+              <li onClick={handleLinkClick}>
                 <Link to="/tops">TOPS</Link>
               </li>
-              <li onClick={closeMenu}>
+              <li onClick={handleLinkClick}>
                 <Link to="/bottoms">BOTTOMS</Link>
               </li>
-              <li onClick={closeMenu}>
+              <li onClick={handleLinkClick}>
                 <Link to="/decks">DECKS</Link>
               </li>
-              <li onClick={closeMenu}>
+              <li onClick={handleLinkClick}>
                 <Link to="/others">OTHERS</Link>
               </li>
             </ul>
