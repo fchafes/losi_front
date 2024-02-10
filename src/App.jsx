@@ -12,6 +12,7 @@ import Category from "./pages/Category";
 import ScrollToTop from "./components/ScrollToTop";
 import Checkout from "./pages/Checkout";
 import Signup from "./pages/SignUp";
+import SearchModal from "./components/SearchModal";
 
 
 function App() {
@@ -36,6 +37,8 @@ function App() {
         <Route path="/aboutUs" element={<AboutUs />} />
         <Route path="/checkOut" element={<Checkout />} />
         <Route path="/signUp" element={<Signup />} />
+        <Route path="/search" element={<SearchModal />} />
+
       </Routes>
     </>
   );

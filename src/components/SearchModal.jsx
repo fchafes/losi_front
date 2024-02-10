@@ -1,26 +1,51 @@
 import React, { useState } from "react";
+import axios from "axios";
 import "./SearchModal.css";
 
 const SearchModal = ({ onClose }) => {
   const [searchTerm, setSearchTerm] = useState("");
+  const [searchResults, setSearchResults] = useState([]);
 
-  const handleSearch = () => {
-    // Lógica de búsqueda aquí (puedes agregarla según sea necesario)
-    console.log("Searching for:", searchTerm);
-    // Luego, puedes agregar más lógica según tus necesidades
+  const searcher = (e) => {
+    setSearchTerm(e.target.value);
+  };
+
+  const handleSearch = async () => {
+    try {
+      const response = await axios.get(`http://localhost:3000/products/search?search=${searchTerm}`);
+      setSearchResults(response.data);
+    } catch (error) {
+      console.error("Error searching products:", error);
+    }
   };
 
   return (
     <div className="search-modal-overlay" onClick={onClose}>
       <div className="search-modal-content" onClick={(e) => e.stopPropagation()}>
         <input
-        className="input-modal"
+          className="input-modal"
           type="text"
           value={searchTerm}
-          onChange={(e) => setSearchTerm(e.target.value)}
+          onChange={searcher}
           autoFocus
         />
-        <button className="modal-button" onClick={handleSearch}>Search </button>
+        <button className="modal-button" onClick={handleSearch}>Search</button>
+        <div className="search-results">
+          <ul className="product-list">
+            {searchResults.map((product) => (
+               <div key={product.id} className="product-item">
+               <a className="product-link" href={`/product/${product.id}`}>
+              <li className="product-item" key={product.id}>  
+                {product.name} 
+                <div className="products-image">
+          <img src={product.photo}/> 
+        </div>
+              </li>
+              </a>
+  </div>
+            ))}
+          </ul>
+        </div>
       </div>
     </div>
   );

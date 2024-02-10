@@ -26,3 +26,32 @@
   color: white;
   font-family: "Inter Tight", sans-serif;
 }
+
+.product-link {
+  text-decoration: none;
+  color: black;
+}
+
+.products-image {
+  max-width: 100%;
+  height: auto;
+  margin-left: 80px;
+}
+.product-list {
+  list-style: none;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 20px;
+  overflow-y: auto; /* Permitir el desplazamiento vertical */
+  max-height: 300px; /* Establecer una altura máxima */
+}
+
+.product-item {
+  border: 1px solid #ccc;
+  border-radius: 5px;
+
+  padding: 10px;
+  text-align: center;
+  font-weight: bold;
+}
