@@ -1,64 +1,81 @@
 .checkout-page-container {
-    display: flex;
-    justify-content: space-between; 
-    margin-top: 5vh; 
-    width: 100%;
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20vh;
+  width: 100%;
+  font-family: "Inter Tight", sans-serif;
 }
 
 .checkout-items {
-    width: 40%;
-    
-    margin-left: 2rem; 
-    padding: 0 1rem;
-    align-items: center;
-    
+  width: 40%;
+  margin-left: 2rem;
+  padding: 0 1rem;
+  align-items: center;
+  font-family: "Inter Tight", sans-serif;
 }
 
 .customer-info {
-    width: 50%;
-    padding: 0 1rem; 
-    margin-left: 3rem;
-    margin-right: 3rem;
+  width: 50%;
+  padding: 0 1rem;
+  margin-left: 3rem;
+  margin-right: 3rem;
 }
 
 .checkout-item-image {
-    width: 40%;
-    height: 40%;
-    padding-left: 1rem; 
-    align-items: center;
+  width: 40%;
+  height: 40%;
+  padding-left: 1rem;
+  align-items: center;
+}
+.checkout-article-body-options-counter-action {
+  background-color: #030303;
+  color: white;
+  border: none;
+  cursor: pointer;
+  align-items: center;
+  width: 58px;
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-top: 10px;
+  padding-bottom: 1px;
 }
 
 .checkout-item-text {
-    width: 70%;
-    text-size-adjust: .9rem;
+  width: 70%;
+  text-size-adjust: 0.9rem;
+  padding: 10px;
 }
 
-.checkout-item-text p{
-margin-top: 0;
-margin-bottom: 1rem;
-margin-right: 1rem;
-}
-
-.checkout-article-body-options-counter-action {
-    display: flex;
-    width: 50%; 
-    height: 2rem; 
-    text-align: center;
-    cursor: pointer;
-    background-color: black;
-    color: white;
-    justify-content: center;
-    align-items: center;
+.checkout-item-text p {
+  margin-top: 0;
+  margin-bottom: 1rem;
+  margin-right: 1rem;
 }
 
 .checkout-item-container {
-    display: flex;
-    width: 80%;
-    height: 50%;
-    justify-content: space-between;
-    flex-direction: row;
-    border: 1px solid #050505;
-    padding: 1rem;
-    margin-bottom: 1rem;
-    
+  display: flex;
+  width: 80%;
+  height: 50%;
+  justify-content: space-between;
+  flex-direction: row;
+  border: 1px solid #050505;
+  padding: 1rem;
+  margin-bottom: 1rem;
+}
+
+.checkout-items {
+  flex: 1;
+  margin-right: 20px;
+}
+
+.customer-info {
+  flex: 1;
+}
+
+.customer-info form input {
+  margin-bottom: 10px;
+}
+
+.customer-info form button:hover {
+  background-color: #000000;
 }

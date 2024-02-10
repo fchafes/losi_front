@@ -57,17 +57,18 @@ const Checkout = () => {
 
   return (
     <div className="checkout-page-container">
-      <div className="checkout-items">
-        <h2>Cart Items</h2>
-        {cartItems.map((item) => (
+    <div className="checkout-items">
+      <h2>Cart Items</h2>
+      {cartItems.length === 0 ? (
+        <p>No tienes ningún ítem agregado al carrito</p>
+      ) : (
+        cartItems.map((item) => (
           <div key={item.id}>
             <div className="checkout-item-container ">
               <div className="checkout-item-text">
                 <p>{item.name}</p>
-
                 <p>Size: {item.selectedSize}</p>
-
-                <p>Quantity:{item.quantity}</p>
+                <p>Quantity: {item.quantity}</p>
                 <div className="checkout-article-body-options-counter-action">
                   <p
                     onClick={() =>
@@ -78,12 +79,12 @@ const Checkout = () => {
                   </p>
                 </div>
               </div>
-
               <img src={item.photo} className="checkout-item-image" alt="" />
             </div>
           </div>
-        ))}
-      </div>
+        ))
+      )}
+    </div>
       <div className="customer-info">
         <h2>Customer Information</h2>
         <form onSubmit={handleSubmit}>
