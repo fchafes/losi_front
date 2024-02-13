@@ -33,7 +33,11 @@ const Featured = () => {
           <Link to={`/product/${product.id}`}>
             <FeaturedItem
               key={product.id}
-              imageSrc={product.photo}
+              imageSrc={
+                product.photo.startsWith("https")
+                  ? product.photo
+                  : `http://localhost:3000/${product.photo}`
+              }
               description={`${product.name}\n$${product.price}`}
             />
           </Link>

@@ -37,11 +37,15 @@ const Category = () => {
         {category.map((product) => (
           <div key={product.id} className="category-item ">
             <Link to={`/product/${product.id}`}>
-            <FeaturedItem
-              key={product.id}
-              imageSrc={product.photo}
-              description={`${product.name}\n$${product.price}`}
-            />
+              <FeaturedItem
+                key={product.id}
+                imageSrc={
+                  product.photo.startsWith("https")
+                    ? product.photo
+                    : `http://localhost:3000/${product.photo}`
+                }
+                description={`${product.name}\n$${product.price}`}
+              />
             </Link>
           </div>
         ))}
