@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import LoginSignupModal from "./LoginSignupModal";
+// import LoginSignupModal from "./LoginSignupModal";
 import CartArticle from "./CartArticle"; // Importa el componente CartArticle
 
 import { useSelector } from "react-redux"; // Asegúrate de importar correctamente useSelector
@@ -71,9 +71,10 @@ const Cart = ({ cartOpen, toggleCart }) => {
           <p>Subtotal ---&gt; ${calculateSubtotal()}</p>
         </div>
         <div className="cart-footer">
-          <button className="cart-check" onClick={handleCheckout}>
+          <Link to="/checkOut">
+          <button className="cart-check">
             <p className="cart-footer-checkout">CHECKOUT</p>
-          </button>
+          </button></Link>
         </div>
       </div>
     </>
