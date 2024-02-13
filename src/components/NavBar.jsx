@@ -65,6 +65,7 @@ const Navbar = ({ toggleCart }) => {
         alt=""
         className="nav-search-icon"
       />
+      <div>
       <ul className="nav-list center-links">
         <li className="nav-item">
           <Link to="/home">HOME</Link>
@@ -109,7 +110,9 @@ const Navbar = ({ toggleCart }) => {
           <Link to="/contact">CONTACT</Link>
         </li>
       </ul>
-      {user ? ( // Conditionally render based on user authentication status
+      </div>
+      <div className="nav-icons">
+      {user && user.customer ? ( // Conditionally render based on user authentication status
         <div className="user-info">
           <p>Welcome, {user.customer.firstname}!</p>
           <span className="logout-text" onClick={handleLogout}>
@@ -128,8 +131,10 @@ const Navbar = ({ toggleCart }) => {
           className="nav-cart-icon"
         />
       </Link>
+      </div>
       {isSearchModalOpen && <SearchModal onClose={closeSearchModal} />}
     </nav>
+    
   );
 };
 

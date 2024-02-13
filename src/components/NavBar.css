@@ -11,7 +11,6 @@
   position: fixed;
   top: 0;
   width: 100%;
-
   z-index: 1000;
   font-family: "Inter Tight", sans-serif;
   border-bottom: 1px solid rgba(0, 0, 0, 0.041);
@@ -49,6 +48,8 @@
 .nav-cart-icon {
   width: 25px;
   margin-top: 2px;
+  margin-left: 20px;
+  padding-left: 20px;
 }
 
 .nav-search-icon {
@@ -88,4 +89,10 @@
   margin: 0;
   padding-left: .5rem;
   padding-right: .5rem;
+}
+.nav-icons{
+    display: flex;
+    align-items: center;
+    margin-left: 40px; /* Adjust the margin as needed */
+  justify-content: end;
 }

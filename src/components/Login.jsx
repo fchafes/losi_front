@@ -37,9 +37,7 @@ const Login = () => {
 
   return (
     <div className='login-container'>
-      {user ? (
-        <p>Welcome, {user.customer.firstname}!</p>
-      ) : (
+      
         <div>
           <h2>Login</h2>
           <form onSubmit={handleSubmit}>
@@ -49,7 +47,7 @@ const Login = () => {
           </form>
           <p>Don't have an account? <Link to="/signup">Sign Up</Link></p>
         </div>
-      )}
+      
     </div>
   );
 };
