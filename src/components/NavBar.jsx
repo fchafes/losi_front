@@ -1,12 +1,22 @@
 import React, { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
+import { clearUser } from "../redux/customerReducer"; // Import clearUser action
 import SearchModal from "./SearchModal";
 import "./Navbar.css";
+import LoginSignupModal from "./LoginSignupModal";
 
 const Navbar = ({ toggleCart }) => {
   const [isMenuOpen, setMenuOpen] = useState(false);
   const [isSearchModalOpen, setSearchModalOpen] = useState(false);
   const location = useLocation();
+  const dispatch = useDispatch(); // Get dispatch function
+  const user = useSelector((state) => state.customer.user); // Get user from Redux state
+
+
+  const handleLogin = () => {
+    openModal();
+  };
 
   const toggleMenu = () => {
     setMenuOpen(!isMenuOpen);
@@ -27,12 +37,12 @@ const Navbar = ({ toggleCart }) => {
   };
 
   useEffect(() => {
-    // Cerrar el menú cuando la ubicación cambie
+    // Close the menu when the location changes
     closeMenu();
   }, [location.pathname]);
 
   const handleLinkClick = () => {
-    // Cerrar el menú cuando se hace clic en un enlace dentro del menú
+    // Close the menu when a link inside the menu is clicked
     closeMenu();
   };
 
@@ -40,6 +50,12 @@ const Navbar = ({ toggleCart }) => {
   if (isIntroPage) {
     return null;
   }
+
+  // Function to handle logout
+  const handleLogout = () => {
+    // Dispatch action to clear user data from Redux state
+    dispatch(clearUser());
+  };
 
   return (
     <nav className="navbar">
@@ -93,6 +109,18 @@ const Navbar = ({ toggleCart }) => {
           <Link to="/contact">CONTACT</Link>
         </li>
       </ul>
+      {user ? ( // Conditionally render based on user authentication status
+        <div className="user-info">
+          <p>Welcome, {user.customer.firstname}!</p>
+          <span className="logout-text" onClick={handleLogout}>
+            Logout
+          </span>
+        </div>
+      ) : (
+        <Link to="/login">
+          <img src="/public/user-icon.jpeg" alt="" className="nav-cart-icon" />
+        </Link>
+      )}
       <Link to="#" onClick={toggleCart}>
         <img
           src="/public/empty-cart-icon.png"
@@ -106,3 +134,4 @@ const Navbar = ({ toggleCart }) => {
 };
 
 export default Navbar;
+

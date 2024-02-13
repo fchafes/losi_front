@@ -13,6 +13,7 @@ import ScrollToTop from "./components/ScrollToTop";
 import Checkout from "./pages/Checkout";
 import Signup from "./pages/SignUp";
 import SearchModal from "./components/SearchModal";
+import Login from "./components/Login";
 
 
 function App() {
@@ -38,6 +39,8 @@ function App() {
         <Route path="/checkOut" element={<Checkout />} />
         <Route path="/signUp" element={<Signup />} />
         <Route path="/search" element={<SearchModal />} />
+        <Route path="/login" element={<Login />} />
+
 
       </Routes>
     </>
