@@ -7,8 +7,18 @@
   text-align: center;
   margin-left: -40px;
   color: #333;
+  margin-top: 150px;
   font-family: "Inter Tight", sans-serif;
   margin-bottom: -55px;
+}
+
+.aboutus-paragraph {
+  text-align: center;
+  margin-left: -40px;
+  color: #333;
+  margin-top: 70px;
+  margin-bottom: 10px;
+  font-family: "Inter Tight", sans-serif;
 }
 
 .aboutus-description {
@@ -21,4 +31,45 @@
   line-height: 1.5;
   justify-content: center;
   font-family: "Inter Tight", sans-serif;
+}
+.container-aboutUs {
+  margin: 3rem auto; /* Eliminamos el margen superior y lo ajustamos para centrar el contenido */
+  max-width: 800px; /* Agregamos un ancho máximo para que el contenido no se extienda demasiado */
+}
+
+.aboutus-title {
+  text-align: center;
+  color: #333;
+  font-family: "Inter Tight", sans-serif;
+  margin-bottom: 20px;
+}
+
+.aboutus-description {
+  margin: 0 auto 30px auto;
+  padding: 20px;
+  background-color: #fff;
+  max-width: 500px;
+  font-size: 20px;
+  line-height: 1.5;
+  font-family: "Inter Tight", sans-serif;
+}
+
+.technologies-button {
+  background-color: #000000;
+  text-align: center;
+  margin-top: 20px;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  display: block;
+  width: 100%;
+}
+
+.technologies-button:hover {
+  background-color: #000000d5;
+}
+
+.technologies-info {
+  font-size: 17px;
 }
