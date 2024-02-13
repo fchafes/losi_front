@@ -80,8 +80,10 @@ const Checkout = () => {
               <li className='list-data'>Email - <strong>{user.customer.email}</strong> </li>
               <li className='list-data'>Phone Number - <strong>{user.customer.phone}</strong></li>
             </ul>
-            <button onClick={handleShowUpdateForm}>Change</button>
-            <button>Confirm</button>
+            <div className='checkout-buttons'>
+            <p className="checkout-article-body-options-counter-action" onClick={handleShowUpdateForm}>Change</p>
+            <p className="checkout-article-body-options-counter-action">Confirm</p>
+            </div>
             {showUpdateForm && <UpdateCustomerForm />} {/* Render UpdateCustomerForm if showUpdateForm is true */}
           </div>
         ) : (

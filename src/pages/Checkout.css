@@ -38,6 +38,7 @@
   padding-right: 10px;
   padding-top: 10px;
   padding-bottom: 1px;
+  display: flex;
 }
 
 .checkout-item-text {
@@ -81,4 +82,8 @@
 }
 .list-data{
   padding-bottom: 5%;
+}
+.checkout-buttons{
+  display: flex;
+  justify-content: space-between;
 }
