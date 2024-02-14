@@ -25,6 +25,7 @@ const Featured = () => {
     fetchProducts();
   }, []);
 
+  console.log("lista de featured items:", products);
   return (
     <div className="featured-featured">
       <h2 className="featured-title">FEATURED PRODUCTS</h2>
