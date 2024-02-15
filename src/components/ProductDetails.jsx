@@ -22,7 +22,8 @@ const ProductDetails = ({ toggleCart }) => {
   };
 
   const handleAddToCart = () => {
-    if (!selectedSize) {
+    
+    if (productDetails.sizes && productDetails.sizes.length > 0 && !selectedSize) {
       // Inform the user to select a size before adding to the cart
       alert('Please select a size before adding to the cart.');
       return;

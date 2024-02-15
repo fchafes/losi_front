@@ -20,10 +20,13 @@ const cartSlice = createSlice({
       const existingItem = state.items.find(
         (item) => item.id === id && item.selectedSize === selectedSize
       );
-    console.log(action.payload)
+    
       if (existingItem) {
         existingItem.quantity += 1;
+      } else if (selectedSize) {
+        state.items.push({ ...action.payload, quantity: 1 });
       } else {
+        // If the item doesn't have a size, directly add it to the cart with a quantity of 1
         state.items.push({ ...action.payload, quantity: 1 });
       }
     },
