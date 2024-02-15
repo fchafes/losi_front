@@ -12,32 +12,32 @@ const AboutUs = () => {
 
   return (
     <>
-      <div>
-        <Navbar />
-        <div className="container-aboutUs">
-          <h2 className="aboutus-title">About Us</h2>
-          <p className="aboutus-description">
+      <Navbar />      
+        <div className="card-about">
+          <h2 className="card-title">Sobre el Proyecto</h2>
+          <p className="card-description">
             Losi es una plataforma de e-commerce diseñada para los entusiastas del skate y la moda urbana. Este proyecto representa muchos de nuestros conocimientos adquiridos durante el curso en un entorno práctico y desafiante. El objetivo principal de Losi es proporcionar a los usuarios una experiencia de compra fluida y atractiva, centrada en productos relacionados con el skateboarding y la cultura urbana.
           </p>
-          <h2 className="aboutus-paragraph">Creación del Proyecto 
-</h2>
-          <p className="aboutus-description">
-            Desde el principio, nos sumergimos en el proceso creativo, colaborando para definir la visión de Losi y establecer objetivos claros. Utilizamos metodologías ágiles para la gestión de proyectos, lo que nos permitió adaptarnos rápidamente a los cambios y mantener un flujo de trabajo eficiente.
-            En cuanto al desarrollo, cada miembro del equipo asumió roles específicos, desde el diseño de la interfaz de usuario hasta la implementación del backend y la gestión de la base de datos. Esto nos permitió aprovechar al máximo nuestras fortalezas individuales y trabajar en conjunto para superar los obstáculos que surgieron en el camino.
-          </p>
-          <h2 className="aboutus-paragraph">Experiencia y Tecnologías Utilizadas
+        </div>
+        <div className="container-aboutUs">
+        <div className="card">
+          <h2 className="card-title">Creación del Proyecto</h2>
+          <p className="card-description">
+          Utilizamos metodologías ágiles para la gestión de proyectos, adaptándonos rápidamente a los cambios y manteniendo un flujo de trabajo eficiente. Nos comunicamos y coordinamos nuestras tareas mediante plataformas como Trello y Discord. Cada miembro del equipo asumió roles específicos, desde el diseño de la interfaz de usuario hasta la gestión del backend y la base de datos. Esta distribución nos permitió aprovechar al máximo nuestras fortalezas y trabajar en armonía para superar los desafíos del proceso.
+</p>
+        </div>
 
-</h2>
-          <p className="aboutus-description">
-            El proceso de desarrollo de Losi fue desafiante pero gratificante. Experimentamos con una variedad de tecnologías y herramientas, desde el uso de MySQL para la gestión de datos hasta la implementación de React y Redux para la creación de una interfaz de usuario dinámica y receptiva.
-            Además, exploramos bibliotecas como Bootstrap, Axios, React Router Dom y muchas otras, que enriquecieron la funcionalidad y el diseño de nuestra aplicación. 
-            <button onClick={toggleTechnologiesInfo} className="technologies-button">
-              Más sobre nuestras tecnologías
-            </button>
-            {showTechnologiesInfo && (
-              <div className="technologies-info">
-                
-                <p><strong>MySQL:</strong> Hemos implementado una base de datos MySQL para gestionar eficientemente la información de productos, usuarios y transacciones. </p>
+        <div className="card">
+          <h2 className="card-title">Tecnologías Utilizadas</h2>
+          <p className="card-description">
+           Experimentamos con una variedad de tecnologías y herramientas, desde el uso de MySQL para la gestión de datos hasta la implementación de React y Redux para la creación de una interfaz de usuario dinámica y receptiva. Además, exploramos bibliotecas como Bootstrap, Axios, React Router Dom y muchas otras, que enriquecieron la funcionalidad y el diseño de nuestra aplicación. 
+          </p>
+          <button onClick={toggleTechnologiesInfo} className="technologies-button">
+            Más sobre nuestras tecnologías
+          </button>
+          {showTechnologiesInfo && (
+            <div className="technologies-info">
+        <p><strong>MySQL:</strong> Hemos implementado una base de datos MySQL para gestionar eficientemente la información de productos, usuarios y transacciones. </p>
 
 <p> <strong>React:</strong> Utilizamos React para construir una interfaz de usuario dinámica y receptiva. </p>
 
@@ -61,20 +61,34 @@ const AboutUs = () => {
 <p><strong>Redux Persist:</strong> Hemos utilizado Redux Persist para mantener el estado de la aplicación persistente entre sesiones, lo que mejora la experiencia del usuario al recordar preferencias y datos seleccionados previamente.
 </p>
 <p><strong>Table Plus:</strong> Utilizamos Table Plus como una herramienta de gestión de bases de datos MySQL, que nos permite visualizar y manipular los datos de manera eficiente durante el desarrollo y la depuración.
-</p>
-
-              </div>
-            )}
-          </p>
-        
-          <h2 className="aboutus-paragraph">Nuestro equipo
-
-</h2>
-         
-         
+</p>            </div>
+          )}
         </div>
-        <Footer />
+
+        <div className="team-section">
+          <h2>Our Team</h2>
+          <div className="team-cards">
+            <div className="team-card">
+              <img src="public/pic4.jpg" alt="Team Member 1" />
+              <h3>Federico Chafes</h3>
+              <p>Junior Full Stack Developer</p>
+            </div>
+            <div className="team-card">
+              <img src="public/pic12.jpg" alt="Team Member 2" />
+              <h3>Valentina Alegre</h3>
+              <p>Junior Full Stack Developer</p>            </div>
+            <div className="team-card">
+              <img src="pic15.jpg" alt="Team Member 3" />
+              <h3>Juan Boni</h3>
+              <p>Junior Full Stack Developer</p>            </div>
+            <div className="team-card">
+              <img src="pic14.jpg" alt="Team Member 4" />
+              <h3>Thomas Hughes</h3>
+              <p>Junior Full Stack Developer</p>            </div>
+          </div>
+        </div>
       </div>
+      <Footer />
     </>
   );
 };
