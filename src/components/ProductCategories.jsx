@@ -11,7 +11,7 @@ const ProductCategories = () => {
       </Link>
       <Link className="photo-link" to={"/bottoms"}>
         <img src="/public/4pants.jpg" alt="Bottoms" />
-        <span className="text-overlay">Bottoms</span>
+        <span className="text-overlay">BOTTOMS</span>
       </Link>
       
     </div>
