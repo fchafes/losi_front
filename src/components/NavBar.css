@@ -20,6 +20,17 @@
   box-sizing: border-box;
 }
 
+.menu-burguer-icon {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .menu-burguer-icon {
+    display: block;
+    cursor: pointer;
+  }
+}
+
 .nav-list {
   list-style: none;
   display: flex;
@@ -46,6 +57,23 @@
 
 .logo img {
   vertical-align: middle;
+}
+
+.navbar-login-container {
+  position: absolute;
+  left: 10%;
+}
+
+.navbar-login-container img {
+  width: 30px;
+}
+
+.navbar-login-container a {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 0.9em;
+  color: #000;
 }
 
 .nav-cart-icon {
@@ -109,8 +137,8 @@
 }
 
 .user-info p {
-  margin-right: 1em;
-  
+  margin-right: 0.9em;
+  font-size: 0.9em;  
 }
 
 .logout-text {

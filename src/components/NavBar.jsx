@@ -5,6 +5,7 @@ import { clearUser } from "../redux/customerReducer"; // Import clearUser action
 import SearchModal from "./SearchModal";
 import "./Navbar.css";
 import ModalConfirmLogout from './ModalConfirmLogout';
+import { slide as Menu } from 'react-burger-menu';
 import LoginSignupModal from "./LoginSignupModal";
 
 const Navbar = ({ toggleCart }) => {
@@ -68,7 +69,7 @@ const Navbar = ({ toggleCart }) => {
   return (
     <>
     <nav className="navbar">
-    {user && user.customer ? ( // Conditionally render based on user authentication status
+    {user && user.customer ? (
         <div className="user-info">
           <p>Welcome, {user.customer.firstname}!</p>
           <button className="logout-text" onClick={handleLogoutModalOpen}>
@@ -76,9 +77,12 @@ const Navbar = ({ toggleCart }) => {
           </button>
         </div>
       ) : (
+        <div className="navbar-login-container">
         <Link to="/login">
           <img src="/public/user-icon.jpeg" alt="" className="nav-cart-icon" />
+          <p>Login</p>
         </Link>
+        </div>
       )}
       <div>
       <ul className="nav-list center-links">
