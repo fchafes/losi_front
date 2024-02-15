@@ -31,9 +31,13 @@ FREE STANDARD SHIPPING</p>
         <div className="footer-section">
           <h4>LINKS</h4>
           <ul>
-            <li><a href="#">Home</a></li>
-            <li><a href="#">Products</a></li>
-            <li><a href="#">About Us</a></li>
+            <li><a href="/home">Home</a></li>
+            <li><a href="/accessories">Accesories</a></li>
+            <li><a href="/tops">Tops</a></li>
+            <li><a href="/bottoms">Bottoms</a></li>
+            <li><a href="/decks">Decks</a></li>
+            <li><a href="/others">Others</a></li>
+            <li><a href="/aboutUs">About Us</a></li>
           </ul>
         </div>
         <div className="footer-section">
@@ -47,7 +51,7 @@ FREE STANDARD SHIPPING</p>
           <ul>
             <li><a href="#" target="_blank" rel="noopener noreferrer">Facebook</a></li>
             <li><a href="#" target="_blank" rel="noopener noreferrer">Twitter</a></li>
-            <li><a href="#" target="_blank" rel="noopener noreferrer">Instagram</a></li>
+            <li><a href="https://www.instagram.com/losi_skateboards/?hl=es" target="_blank" rel="noopener noreferrer">Instagram</a></li>
           </ul>
         </div>
       </div>
