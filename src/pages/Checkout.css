@@ -87,3 +87,15 @@
   display: flex;
   justify-content: space-between;
 }
+.cart-subtotal-checkout {
+  background-color: #000000;
+  height: 2em;
+  width: 40%;
+  position: fixed;
+  bottom: 5em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: #ffffff;
+}

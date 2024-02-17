@@ -15,7 +15,18 @@ const Checkout = () => {
   const cartItems = useSelector((state) => state.cart.items);
   const user = useSelector((state) => state.customer.user);
   const dispatch = useDispatch();
-  const [showUpdateForm, setShowUpdateForm] = useState(false); // State to toggle visibility of UpdateCustomerForm
+  const [paymentMethod, setPaymentMethod] = useState('');
+  const [shippingAddress, setShippingAddress] = useState('');
+
+
+
+  const calculateSubtotal = () => {
+    let subtotal = 0;
+    cartItems.forEach((item) => {
+      subtotal += item.price * item.quantity;
+    });
+    return subtotal;
+  };
 
   const handleRemoveFromCart = (id, selectedSize) => {
     dispatch(removeFromCart({ id, selectedSize }));
@@ -28,24 +39,49 @@ const Checkout = () => {
   const handleDecrementQuantity = (id) => {
     dispatch(decrementQuantity(id));
   };
-
-  const handleShowUpdateForm = () => {
-    setShowUpdateForm(!showUpdateForm); // Toggle the visibility of UpdateCustomerForm
+  const handlePaymentMethodChange = (e) => {
+    setPaymentMethod(e.target.value);
   };
 
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData({ ...formData, [name]: value });
+  const handleShippingAddressChange = (e) => {
+    setShippingAddress(e.target.value);
   };
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
+  const handleCheckout = async () => {
+    // Perform checkout logic here, including payment processing and order creation
+    // Use paymentMethod and shippingAddress state values
+  };
+
+
+  const handleConfirmOrder = async () => {
     try {
-      const response = await axios.post('http://localhost:3000/customers', formData);
-      console.log('Signup successful:', response.data);
-      dispatch(setUser({ user: response.data, token: response.data.token }));
+      // Create an order with the customer ID and total amount
+      const orderResponse = await axios.post('http://localhost:3000/orders', {
+        customerId: user.customer.id,
+        totalAmount: calculateSubtotal(),
+      });
+
+      // Create order products for each item in the cart
+      await Promise.all(
+        cartItems.map(async (item) => {
+          await axios.post('http://localhost:3000/orderProducts', {
+            orderId: orderResponse.data.id,
+            productId: item.id,
+            quantity: item.quantity,
+          });
+        })
+      );
+
+      // Clear the cart after successful order creation
+      cartItems.forEach((item) => {
+        dispatch(removeFromCart({ id: item.id, selectedSize: item.selectedSize }));
+      });
+
+      // Optionally, you can show a success message to the user
+      alert('Order placed successfully!');
     } catch (error) {
-      console.error('Signup error:', error);
+      console.error('Error placing order:', error);
+      // Handle order placement error
     }
   };
 
@@ -68,27 +104,33 @@ const Checkout = () => {
             </div>
           </div>
         ))}
+        <div className="cart-subtotal-checkout">
+          <p>Subtotal ---&gt; ${calculateSubtotal()}</p>
+        </div>
       </div>
       <div className="customer-info">
-        <h2>Customer Information</h2>
-        {user ? (
-          <div>
-            <p>Hi, {user.customer.firstname} {user.customer.lastname}!</p>
-            <p>Please confirm the following Information:</p>
-            <ul>
-              <li className='list-data'>Shipping Address - <strong>{user.customer.address}</strong> </li>
-              <li className='list-data'>Email - <strong>{user.customer.email}</strong> </li>
-              <li className='list-data'>Phone Number - <strong>{user.customer.phone}</strong></li>
-            </ul>
-            <div className='checkout-buttons'>
-            <p className="checkout-article-body-options-counter-action" onClick={handleShowUpdateForm}>Change</p>
-            <p className="checkout-article-body-options-counter-action">Confirm</p>
-            </div>
-            {showUpdateForm && <UpdateCustomerForm />} {/* Render UpdateCustomerForm if showUpdateForm is true */}
-          </div>
-        ) : (
-          <Login />
-        )}
+      <h2>Payment Information</h2>
+        <form>
+          <label>
+            Payment Method:
+            <select value={paymentMethod} onChange={handlePaymentMethodChange}>
+              <option value="MercadoPago">Mercado Pago</option>
+              <option value="Paypal">Paypal</option>
+              <option value="CreditCard">Credit Card</option>
+            </select>
+          </label>
+          <label>
+            Shipping Address:
+            <input
+              type="text"
+              value={shippingAddress}
+              onChange={handleShippingAddressChange}
+            />
+          </label>
+          <button type="button" onClick={handleCheckout}>
+            Checkout
+          </button>
+        </form>
       </div>
     </div>
   );
