@@ -8,8 +8,7 @@ import {
 } from '../redux/cartReducer';
 import './Checkout.css';
 import axios from 'axios';
-import Login from '../components/Login';
-import UpdateCustomerForm from '../components/UpdateCustomerForm'; // Import the UpdateCustomerForm component
+
 
 const Checkout = () => {
   const cartItems = useSelector((state) => state.cart.items);
@@ -48,42 +47,29 @@ const Checkout = () => {
   };
 
   const handleCheckout = async () => {
-    // Perform checkout logic here, including payment processing and order creation
-    // Use paymentMethod and shippingAddress state values
-  };
-
-
-  const handleConfirmOrder = async () => {
     try {
-      // Create an order with the customer ID and total amount
-      const orderResponse = await axios.post('http://localhost:3000/orders', {
-        customerId: user.customer.id,
-        totalAmount: calculateSubtotal(),
+      const response = await axios.post('http://localhost:3000/orders', {
+        customerId: user.customer.id, // Assuming you have the customer ID in your user object
+        payment_method: paymentMethod,
+        shipping_address: shippingAddress,
+        cartItems: cartItems.map((item) => ({
+          productId: item.id,
+          quantity: item.quantity,
+          
+        })),
       });
-
-      // Create order products for each item in the cart
-      await Promise.all(
-        cartItems.map(async (item) => {
-          await axios.post('http://localhost:3000/orderProducts', {
-            orderId: orderResponse.data.id,
-            productId: item.id,
-            quantity: item.quantity,
-          });
-        })
-      );
-
-      // Clear the cart after successful order creation
-      cartItems.forEach((item) => {
-        dispatch(removeFromCart({ id: item.id, selectedSize: item.selectedSize }));
-      });
-
-      // Optionally, you can show a success message to the user
-      alert('Order placed successfully!');
+      
+      console.log(shippingAddress)
+      console.log(paymentMethod)
+      console.log('Order created successfully:', response.data);
+      // Handle success (e.g., show a success message, redirect to a thank you page)
     } catch (error) {
-      console.error('Error placing order:', error);
-      // Handle order placement error
+      console.error('Error creating order:', error.response.data);
+      // Handle error (e.g., show an error message to the user)
     }
   };
+
+
 
   return (
     <div className="checkout-page-container">
