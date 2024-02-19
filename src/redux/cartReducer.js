@@ -40,7 +40,9 @@ const cartSlice = createSlice({
       state.items = state.items.filter((item) => !(item.id === id && item.selectedSize === selectedSize));
       console.log("After removal:", state.items);
     },
-    
+    removeAllItems: (state, action) => {
+      state.items = [];
+    },
     incrementQuantity: (state, action) => {
       const existingItem = state.items.find(
         (item) => item.id === action.payload
@@ -72,6 +74,7 @@ export const {
   removeFromCart,
   incrementQuantity,
   decrementQuantity,
+  removeAllItems,
 } = cartSlice.actions;
 
 export default persistedCartReducer;

@@ -71,7 +71,7 @@ const Cart = ({ cartOpen, toggleCart }) => {
           <p>Subtotal ---&gt; ${calculateSubtotal()}</p>
         </div>
         <div className="cart-footer">
-          <Link to="/checkOut">
+          <Link to="/checkOut" onClick={toggleCart}>
           <button className="cart-check">
             <p className="cart-footer-checkout">CHECKOUT</p>
           </button></Link>
