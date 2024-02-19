@@ -33,6 +33,7 @@ const ProductDetails = ({ toggleCart }) => {
     const productToAdd = {
       ...productDetails,
       selectedSize: selectedSize,
+      // sizeId: id.selectedSize
     };
 
     dispatch(addToCart(productToAdd));

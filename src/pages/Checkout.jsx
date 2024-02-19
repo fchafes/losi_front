@@ -14,8 +14,8 @@ const Checkout = () => {
   const cartItems = useSelector((state) => state.cart.items);
   const user = useSelector((state) => state.customer.user);
   const dispatch = useDispatch();
-  const [paymentMethod, setPaymentMethod] = useState('');
-  const [shippingAddress, setShippingAddress] = useState('');
+  const [paymentMethod, setPaymentMethod] = useState('Mercado Pago');
+  const [shippingAddress, setShippingAddress] = useState(user.customer.address);
 
 
 
@@ -55,7 +55,7 @@ const Checkout = () => {
         cartItems: cartItems.map((item) => ({
           productId: item.id,
           quantity: item.quantity,
-          
+          selectedSize: item.selectedSize
         })),
       });
       
@@ -100,9 +100,9 @@ const Checkout = () => {
           <label>
             Payment Method:
             <select value={paymentMethod} onChange={handlePaymentMethodChange}>
-              <option value="MercadoPago">Mercado Pago</option>
+              <option value="Mercado Pago">Mercado Pago</option>
               <option value="Paypal">Paypal</option>
-              <option value="CreditCard">Credit Card</option>
+              <option value="Credit Card">Credit Card</option>
             </select>
           </label>
           <label>
