@@ -133,7 +133,10 @@ const Checkout = () => {
         </div>
       </>
     ) : (
-      <p>Order completed</p>
+      <div className="order-completed">
+      <h3>Order completed!</h3>
+      <p>You will received an email with the information of the order and your order ID.</p>
+      </div>
     )}
   </div>
   );
