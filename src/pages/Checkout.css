@@ -80,10 +80,10 @@
 .customer-info form button:hover {
   background-color: #000000;
 }
-.list-data{
+.list-data {
   padding-bottom: 5%;
 }
-.checkout-buttons{
+.checkout-buttons {
   display: flex;
   justify-content: space-between;
 }
