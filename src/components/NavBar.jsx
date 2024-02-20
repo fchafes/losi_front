@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { clearUser } from "../redux/customerReducer"; // Import clearUser action
@@ -16,17 +16,12 @@ const Navbar = ({ toggleCart }) => {
   const location = useLocation();
   const dispatch = useDispatch(); // Get dispatch function
   const user = useSelector((state) => state.customer.user); // Get user from Redux state
-  const menuRef = useRef(null);
 
   const handleLogin = () => {
     openModal();
   };
 
   const toggleMenu = () => {
-    setMenuOpen(!isMenuOpen);
-  };
-
-  const toggleDropdownMenu = () => {
     setMenuOpen(!isMenuOpen);
   };
 
@@ -39,21 +34,10 @@ const Navbar = ({ toggleCart }) => {
   };
 
   const closeMenu = () => {
-    setMenuOpen(false);
+    if (isMenuOpen) {
+      setMenuOpen(false);
+    }
   };
-
-  useEffect(() => {
-    const handleClickOutside = (event) => {
-      if (menuRef.current && !menuRef.current.contains(event.target)) {
-        setMenuOpen(false);
-      }
-    };
-
-    document.addEventListener("mousedown", handleClickOutside);
-    return () => {
-      document.removeEventListener("mousedown", handleClickOutside);
-    };
-  }, []);
 
   useEffect(() => {
     // Close the menu when the location changes
@@ -86,7 +70,7 @@ const Navbar = ({ toggleCart }) => {
     <>
     <nav className="navbar">
     {user && user.customer ? (
-        <div id="list" className="user-info">
+        <div className="user-info">
           <p>Welcome, {user.customer.firstname}!</p>
           <button className="logout-text" onClick={handleLogoutModalOpen}>
             Logout
@@ -100,23 +84,17 @@ const Navbar = ({ toggleCart }) => {
         </Link>
         </div>
       )}
-        <div className="menu-burguer-icon" onClick={toggleMenu}>
-        <div className="bar"></div>
-        <img className="menu" src="/public/barra-de-menus.png" alt="" />
-        <div className="bar"></div>
-        <div className="bar"></div>
-      </div>
       <div>
-      <ul  className="nav-list center-links">
-        <li id="list"className="nav-item">
+      <ul className="nav-list center-links">
+        <li className="nav-item">
           <Link to="/home">HOME</Link>
         </li>
-        <li  id="list" className={`nav-item dropdown ${isMenuOpen ? "open" : ""}`}>
-          <div className="menu-toggle" onClick={toggleDropdownMenu}>
+        <li className={`nav-item dropdown ${isMenuOpen ? "open" : ""}`}>
+          <div className="menu-toggle" onClick={toggleMenu}>
             <span className="nav-span">SHOP</span>
           </div>
           {isMenuOpen && (
-            <ul className="dropdown-menu" ref={menuRef}>
+            <ul className="dropdown-menu">
               <li onClick={handleLinkClick}>
                 <Link to="/accessories">ACCESSORIES</Link>
               </li>
@@ -135,7 +113,7 @@ const Navbar = ({ toggleCart }) => {
             </ul>
           )}
         </li>
-        <li id="list" className="nav-item logo">
+        <li className="nav-item logo">
           <Link to="/">
             <img
               src="/public/losiFlor.png"
@@ -144,11 +122,11 @@ const Navbar = ({ toggleCart }) => {
             />
           </Link>
         </li>
-        <li id="list" className="nav-item">
+        <li className="nav-item">
           <Link to="/aboutUs">ABOUT</Link>
         </li>
-        <li  className="nav-item">
-          <Link id="list" to="/contact">CONTACT</Link>
+        <li className="nav-item">
+          <Link to="/contact">CONTACT</Link>
         </li>
       </ul>
       </div>
@@ -169,16 +147,6 @@ const Navbar = ({ toggleCart }) => {
       </div>
       {isSearchModalOpen && <SearchModal onClose={closeSearchModal} />}
     </nav>
-    <Menu left isOpen={isMenuOpen} onClose={closeMenu} overlayClassName="custom-overlay">
-      <Link to="/home" onClick={handleLinkClick}>HOME</Link>
-      <Link to="/accessories" onClick={handleLinkClick}>ACCESSORIES</Link>
-      <Link to="/tops" onClick={handleLinkClick}>TOPS</Link>
-      <Link to="/bottoms" onClick={handleLinkClick}>BOTTOMS</Link>
-      <Link to="/decks" onClick={handleLinkClick}>DECKS</Link>
-      <Link to="/others" onClick={handleLinkClick}>OTHERS</Link>
-      <Link to="/aboutUs" onClick={handleLinkClick}>ABOUT</Link>
-      <Link to="/contact" onClick={handleLinkClick}>CONTACT</Link>
-    </Menu>
     <ModalConfirmLogout 
         open={showLogoutModal} 
         onClose={() => setShowLogoutModal(false)} 
@@ -189,3 +157,4 @@ const Navbar = ({ toggleCart }) => {
 };
 
 export default Navbar;
+

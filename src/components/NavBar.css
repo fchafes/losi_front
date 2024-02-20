@@ -111,20 +111,21 @@
 .dropdown-menu li {
   list-style: none;
 }
-.signup-login-container {
+.signup-login-container{
   display: flex;
+  
 }
-.signup-login-container p {
+.signup-login-container p{
   margin: 0;
-  padding-left: 0.5rem;
-  padding-right: 0.5rem;
+  padding-left: .5rem;
+  padding-right: .5rem;
 }
 
-.nav-icons {
-  display: flex;
-  align-items: center;
-  position: absolute;
-  right: 10%;
+.nav-icons{
+    display: flex;
+    align-items: center;
+    position: absolute;
+    right: 10%;
 }
 
 .user-info {
@@ -137,7 +138,7 @@
 
 .user-info p {
   margin-right: 0.9em;
-  font-size: 0.9em;
+  font-size: 0.9em;  
 }
 
 .logout-text {
@@ -148,52 +149,4 @@
   justify-content: center;
   font-size: 0.9em;
   background-color: rgb(70, 70, 70);
-}
-
-.menu {
-  width: 30px;
-}
-
-.bm-menu {
-  display: none;
-  background: transparent;
-}
-
-.menu-burguer-icon {
-  top: 10px; /* Ajusta según sea necesario */
-  left: 10px; /* Ajusta según sea necesario */
-}
-@media (max-width: 768px) {
-  #list {
-    display: none;
-  }
-
-  .bm-menu {
-    display: block;
-    background-color: white; /* Cambia el color de fondo del menú si es necesario */
-    padding: 2em 1em; /* Ajusta el espacio interno del menú */
-    font-size: 1.2em; /* Ajusta el tamaño del texto de los enlaces */
-  }
-  .custom-overlay {
-    background-color: transparent; /* Cambia este color según tus preferencias */
-  }
-  .bm-item-list {
-    padding: 0; /* Elimina el relleno de la lista de enlaces */
-    margin-top: 1em; /* Ajusta el espacio entre el borde superior del menú y la lista de enlaces */
-  }
-
-  .bm-item {
-    display: block; /* Ajusta los enlaces para que se muestren como bloques */
-    margin-bottom: 1em; /* Ajusta el espacio entre los enlaces */
-    text-align: center; /* Centra el texto de los enlaces */
-  }
-
-  .bm-item a {
-    color: black; /* Cambia el color del texto de los enlaces si es necesario */
-    text-decoration: none; /* Elimina el subrayado de los enlaces */
-  }
-
-  .bm-item a:hover {
-    color: gray; /* Cambia el color del texto al pasar el ratón sobre los enlaces */
-  }
 }
