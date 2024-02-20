@@ -6,11 +6,9 @@ import SearchModal from "./SearchModal";
 import "./Navbar.css";
 import ModalConfirmLogout from './ModalConfirmLogout';
 import LoginSignupModal from "./LoginSignupModal";
-import HamburgerMenu from "./HamburgerMenu";
 
 const Navbar = ({ toggleCart }) => {
-  const [isBurgerMenuOpen, setBurgerMenuOpen] = useState(false); // Estado para el menú hamburguesa
-  const [isDropdownOpen, setDropdownOpen] = useState(false); // Estado para el menú desplegable de "SHOP"
+  const [isMenuOpen, setMenuOpen] = useState(false);
   const [isSearchModalOpen, setSearchModalOpen] = useState(false);
   const [showLogoutModal, setShowLogoutModal] = useState(false);
   const navigate = useNavigate();
@@ -18,12 +16,12 @@ const Navbar = ({ toggleCart }) => {
   const dispatch = useDispatch(); // Get dispatch function
   const user = useSelector((state) => state.customer.user); // Get user from Redux state
 
-  const toggleBurgerMenu = () => {
-    setBurgerMenuOpen(!isBurgerMenuOpen);
+  const handleLogin = () => {
+    openModal();
   };
 
-  const toggleDropdownMenu = () => {
-    setDropdownOpen(!isDropdownOpen);
+  const toggleMenu = () => {
+    setMenuOpen(!isMenuOpen);
   };
 
   const openSearchModal = () => {
@@ -34,17 +32,20 @@ const Navbar = ({ toggleCart }) => {
     setSearchModalOpen(false);
   };
 
-  const closeMenus = () => {
-    setBurgerMenuOpen(false);
-    setDropdownOpen(false);
+  const closeMenu = () => {
+    if (isMenuOpen) {
+      setMenuOpen(false);
+    }
   };
 
   useEffect(() => {
-    closeMenus();
+    // Close the menu when the location changes
+    closeMenu();
   }, [location.pathname]);
 
   const handleLinkClick = () => {
-    closeMenus();
+    // Close the menu when a link inside the menu is clicked
+    closeMenu();
   };
 
   const isIntroPage = location.pathname === "/";
@@ -52,7 +53,9 @@ const Navbar = ({ toggleCart }) => {
     return null;
   }
 
+  // Function to handle logout
   const handleLogout = () => {
+    // Dispatch action to clear user data from Redux state
     dispatch(clearUser());
     navigate("/login");
     setShowLogoutModal(false);
@@ -64,95 +67,86 @@ const Navbar = ({ toggleCart }) => {
 
   return (
     <>
-      <nav className="navbar">
-        {user && user.customer ? (
-          <div id="list" className="user-info">
-            <p>Welcome, {user.customer.firstname}!</p>
-            <button className="logout-text" onClick={handleLogoutModalOpen}>
-              Logout
-            </button>
-          </div>
-        ) : (
-          <div className="navbar-login-container">
-            <Link to="/login">
-              <img src="/public/user-icon.jpeg" alt="" className="nav-cart-icon" />
-              <p>Login</p>
-            </Link>
-          </div>
-        )}
-        <div  className="menu-burguer-icon" onClick={toggleBurgerMenu}>
-          <img className="menu-burger" src="public/barra-de-menus.png" alt="" />
-          <div className="bar"></div>
-          <div className="bar"></div>
-          <div className="bar"></div>
+    <nav className="navbar">
+    {user && user.customer ? (
+        <div className="user-info">
+          <p>Welcome, {user.customer.firstname}!</p>
+          <button className="logout-text" onClick={handleLogoutModalOpen}>
+            Logout
+          </button>
         </div>
-        <div>
-          <ul id="list" className="nav-list center-links">
-            <li className="nav-item">
-              <Link to="/home">HOME</Link>
-            </li>
-            <li className={`nav-item dropdown ${isDropdownOpen ? "open" : ""}`}>
-              <div className="menu-toggle" onClick={toggleDropdownMenu}>
-                <span className="nav-span">SHOP</span>
-              </div>
-              {isDropdownOpen && (
-                <ul className="dropdown-menu">
-                  <li onClick={() => { toggleDropdownMenu(); handleLinkClick(); }}>
-                    <Link to="/accessories">ACCESSORIES</Link>
-                  </li>
-                  <li onClick={() => { toggleDropdownMenu(); handleLinkClick(); }}>
-                    <Link to="/tops">TOPS</Link>
-                  </li>
-                  <li onClick={() => { toggleDropdownMenu(); handleLinkClick(); }}>
-                    <Link to="/bottoms">BOTTOMS</Link>
-                  </li>
-                  <li onClick={() => { toggleDropdownMenu(); handleLinkClick(); }}>
-                    <Link to="/decks">DECKS</Link>
-                  </li>
-                  <li onClick={() => { toggleDropdownMenu(); handleLinkClick(); }}>
-                    <Link to="/others">OTHERS</Link>
-                  </li>
-                </ul>
-              )}
-            </li>
-            <li className="nav-item logo">
-              <Link to="/">
-                <img
-                  src="/public/losiFlor.png"
-                  alt="logo"
-                  style={{ width: "100px", height: "auto" }}
-                />
-              </Link>
-            </li>
-            <li className="nav-item">
-              <Link to="/aboutUs">ABOUT</Link>
-            </li>
-            <li className="nav-item">
-              <Link to="/contact">CONTACT</Link>
-            </li>
-          </ul>
+      ) : (
+        <div className="navbar-login-container">
+        <Link to="/login">
+          <img src="/public/user-icon.jpeg" alt="" className="nav-cart-icon" />
+          <p>Login</p>
+        </Link>
         </div>
-        <div className="nav-icons">
-          <img
-            onClick={openSearchModal}
-            src="/public/search-icon.png"
-            alt=""
-            className="nav-search-icon"
-          />
-          <Link to="#" onClick={toggleCart}>
+      )}
+      <div>
+      <ul className="nav-list center-links">
+        <li className="nav-item">
+          <Link to="/home">HOME</Link>
+        </li>
+        <li className={`nav-item dropdown ${isMenuOpen ? "open" : ""}`}>
+          <div className="menu-toggle" onClick={toggleMenu}>
+            <span className="nav-span">SHOP</span>
+          </div>
+          {isMenuOpen && (
+            <ul className="dropdown-menu">
+              <li onClick={handleLinkClick}>
+                <Link to="/accessories">ACCESSORIES</Link>
+              </li>
+              <li onClick={handleLinkClick}>
+                <Link to="/tops">TOPS</Link>
+              </li>
+              <li onClick={handleLinkClick}>
+                <Link to="/bottoms">BOTTOMS</Link>
+              </li>
+              <li onClick={handleLinkClick}>
+                <Link to="/decks">DECKS</Link>
+              </li>
+              <li onClick={handleLinkClick}>
+                <Link to="/others">OTHERS</Link>
+              </li>
+            </ul>
+          )}
+        </li>
+        <li className="nav-item logo">
+          <Link to="/">
             <img
-              src="/public/empty-cart-icon.png"
-              alt=""
-              className="nav-cart-icon"
+              src="/public/losiFlor.png"
+              alt="logo"
+              style={{ width: "100px", height: "auto" }}
             />
           </Link>
-        </div>
-        {isSearchModalOpen && <SearchModal onClose={closeSearchModal} />}
-      </nav>
-
-      <HamburgerMenu isOpen={isBurgerMenuOpen} onClose={() => setBurgerMenuOpen(false)} />
-
-      <ModalConfirmLogout 
+        </li>
+        <li className="nav-item">
+          <Link to="/aboutUs">ABOUT</Link>
+        </li>
+        <li className="nav-item">
+          <Link to="/contact">CONTACT</Link>
+        </li>
+      </ul>
+      </div>
+      <div className="nav-icons">
+      <img
+        onClick={openSearchModal}
+        src="/public/search-icon.png"
+        alt=""
+        className="nav-search-icon"
+      />
+      <Link to="#" onClick={toggleCart}>
+        <img
+          src="/public/empty-cart-icon.png"
+          alt=""
+          className="nav-cart-icon"
+        />
+      </Link>
+      </div>
+      {isSearchModalOpen && <SearchModal onClose={closeSearchModal} />}
+    </nav>
+    <ModalConfirmLogout 
         open={showLogoutModal} 
         onClose={() => setShowLogoutModal(false)} 
         onConfirm={handleLogout}

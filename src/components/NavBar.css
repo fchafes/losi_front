@@ -24,13 +24,6 @@
   display: none;
 }
 
-@media (max-width: 768px) {
-  .menu-burguer-icon {
-    display: block;
-    cursor: pointer;
-  }
-}
-
 .nav-list {
   list-style: none;
   display: flex;
@@ -148,61 +141,4 @@
   justify-content: center;
   font-size: 0.9em;
   background-color: rgb(70, 70, 70);
-}
-
-.burger-menu {
-  width: 30px;
-}
-
-.bm-menu {
-  display: none;
-  background: transparent;
-}
-
-.bm-overlay {
-  background-color: transparent !important;
-}
-
-.menu-burguer-icon {
-  top: 10px; /* Ajusta según sea necesario */
-  left: 10px; /* Ajusta según sea necesario */
-}
-
-@media (max-width: 768px) {
-  #list {
-    display: none;
-  }
-
-  .bm-menu {
-    display: block;
-    background-color: white; /* Cambia el color de fondo del menú si es necesario */
-    padding: 2em 1em; /* Ajusta el espacio interno del menú */
-    font-size: 1.2em; /* Ajusta el tamaño del texto de los enlaces */
-  }
-  .custom-overlay {
-    background-color: transparent; /* Cambia este color según tus preferencias */
-  }
-  .bm-item-list {
-    padding: 0; /* Elimina el relleno de la lista de enlaces */
-    margin-top: 1em; /* Ajusta el espacio entre el borde superior del menú y la lista de enlaces */
-  }
-
-  .bm-item {
-    display: block; /* Ajusta los enlaces para que se muestren como bloques */
-    margin-bottom: 1em; /* Ajusta el espacio entre los enlaces */
-    text-align: center; /* Centra el texto de los enlaces */
-  }
-
-  .bm-item a {
-    color: black; /* Cambia el color del texto de los enlaces si es necesario */
-    text-decoration: none; /* Elimina el subrayado de los enlaces */
-  }
-
-  .bm-item a:hover {
-    color: gray; /* Cambia el color del texto al pasar el ratón sobre los enlaces */
-  }
-
-  .menu-burger {
-    width: 30px;
-  }
 }
