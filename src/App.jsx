@@ -14,7 +14,8 @@ import Checkout from "./pages/Checkout";
 import Signup from "./pages/SignUp";
 import SearchModal from "./components/SearchModal";
 import LoginPage from "./pages/LoginPage";
-
+import ResetPassword from "./pages/ResetPassword";
+import ForgotPassword from "./pages/ForgotPassword";
 
 function App() {
   
@@ -40,6 +41,8 @@ function App() {
         <Route path="/signUp" element={<Signup />} />
         <Route path="/search" element={<SearchModal />} />
         <Route path="/login" element={<LoginPage />} />
+        <Route path="/reset/:token" element={<ResetPassword />} />
+        <Route path="/forgot-password" element={<ForgotPassword />} />
 
 
       </Routes>
