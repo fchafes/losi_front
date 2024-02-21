@@ -9,13 +9,20 @@ import {
 } from "../redux/cartReducer";
 import "./Checkout.css";
 import axios from "axios";
+import { initMercadoPago, Wallet } from "@mercadopago/sdk-react";
 
 const Checkout = () => {
+  const [preferenceId, setPreferenceId] = useState(null);
+  initMercadoPago("TEST-3dda8b04-ef81-418b-a762-e962fcd52381 public", {
+    locale: "es-UY",
+  });
   const cartItems = useSelector((state) => state.cart.items);
   const user = useSelector((state) => state.customer.user);
   const dispatch = useDispatch();
   const [paymentMethod, setPaymentMethod] = useState("Mercado Pago");
-  const [shippingAddress, setShippingAddress] = useState(user ? user.customer.address : '');
+  const [shippingAddress, setShippingAddress] = useState(
+    user ? user.customer.address : ""
+  );
   const [showInfo, setShowInfo] = useState(true);
 
   const handleShowInfo = () => {
@@ -53,7 +60,6 @@ const Checkout = () => {
   };
 
   const handleCheckout = async () => {
-    
     try {
       const response = await axios.post("http://localhost:3000/orders", {
         customerId: user.customer.id, // Assuming you have the customer ID in your user object
@@ -72,6 +78,30 @@ const Checkout = () => {
     } catch (error) {
       console.error("Error creating order:", error.response.data);
       // Handle error (e.g., show an error message to the user)
+    }
+  };
+
+  const createPreference = async () => {
+    try {
+      const response = await axios.post(
+        "http://localhost:3000/create_preference",
+        {
+          title: "prueba",
+          quantity: 1,
+          price: 100,
+        }
+      );
+      const { id } = response.data;
+      return id;
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const handleBuy = async () => {
+    const id = await createPreference();
+    if (id) {
+      setPreferenceId(id);
     }
   };
 
@@ -134,7 +164,7 @@ const Checkout = () => {
                   <p>Subtotal ---&gt; ${calculateSubtotal()}</p>
                 </div>
                 <button type="button" onClick={handleCheckout}>
-                  Checkout
+                  Process Order
                 </button>
               </form>
             </div>
@@ -147,6 +177,13 @@ const Checkout = () => {
             You will received an email with the information of the order and
             your order ID.
           </p>
+          <button onClick={handleBuy}>Buy</button>
+          {preferenceId && (
+            <Wallet
+              initialization={{ preferenceId: preferenceId }}
+              customization={{ texts: { valueProp: "smart_option" } }}
+            />
+          )}
         </div>
       )}
     </div>
