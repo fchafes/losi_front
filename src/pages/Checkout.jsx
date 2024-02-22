@@ -13,7 +13,7 @@ import { initMercadoPago, Wallet } from "@mercadopago/sdk-react";
 
 const Checkout = () => {
   const [preferenceId, setPreferenceId] = useState(null);
-  initMercadoPago("TEST-3dda8b04-ef81-418b-a762-e962fcd52381 public", {
+  initMercadoPago("TEST-3dda8b04-ef81-418b-a762-e962fcd52381", {
     locale: "es-UY",
   });
   const cartItems = useSelector((state) => state.cart.items);
@@ -24,6 +24,7 @@ const Checkout = () => {
     user ? user.customer.address : ""
   );
   const [showInfo, setShowInfo] = useState(true);
+  const [total, setTotal] = useState(null);
 
   const handleShowInfo = () => {
     setShowInfo(false);
@@ -35,7 +36,9 @@ const Checkout = () => {
       subtotal += item.price * item.quantity;
     });
     return subtotal;
+    setTotal(subtotal);
   };
+
   const handleRemoveFromCart = (id, selectedSize) => {
     dispatch(removeFromCart({ id, selectedSize }));
   };
@@ -86,9 +89,13 @@ const Checkout = () => {
       const response = await axios.post(
         "http://localhost:3000/create_preference",
         {
-          title: "prueba",
-          quantity: 1,
-          price: 100,
+          cartItems: cartItems.map((item) => ({
+            productId: item.id,
+            quantity: item.quantity,
+            name: item.name,
+            unit_price: item.price,
+          })),
+          price: calculateSubtotal(),
         }
       );
       const { id } = response.data;
@@ -107,85 +114,68 @@ const Checkout = () => {
 
   return (
     <div className="checkout-page-container">
-      {showInfo ? (
-        <>
-          <div className="checkout-items">
-            <h2>Cart Items</h2>
-            {cartItems.map((item) => (
-              <div key={item.id}>
-                <div className="checkout-item-container ">
-                  <div className="checkout-item-text">
-                    <p>{item.name}</p>
-                    <p>Size: {item.selectedSize}</p>
-                    <p>Quantity:{item.quantity}</p>
-                    <div className="checkout-article-body-options-counter-action">
-                      <p
-                        onClick={() =>
-                          handleRemoveFromCart(item.id, item.selectedSize)
-                        }
-                      >
-                        Remove
-                      </p>
-                    </div>
+      <>
+        <div className="checkout-items">
+          <h2>Cart Items</h2>
+          {cartItems.map((item) => (
+            <div key={item.id}>
+              <div className="checkout-item-container ">
+                <div className="checkout-item-text">
+                  <p>{item.name}</p>
+                  <p>Size: {item.selectedSize}</p>
+                  <p>Quantity:{item.quantity}</p>
+                  <div className="checkout-article-body-options-counter-action">
+                    <p
+                      onClick={() =>
+                        handleRemoveFromCart(item.id, item.selectedSize)
+                      }
+                    >
+                      Remove
+                    </p>
                   </div>
-                  <img
-                    src={item.photo}
-                    className="checkout-item-image"
-                    alt=""
-                  />
                 </div>
+                <img src={item.photo} className="checkout-item-image" alt="" />
               </div>
-            ))}
-          </div>
-          <div className="customer-info">
-            <div className="payment-info">
-              <h2>Payment Information</h2>
-              <form>
-                <label>
-                  Payment Method:
-                  <select
-                    value={paymentMethod}
-                    onChange={handlePaymentMethodChange}
-                  >
-                    <option value="Mercado Pago">Mercado Pago</option>
-                    <option value="Paypal">Paypal</option>
-                    <option value="Credit Card">Credit Card</option>
-                  </select>
-                </label>
-                <label>
-                  Shipping Address:
-                  <input
-                    type="text"
-                    value={shippingAddress}
-                    onChange={handleShippingAddressChange}
-                  />
-                </label>
-                <div className="cart-subtotal-checkout">
-                  <p>Subtotal ---&gt; ${calculateSubtotal()}</p>
-                </div>
-                <button type="button" onClick={handleCheckout}>
-                  Process Order
-                </button>
-              </form>
             </div>
+          ))}
+        </div>
+        <div className="customer-info">
+          <div className="payment-info">
+            <h2>Payment Information</h2>
+            <form>
+              <label>
+                Payment Method:
+                <select
+                  value={paymentMethod}
+                  onChange={handlePaymentMethodChange}
+                >
+                  <option value="Mercado Pago">Mercado Pago</option>
+                  <option value="Paypal">Paypal</option>
+                  <option value="Credit Card">Credit Card</option>
+                </select>
+              </label>
+              <label>
+                Shipping Address:
+                <input
+                  type="text"
+                  value={shippingAddress}
+                  onChange={handleShippingAddressChange}
+                />
+              </label>
+              <div className="cart-subtotal-checkout">
+                <p>Total ---&gt; ${calculateSubtotal()}</p>
+              </div>
+              <button type="button" onClick={handleCheckout}>
+                Process Order
+              </button>
+            </form>
           </div>
-        </>
-      ) : (
-        <div className="order-completed">
-          <h3>Order completed!</h3>
-          <p>
-            You will received an email with the information of the order and
-            your order ID.
-          </p>
           <button onClick={handleBuy}>Buy</button>
           {preferenceId && (
-            <Wallet
-              initialization={{ preferenceId: preferenceId }}
-              customization={{ texts: { valueProp: "smart_option" } }}
-            />
+            <Wallet initialization={{ preferenceId: preferenceId }} />
           )}
         </div>
-      )}
+      </>
     </div>
   );
 };
