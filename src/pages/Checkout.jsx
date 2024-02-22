@@ -36,7 +36,6 @@ const Checkout = () => {
       subtotal += item.price * item.quantity;
     });
     return subtotal;
-    setTotal(subtotal);
   };
 
   const handleRemoveFromCart = (id, selectedSize) => {
@@ -89,19 +88,17 @@ const Checkout = () => {
       const response = await axios.post(
         "http://localhost:3000/create_preference",
         {
-          cartItems: cartItems.map((item) => ({
-            productId: item.id,
-            quantity: item.quantity,
-            name: item.name,
-            unit_price: item.price,
-          })),
+          name: "COMPRA LOSI SKATEBOARDS",
           price: calculateSubtotal(),
+          quantity: 1,
         }
       );
+
       const { id } = response.data;
       return id;
     } catch (error) {
       console.log(error);
+      throw new Error("Error al crear la preferencia");
     }
   };
 
