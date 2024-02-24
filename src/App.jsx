@@ -16,10 +16,11 @@ import SearchModal from "./components/SearchModal";
 import LoginPage from "./pages/LoginPage";
 import ResetPassword from "./pages/ResetPassword";
 import ForgotPassword from "./pages/ForgotPassword";
+import { useSelector } from "react-redux";
 
 function App() {
   const [cartOpen, setCartOpen] = useState(false);
-
+  const token = useSelector((state) => state.customer.token);
   const toggleCart = () => {
     setCartOpen(!cartOpen);
   };
@@ -39,7 +40,10 @@ function App() {
         <Route path="/:categoryName" element={<Category />} />
         <Route path="/contact" element={<ContactPage />} />
         <Route path="/aboutUs" element={<AboutUs />} />
-        <Route path="/checkOut" element={<Checkout />} />
+        <Route
+          path="/checkOut"
+          element={token ? <Checkout /> : <Navigate to="/login" />}
+        />
         <Route path="/signUp" element={<Signup />} />
         <Route path="/search" element={<SearchModal />} />
         <Route path="/login" element={<LoginPage />} />
