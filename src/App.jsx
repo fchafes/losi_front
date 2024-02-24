@@ -3,8 +3,8 @@ import { Routes, Route, Outlet, Navigate } from "react-router-dom";
 import "./App.css";
 import Video from "./pages/Video";
 import Home from "./pages/Home";
-import ContactPage from "./pages/ContactPage"
-import AboutUs from "./pages/AboutUs"
+import ContactPage from "./pages/ContactPage";
+import AboutUs from "./pages/AboutUs";
 import ProductDetails from "./components/ProductDetails";
 import Cart from "./components/Cart";
 import NavBar from "./components/NavBar";
@@ -18,7 +18,6 @@ import ResetPassword from "./pages/ResetPassword";
 import ForgotPassword from "./pages/ForgotPassword";
 
 function App() {
-  
   const [cartOpen, setCartOpen] = useState(false);
 
   const toggleCart = () => {
@@ -33,7 +32,10 @@ function App() {
       <Routes>
         <Route path="/" element={<Video />} />
         <Route path="/home" element={<Home />} />
-        <Route path="/product/:id" element={<ProductDetails toggleCart={toggleCart}/>} />
+        <Route
+          path="/product/:id"
+          element={<ProductDetails toggleCart={toggleCart} />}
+        />
         <Route path="/:categoryName" element={<Category />} />
         <Route path="/contact" element={<ContactPage />} />
         <Route path="/aboutUs" element={<AboutUs />} />
@@ -43,8 +45,6 @@ function App() {
         <Route path="/login" element={<LoginPage />} />
         <Route path="/reset/:token" element={<ResetPassword />} />
         <Route path="/forgot-password" element={<ForgotPassword />} />
-
-
       </Routes>
     </>
   );
