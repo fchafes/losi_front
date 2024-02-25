@@ -75,7 +75,7 @@ const Checkout = () => {
       });
       console.log("Order created successfully:", response.data);
       handleShowInfo();
-      handleRemoveAllItems();
+      /* handleRemoveAllItems();*/
       // Handle success (e.g., show a success message, redirect to a thank you page)
     } catch (error) {
       console.error("Error creating order:", error.response.data);
@@ -106,6 +106,8 @@ const Checkout = () => {
     const id = await createPreference();
     if (id) {
       setPreferenceId(id);
+      // Aquí puedes llamar a handleCheckout()
+      handleCheckout();
     }
   };
 
@@ -162,14 +164,15 @@ const Checkout = () => {
               <div className="cart-subtotal-checkout">
                 <p>Total ---&gt; ${calculateSubtotal()}</p>
               </div>
-              <button type="button" onClick={handleCheckout}>
-                Process Order
-              </button>
+              <button type="button">Process Order</button>
             </form>
           </div>
           <button onClick={handleBuy}>Buy</button>
           {preferenceId && (
-            <Wallet initialization={{ preferenceId: preferenceId }} />
+            <Wallet
+              initialization={{ preferenceId: preferenceId }}
+              customization={{ texts: { valueProp: "smart_option" } }}
+            />
           )}
         </div>
       </>
