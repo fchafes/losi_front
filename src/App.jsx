@@ -17,7 +17,7 @@ import LoginPage from "./pages/LoginPage";
 import ResetPassword from "./pages/ResetPassword";
 import ForgotPassword from "./pages/ForgotPassword";
 import { useSelector } from "react-redux";
-
+import Feedback from "./components/Feedback";
 function App() {
   const [cartOpen, setCartOpen] = useState(false);
   const token = useSelector((state) => state.customer.token);
@@ -43,6 +43,10 @@ function App() {
         <Route
           path="/checkOut"
           element={token ? <Checkout /> : <Navigate to="/login" />}
+        />
+        <Route
+          path="/feedback"
+          element={token ? <Feedback /> : <Navigate to="/login" />}
         />
         <Route path="/signUp" element={<Signup />} />
         <Route path="/search" element={<SearchModal />} />
