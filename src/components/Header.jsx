@@ -9,27 +9,22 @@ const Header = () => {
     <div className="header">
       <div className="carousel-image">
         <Carousel autoPlay infiniteLoop interval={3000} showThumbs={false}>
-          <div className="carousel-slide">
-            <video
+        <div className="carousel-slide">
+            <img
               className="carousel-image"
-              autoPlay
-              loop
-              muted
-              style={{ width: "100%" }}
-            >
-              <source src={"prueba.mp4"} type="video/mp4" />
-            </video>
+              src={"P2144045.jpg"}
+              alt="Slide 1"
+            />
             <Link to={"/aboutUs"}>
               <div className="carousel-image-overlay">
                 <button className="discover-button-video">About Us</button>
               </div>{" "}
             </Link>
           </div>
-
           <div className="carousel-slide">
             <img
               className="carousel-image"
-              src={"P2144034.jpg"}
+              src={"/4remeras.jpg"}
               alt="Slide 2"
             />
             <Link to={"/aboutUs"}>
@@ -38,10 +33,11 @@ const Header = () => {
             </div>
             </Link>
           </div>
+
           <div className="carousel-slide">
             <img
               className="carousel-image"
-              src={"/4remeras.jpg"}
+              src={"P2144034.jpg"}
               alt="Slide 3"
             />
             <Link to={"/aboutUs"}>
@@ -50,6 +46,7 @@ const Header = () => {
             </div>
             </Link>
           </div>
+         
         </Carousel>
       </div>
     </div>

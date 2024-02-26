@@ -59,14 +59,8 @@ header {
   background: rgba(5, 3, 3, 0.2);
 }
 
-@media (max-width: 768px) {
-  .carousel-slide video {
-    height: 523px; /* Ajusta la altura automáticamente para dispositivos más pequeños */
-    max-height: 100%; /* Limita la altura al tamaño máximo del contenedor */
-    object-fit: cover; /* Ajusta el video para cubrir el contenedor */
-  }
-
-  .discover-button-video {
-    margin-bottom: 70px;
+@media (max-width: 1081px) {
+  .carousel-image {
+    margin-top: 30px;
   }
 }

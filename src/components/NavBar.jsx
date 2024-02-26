@@ -71,7 +71,7 @@ const Navbar = ({ toggleCart }) => {
     <nav className="navbar">
     {user && user.customer ? (
         <div className="user-info">
-          <p>Welcome, {user.customer.firstname}!</p>
+          <p className="welcome-text">Welcome, {user.customer.firstname}!</p>
           <button className="logout-text" onClick={handleLogoutModalOpen}>
             Logout
           </button>
@@ -113,9 +113,10 @@ const Navbar = ({ toggleCart }) => {
             </ul>
           )}
         </li>
-        <li className="nav-item logo">
+        <li id="flor" className="nav-item logo">
           <Link to="/">
             <img
+            className="losi-flor"
               src="/public/losiFlor.png"
               alt="logo"
               style={{ width: "100px", height: "auto" }}
