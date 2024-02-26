@@ -143,10 +143,11 @@ const Checkout = () => {
             <h2>Payment Information</h2>
             <form>
               <label>
-                Payment Method:
+                Payment Method: 
                 <select
                   value={paymentMethod}
                   onChange={handlePaymentMethodChange}
+                  style={{ marginLeft: '10px', padding: '2px', fontFamily: 'Inter Tight', fontSize: '14px'}}
                 >
                   <option value="Mercado Pago">Mercado Pago</option>
                   <option value="Paypal">Paypal</option>
@@ -164,10 +165,10 @@ const Checkout = () => {
               <div className="cart-subtotal-checkout">
                 <p>Total ---&gt; ${calculateSubtotal()}</p>
               </div>
-              <button type="button">Process Order</button>
+              <button className="btn-order" type="button">Process Order</button>
             </form>
           </div>
-          <button onClick={handleBuy}>Buy</button>
+          <button className="btn-buy" onClick={handleBuy}>Buy</button>
           {preferenceId && (
             <Wallet
               initialization={{ preferenceId: preferenceId }}
