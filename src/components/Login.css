@@ -1,5 +1,5 @@
-.login-container{
-    width: 400px;
+.login-container {
+  width: 400px;
   margin-top: 130px;
   margin-left: 465px;
   padding: 20px;
@@ -7,4 +7,12 @@
   border-radius: 8px;
   font-family: "Inter Tight", sans-serif;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.sign-up-link {
+  text-decoration: none;
+}
+
+.forgot-link {
+  text-decoration: none;
 }

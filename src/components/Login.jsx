@@ -45,8 +45,8 @@ const Login = () => {
             <input type="password" name="password" value={formData.password} onChange={handleChange} placeholder="Password" required />
             <button type="submit">Login</button>
           </form>
-          <p>Don't have an account? <Link to="/signup">Sign Up</Link></p>
-          <p>Forgot your password? <Link to="/forgot-password">Reset it here</Link></p>
+          <p>Don't have an account? <Link className='sign-up-link' to="/signup">Sign Up</Link></p>
+          <p>Forgot your password? <Link className='forgot-link' to="/forgot-password">Reset it here</Link></p>
         </div>
       
     </div>

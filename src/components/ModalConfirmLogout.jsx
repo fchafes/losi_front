@@ -6,7 +6,7 @@ import Box from '@mui/material/Box';
 const ModalConfirmLogout = ({ open, onClose, onConfirm }) => {
   
     return (
-      <div>
+      <div className="modal-container">
         <Modal
           open={open}
           onHide={onClose}
@@ -18,9 +18,9 @@ const ModalConfirmLogout = ({ open, onClose, onConfirm }) => {
             justifyContent: 'center',
           }}
         >
-          <Box sx={{ width: 300, bgcolor: 'background.paper', p: 2, textAlign: "center" }}>
-            <h2 id="modal-modal-title">Confirmación de Logout</h2>
-            <p id="modal-modal-description">¿Estas seguro de que deseas hacer logout?</p>
+          <Box className="modal-content" sx={{ width: 300, bgcolor: 'background.paper', p: 2, textAlign: "center" }}>
+            <h2 className="modal-title" id="modal-modal-title">Confirmación de Logout</h2>
+            <p className="modal-description" id="modal-modal-description">¿Estas seguro de que deseas hacer logout?</p>
             <Button onClick={onClose}>Cancelar</Button>
             <Button onClick={onConfirm}>Logout</Button>
           </Box>

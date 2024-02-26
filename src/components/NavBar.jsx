@@ -78,9 +78,9 @@ const Navbar = ({ toggleCart }) => {
         </div>
       ) : (
         <div className="navbar-login-container">
-        <Link to="/login">
+        <Link className="login-link" to="/login">
           <img src="/public/user-icon.jpeg" alt="" className="nav-cart-icon" />
-          <p>Login</p>
+          <p className="login-link">Login</p>
         </Link>
         </div>
       )}
