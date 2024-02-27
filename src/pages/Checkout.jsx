@@ -122,7 +122,7 @@ const Checkout = () => {
     <div className="checkout-page-container">
       <>
         <div className="checkout-items">
-          <h2>Cart Items</h2>
+          <h2 className="cart-items">Cart Items</h2>
           {cartItems.map((item) => (
             <div key={item.id}>
               <div className="checkout-item-container ">

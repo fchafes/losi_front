@@ -1,6 +1,8 @@
-import React, { useEffect } from "react";
+import React from "react";
 import axios from "axios";
+import { useEffect } from "react"; 
 import { useLocation } from "react-router-dom";
+
 
 function Feedback() {
   const location = useLocation();
