@@ -75,7 +75,7 @@ const Checkout = () => {
       });
       console.log("Order created successfully:", response.data);
       handleShowInfo();
-      /* handleRemoveAllItems();*/
+       handleRemoveAllItems();
       // Handle success (e.g., show a success message, redirect to a thank you page)
     } catch (error) {
       console.error("Error creating order:", error.response.data);
@@ -88,17 +88,24 @@ const Checkout = () => {
       const response = await axios.post(
         "http://localhost:3000/create_preference",
         {
-          name: "COMPRA LOSI SKATEBOARDS",
-          price: calculateSubtotal(),
-          quantity: 1,
+          customerId: user.customer.id, // Assuming you have the customer ID in your user object
+          payment_method: paymentMethod,
+          shipping_address: shippingAddress,
+          items: cartItems.map((item) => ({
+            id: item.id,
+            title: item.name,
+            quantity: item.quantity,
+            unit_price: item.price,
+            selectedSize: item.selectedSize,
+          })),
         }
       );
-
+      console.log(response.data)
       const { id } = response.data;
       return id;
     } catch (error) {
       console.log(error);
-      throw new Error("Error al crear la preferencia");
+      throw new Error("Error creating preference");
     }
   };
 
@@ -107,7 +114,7 @@ const Checkout = () => {
     if (id) {
       setPreferenceId(id);
       // Aquí puedes llamar a handleCheckout()
-      handleCheckout();
+      // handleCheckout();
     }
   };
 
@@ -172,6 +179,7 @@ const Checkout = () => {
           {preferenceId && (
             <Wallet
               initialization={{ preferenceId: preferenceId }}
+              onSubmit={() => console.log("hacer dispatch")}
               customization={{ texts: { valueProp: "smart_option" } }}
             />
           )}
