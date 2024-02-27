@@ -48,3 +48,20 @@
   opacity: 1; /* Show on hover */
 }
 
+@media screen and (max-width: 768px) {
+  .category-item {
+    flex-basis: calc(50% - 20px); /* Dos columnas en pantallas más pequeñas */
+    max-width: calc(
+      50% - 20px
+    ); /* Establece el ancho máximo para dos columnas */
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .category-item {
+    flex-basis: calc(100% - 20px); /* Una columna en pantallas muy pequeñas */
+    max-width: calc(
+      100% - 20px
+    ); /* Establece el ancho máximo para una columna */
+  }
+}

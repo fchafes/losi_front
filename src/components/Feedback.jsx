@@ -1,8 +1,8 @@
 import React from "react";
 import axios from "axios";
-import React, { useEffect } from "react";
->>>>>>> parent of d209295 (arreglos)
+import { useEffect } from "react"; 
 import { useLocation } from "react-router-dom";
+
 
 function Feedback() {
   const location = useLocation();
