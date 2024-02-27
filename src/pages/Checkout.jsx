@@ -175,7 +175,7 @@ const Checkout = () => {
               <button className="btn-order" type="button">Process Order</button>
             </form>
           </div>
-          <button className="btn-buy" onClick={handleBuy}>Buy</button>
+          <button onClick={handleBuy}>Buy</button>
           {preferenceId && (
             <Wallet
               initialization={{ preferenceId: preferenceId }}
