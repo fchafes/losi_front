@@ -1,17 +1,28 @@
 import React from "react";
 import axios from "axios";
-import {  useSelector } from "react-redux"; 
+import {  useSelector, useDispatch } from "react-redux"; 
 import { useLocation } from "react-router-dom";
 import { useEffect } from "react";
+import {
+  incrementQuantity,
+  decrementQuantity,
+  removeFromCart,
+  removeAllItems,
+} from "../redux/cartReducer";
 
 
 function Feedback() {
   const location = useLocation();
   const cartItems = useSelector((state) => state.cart.items);
   const user = useSelector((state) => state.customer.user);
+  const dispatch = useDispatch();
+  const handleRemoveAllItems = () => {
+    dispatch(removeAllItems());
+  };
+
   useEffect(() => {
     const searchParams = new URLSearchParams(location.search);
-    // const q = parseInt(params.get("q"))
+
     const collectionId = searchParams.get("collection_id");
     const collectionStatus = searchParams.get("collection_status");
     const paymentId = searchParams.get("payment_id");
@@ -23,18 +34,20 @@ function Feedback() {
     const siteId = searchParams.get("site_id");
     const processingMode = searchParams.get("processing_mode");
     const merchantAccountId = searchParams.get("merchant_account_id");
-console.log(merchantAccountId)
+    console.log(merchantAccountId)
+    console.log(paymentType)
+
     const handleCheckout = async () => {
       try {
         const response = await axios.post("http://localhost:3000/orders", {
-          customerId: user.customer.id, // Assuming you have the customer ID in your user object
+          customerId: user.customer.id,
           payment_method: "mercadopago",
           shipping_address: user.customer.address,
           collection_id: collectionId,
           collection_status: collectionStatus,
           payment_id: paymentId,
           status: status,
-          payment_type: paymentId,
+          payment_type: paymentType,
           merchant_order_id: merchantOrderId,
           preference_id: preferenceId,
           merchant_account_id: merchantAccountId,
@@ -45,18 +58,15 @@ console.log(merchantAccountId)
           })),
         });
         console.log("Order created successfully:", response.data);
-        // handleShowInfo();
-        //  handleRemoveAllItems();
-        // Handle success (e.g., show a success message, redirect to a thank you page)
       } catch (error) {
         console.error("Error creating order:", error.response.data);
-        // Handle error (e.g., show an error message to the user)
       }
     };
 
-    // Call handleCheckout when the component mounts or when location.search changes
-    handleCheckout();
-  }, [location.search]); // Run the effect whenever location.search changes
+    if (collectionId && merchantAccountId && paymentId) {
+      handleCheckout(handleRemoveAllItems);
+    }
+  }, [location.search]);
 
   return (
     <div className="hola">
@@ -66,4 +76,3 @@ console.log(merchantAccountId)
 }
 
 export default Feedback;
-
