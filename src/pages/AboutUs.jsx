@@ -71,7 +71,7 @@ const AboutUs = () => {
           <h2>Our Team</h2>
           <div className="team-cards">
           <motion.div whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }} className="team-card">
-                <img className="team-pic" src="public/juan.jpeg" alt="Team Member 1" />
+                <img className="team-pic" src="public/fede.jpeg" alt="Team Member 1" />
                 <h3>Federico Chafes</h3>
                 <p>Junior Full Stack Developer</p>
               </motion.div>
@@ -86,7 +86,7 @@ const AboutUs = () => {
                 <p>Junior Full Stack Developer</p>
               </motion.div>
               <motion.div whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }} className="team-card">
-                <img className="team-pic" src="public/juan.jpeg" alt="Team Member 1" />
+                <img className="team-pic" src="public/thomi.jpeg" alt="Team Member 1" />
                 <h3>Thomas Hughes</h3>
                 <p>Junior Full Stack Developer</p>
               </motion.div>
