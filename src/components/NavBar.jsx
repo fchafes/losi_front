@@ -7,6 +7,12 @@ import "./Navbar.css";
 import ModalConfirmLogout from './ModalConfirmLogout';
 import { slide as Menu } from 'react-burger-menu';
 import LoginSignupModal from "./LoginSignupModal";
+import {
+  incrementQuantity,
+  decrementQuantity,
+  removeFromCart,
+  removeAllItems,
+} from "../redux/cartReducer";
 
 const Navbar = ({ toggleCart }) => {
   const [isMenuOpen, setMenuOpen] = useState(false);
@@ -15,7 +21,10 @@ const Navbar = ({ toggleCart }) => {
   const navigate = useNavigate();
   const location = useLocation();
   const dispatch = useDispatch(); // Get dispatch function
-  const user = useSelector((state) => state.customer.user); // Get user from Redux state
+  const user = useSelector((state) => state.customer.user); 
+  const handleRemoveAllItems = () => {
+    dispatch(removeAllItems());
+  };// Get user from Redux state
 
   const handleLogin = () => {
     openModal();
@@ -45,7 +54,7 @@ const Navbar = ({ toggleCart }) => {
   }, [location.pathname]);
 
   const handleLinkClick = () => {
-    // Close the menu when a link inside the menu is clicked
+    
     closeMenu();
   };
 
@@ -58,6 +67,8 @@ const Navbar = ({ toggleCart }) => {
   const handleLogout = () => {
     // Dispatch action to clear user data from Redux state
     dispatch(clearUser());
+
+    dispatch(removeAllItems());
     navigate("/login");
     setShowLogoutModal(false);
   };
