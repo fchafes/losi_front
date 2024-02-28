@@ -1,14 +1,14 @@
-import React, { useEffect, useState } from 'react';
-import axios from 'axios';
-import { useParams } from 'react-router-dom';
-import './ProductDetails.css';
-import Footer from './Footer';
-import { useDispatch } from 'react-redux';
-import { addToCart } from '../redux/cartReducer';
+import React, { useEffect, useState } from "react";
+import axios from "axios";
+import { useParams } from "react-router-dom";
+import "./ProductDetails.css";
+import Footer from "./Footer";
+import { useDispatch } from "react-redux";
+import { addToCart } from "../redux/cartReducer";
 
 const ProductDetails = ({ toggleCart }) => {
   const [productDetails, setProductDetails] = useState({});
-  const [selectedSize, setSelectedSize] = useState(''); // State to store the selected size
+  const [selectedSize, setSelectedSize] = useState(""); // State to store the selected size
   const { id } = useParams();
   const dispatch = useDispatch();
 
@@ -22,10 +22,13 @@ const ProductDetails = ({ toggleCart }) => {
   };
 
   const handleAddToCart = () => {
-    
-    if (productDetails.sizes && productDetails.sizes.length > 0 && !selectedSize) {
+    if (
+      productDetails.sizes &&
+      productDetails.sizes.length > 0 &&
+      !selectedSize
+    ) {
       // Inform the user to select a size before adding to the cart
-      alert('Please select a size before adding to the cart.');
+      alert("Please select a size before adding to the cart.");
       return;
     }
 
@@ -42,10 +45,12 @@ const ProductDetails = ({ toggleCart }) => {
 
   const fetchProductDetails = async (productId) => {
     try {
-      const response = await axios.get(`http://localhost:3000/products/${productId}`);
+      const response = await axios.get(
+        `http://localhost:3000/products/${productId}`
+      );
       setProductDetails(response.data);
     } catch (error) {
-      console.error('Error fetching product details:', error);
+      console.error("Error fetching product details:", error);
     }
   };
 
@@ -67,7 +72,7 @@ const ProductDetails = ({ toggleCart }) => {
                 {productDetails.sizes.map((size) => (
                   <button
                     key={size.id}
-                    className={selectedSize === size.size ? 'selected' : ''}
+                    className={selectedSize === size.size ? "selected" : ""}
                     onClick={() => handleSizeClick(size.size)}
                   >
                     {size.size}
@@ -81,7 +86,16 @@ const ProductDetails = ({ toggleCart }) => {
           </button>
         </div>
         <div className="products-image">
-          <img src={productDetails.photo} alt={productDetails.name} />
+          {productDetails && productDetails.photo && (
+            <img
+              src={
+                productDetails.photo.startsWith("https")
+                  ? productDetails.photo
+                  : `http://localhost:3000/${productDetails.photo}`
+              }
+              alt={productDetails.name}
+            />
+          )}
         </div>
       </div>
       <Footer />
