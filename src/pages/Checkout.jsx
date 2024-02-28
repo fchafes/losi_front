@@ -61,27 +61,6 @@ const Checkout = () => {
     setShippingAddress(e.target.value);
   };
 
-  // const handleCheckout = async () => {
-  //   try {
-  //     const response = await axios.post("http://localhost:3000/orders", {
-  //       customerId: user.customer.id, // Assuming you have the customer ID in your user object
-  //       payment_method: paymentMethod,
-  //       shipping_address: shippingAddress,
-  //       cartItems: cartItems.map((item) => ({
-  //         productId: item.id,
-  //         quantity: item.quantity,
-  //         selectedSize: item.selectedSize,
-  //       })),
-  //     });
-  //     console.log("Order created successfully:", response.data);
-  //     handleShowInfo();
-  //      handleRemoveAllItems();
-  //     // Handle success (e.g., show a success message, redirect to a thank you page)
-  //   } catch (error) {
-  //     console.error("Error creating order:", error.response.data);
-  //     // Handle error (e.g., show an error message to the user)
-  //   }
-  // };
 
   const createPreference = async () => {
     try {
@@ -100,7 +79,7 @@ const Checkout = () => {
           })),
         }
       );
-      console.log(response.data)
+     
       const { id } = response.data;
       return id;
     } catch (error) {

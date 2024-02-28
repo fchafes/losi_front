@@ -102,21 +102,21 @@
   margin-left: 0;
 }
 
-.order-completed {
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
-  align-items: center;
-}
 
-.btn-order {
-  margin-bottom: 10px;
-  background-color: #000000;
-}
+
 
 .btn-buy {
   background-color: #000000;
+  height: 2em;
+  width: 50%;
+  bottom: 5em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: #ffffff;
+  margin: 1rem;
+  margin-left: 0;
 }
 
 .btn-buy:hover {

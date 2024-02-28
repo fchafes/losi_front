@@ -19,7 +19,7 @@ function Feedback() {
     dispatch(removeAllItems());
   };
   const [loading, setLoading] = useState(true); // Initialize to true
-
+  const [orderError, setOrderError] = useState(false);
   const searchParams = new URLSearchParams(location.search);
 
   const collectionId = searchParams.get("collection_id");
@@ -59,6 +59,7 @@ function Feedback() {
       console.log("Order created successfully:", response.data);
     } catch (error) {
       console.error("Error creating order:", error.response.data);
+      setOrderError(true)
     } finally {
       setLoading(false); // Set loading to false when the process is complete
     }
@@ -73,14 +74,15 @@ function Feedback() {
     <div className="hola">
       {loading ? (
         <p>Loading...</p>
+      ) : orderError ? (
+        <p>There was an error in your order. Please try again later.</p>
       ) : (
         <>
           <h2>Thank you for your order!</h2>
-          <p>A email with your order details has been sent to : {user.customer.email}</p>
+          <p>An email with your order details has been sent to: {user.customer.email}</p>
           <Link to="/home">
             <button className="home-button">Go to Home</button>
           </Link>
-          {/* Include other info from the query as needed */}
         </>
       )}
     </div>
