@@ -18,6 +18,7 @@ import ResetPassword from "./pages/ResetPassword";
 import ForgotPassword from "./pages/ForgotPassword";
 import { useSelector } from "react-redux";
 import Feedback from "./components/Feedback";
+import ErrorComponent from "./components/Error";
 function App() {
   const [cartOpen, setCartOpen] = useState(false);
   const token = useSelector((state) => state.customer.token);
@@ -47,6 +48,10 @@ function App() {
         <Route
           path="/feedback"
           element={token ? <Feedback /> : <Navigate to="/login" />}
+        />
+        <Route
+          path="/error"
+          element={token ? <ErrorComponent /> : <Navigate to="/login" />}
         />
         <Route path="/signUp" element={<Signup />} />
         <Route path="/search" element={<SearchModal />} />
