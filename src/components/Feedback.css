@@ -1,3 +1,21 @@
 .hola {
-    margin-top: 50%;
-}
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    text-align: center;
+  }
+  
+  .home-button {
+    color: white;
+    background-color: black;
+    border: none;
+    padding: 10px 20px;
+    margin-top: 20px;
+    cursor: pointer;
+  }
+  
+  .home-button:hover {
+    background-color: darkgray;
+  }
