@@ -18,12 +18,12 @@ const Footer = () => {
 FREE STANDARD SHIPPING</p>
     </div>
     <div className="icon-container">
-      <img src="/public/plane.jpg" alt="Envíos a Todo el Mundo" />
+      <img className='icon-world'  src="/public/world.png" alt="Envíos a Todo el Mundo" />
       <p>WORLDWIDE SHIPPING</p>
     </div>
     <div className="icon-container">
-      <img src="/public/plane.jpg" alt="Envíos a Todo el Mundo" />
-      <p>WORLDWIDE SHIPPING</p>
+      <img  src="/public/plane.jpg" alt="Envíos a Todo el Mundo" />
+      <p>24/7 HOURS SHIPPING</p>
     </div>
   </div>
 </div>
