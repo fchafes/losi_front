@@ -172,10 +172,9 @@ const Checkout = () => {
               <div className="cart-subtotal-checkout">
                 <p>Total ---&gt; ${calculateSubtotal()}</p>
               </div>
-              <button className="btn-order" type="button">Process Order</button>
             </form>
           </div>
-          <button onClick={handleBuy}>Buy</button>
+          <button className="btn-buy" onClick={handleBuy}>Buy</button>
           {preferenceId && (
             <Wallet
               initialization={{ preferenceId: preferenceId }}
