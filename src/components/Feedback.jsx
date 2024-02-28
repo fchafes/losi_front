@@ -1,18 +1,21 @@
 import React from "react";
 import axios from "axios";
-import { useEffect } from "react"; 
+import {  useSelector } from "react-redux"; 
 import { useLocation } from "react-router-dom";
+import { useEffect } from "react";
 
 
 function Feedback() {
   const location = useLocation();
-
+  const cartItems = useSelector((state) => state.cart.items);
+  const user = useSelector((state) => state.customer.user);
   useEffect(() => {
     const searchParams = new URLSearchParams(location.search);
+    // const q = parseInt(params.get("q"))
     const collectionId = searchParams.get("collection_id");
     const collectionStatus = searchParams.get("collection_status");
     const paymentId = searchParams.get("payment_id");
-    const status = searchParams.get("status");
+    const status = searchParams.get("collection_status");
     const externalReference = searchParams.get("external_reference");
     const paymentType = searchParams.get("payment_type");
     const merchantOrderId = searchParams.get("merchant_order_id");
@@ -20,13 +23,13 @@ function Feedback() {
     const siteId = searchParams.get("site_id");
     const processingMode = searchParams.get("processing_mode");
     const merchantAccountId = searchParams.get("merchant_account_id");
-
+console.log(merchantAccountId)
     const handleCheckout = async () => {
       try {
         const response = await axios.post("http://localhost:3000/orders", {
           customerId: user.customer.id, // Assuming you have the customer ID in your user object
-          payment_method: paymentMethod,
-          shipping_address: shippingAddress,
+          payment_method: "mercadopago",
+          shipping_address: user.customer.address,
           collection_id: collectionId,
           collection_status: collectionStatus,
           payment_id: paymentId,
