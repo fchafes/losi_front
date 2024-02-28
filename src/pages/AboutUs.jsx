@@ -1,6 +1,8 @@
 import { useState } from "react";
 import Footer from "../components/Footer";
 import Navbar from "../components/NavBar";
+import { motion } from "framer-motion"; // Importa motion desde framer-motion
+
 import "./AboutUs.css";
 
 const AboutUs = () => {
@@ -42,9 +44,9 @@ const AboutUs = () => {
 <p> <strong>React:</strong> Utilizamos React para construir una interfaz de usuario dinámica y receptiva. </p>
 
 <p><strong>Redux: </strong>Para gestionar el estado de la aplicación de manera eficiente
-
-<p><strong>Bootstrap:</strong> para el diseño y la maquetación de la interfaz de usuario, lo que nos ha permitido crear un diseño moderno y adaptable que se ajusta a diferentes dispositivos y tamaños de pantalla.</p>
 </p>
+<p><strong>Bootstrap:</strong> para el diseño y la maquetación de la interfaz de usuario, lo que nos ha permitido crear un diseño moderno y adaptable que se ajusta a diferentes dispositivos y tamaños de pantalla.</p>
+
 <p><strong>Axios: </strong>Para realizar solicitudes HTTP desde el cliente al servidor, una biblioteca basada en promesas que nos proporciona una interfaz fácil de usar para interactuar con API externas y gestionar las respuestas del servidor de manera eficiente.
 </p>
 <p><strong>Formidable:</strong> Utilizamos Formidable para manejar formularios en nuestra aplicación. Esta biblioteca nos ha ayudado a gestionar la validación de datos del usuario y a manejar los envíos de formularios de manera efectiva.
@@ -68,23 +70,26 @@ const AboutUs = () => {
         <div className="team-section">
           <h2>Our Team</h2>
           <div className="team-cards">
-            <div className="team-card">
-              <img src="public/pic4.jpg" alt="Team Member 1" />
-              <h3>Federico Chafes</h3>
-              <p>Junior Full Stack Developer</p>
-            </div>
-            <div className="team-card">
-              <img src="public/pic12.jpg" alt="Team Member 2" />
-              <h3>Valentina Alegre</h3>
-              <p>Junior Full Stack Developer</p>            </div>
-            <div className="team-card">
-              <img src="pic15.jpg" alt="Team Member 3" />
-              <h3>Juan Boni</h3>
-              <p>Junior Full Stack Developer</p>            </div>
-            <div className="team-card">
-              <img src="pic14.jpg" alt="Team Member 4" />
-              <h3>Thomas Hughes</h3>
-              <p>Junior Full Stack Developer</p>            </div>
+          <motion.div whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }} className="team-card">
+                <img className="team-pic" src="public/juan.jpeg" alt="Team Member 1" />
+                <h3>Federico Chafes</h3>
+                <p>Junior Full Stack Developer</p>
+              </motion.div>
+              <motion.div whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }} className="team-card">
+                <img className="team-pic" src="public/vale.jpg" alt="Team Member 1" />
+                <h3>Valentina Alegre</h3>
+                <p>Junior Full Stack Developer</p>
+              </motion.div>
+              <motion.div whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }} className="team-card">
+                <img className="team-pic" src="public/juan.jpeg" alt="Team Member 1" />
+                <h3>Juan Boni</h3>
+                <p>Junior Full Stack Developer</p>
+              </motion.div>
+              <motion.div whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }} className="team-card">
+                <img className="team-pic" src="public/juan.jpeg" alt="Team Member 1" />
+                <h3>Thomas Hughes</h3>
+                <p>Junior Full Stack Developer</p>
+              </motion.div>
           </div>
         </div>
       </div>
