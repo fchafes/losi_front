@@ -71,7 +71,7 @@ function Feedback() {
   }, []); // Include variables in the dependency array
 
   return (
-    <div className="hola">
+    <div className="error-order">
       {loading ? (
         <p>Loading...</p>
       ) : orderError ? (
