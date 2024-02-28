@@ -1,7 +1,7 @@
 .login-container {
   width: 400px;
+  margin: 0 auto; /* Esto centrará el contenedor horizontalmente */
   margin-top: 130px;
-  margin-left: 465px;
   padding: 20px;
   border: 1px solid #ccc;
   border-radius: 8px;
