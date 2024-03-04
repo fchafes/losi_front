@@ -4,8 +4,8 @@ import { useSelector, useDispatch } from "react-redux";
 import { clearUser } from "../redux/customerReducer"; // Import clearUser action
 import SearchModal from "./SearchModal";
 import "./Navbar.css";
-import ModalConfirmLogout from './ModalConfirmLogout';
-import { slide as Menu } from 'react-burger-menu';
+import ModalConfirmLogout from "./ModalConfirmLogout";
+import { slide as Menu } from "react-burger-menu";
 import LoginSignupModal from "./LoginSignupModal";
 import {
   incrementQuantity,
@@ -21,10 +21,10 @@ const Navbar = ({ toggleCart }) => {
   const navigate = useNavigate();
   const location = useLocation();
   const dispatch = useDispatch(); // Get dispatch function
-  const user = useSelector((state) => state.customer.user); 
+  const user = useSelector((state) => state.customer.user);
   const handleRemoveAllItems = () => {
     dispatch(removeAllItems());
-  };// Get user from Redux state
+  }; // Get user from Redux state
 
   const handleLogin = () => {
     openModal();
@@ -54,7 +54,6 @@ const Navbar = ({ toggleCart }) => {
   }, [location.pathname]);
 
   const handleLinkClick = () => {
-    
     closeMenu();
   };
 
@@ -75,93 +74,100 @@ const Navbar = ({ toggleCart }) => {
 
   const handleLogoutModalOpen = () => {
     setShowLogoutModal(true);
-  }
+  };
 
   return (
     <>
-    <nav className="navbar">
-    {user && user.customer ? (
-        <div className="user-info">
-          <p className="welcome-text">Welcome, {user.customer.firstname}!</p>
-          <button className="logout-text" onClick={handleLogoutModalOpen}>
-            Logout
-          </button>
-        </div>
-      ) : (
-        <div className="navbar-login-container">
-        <Link className="login-link" to="/login">
-          <img src="/public/user-icon.jpeg" alt="" className="nav-cart-icon" />
-          <p className="login-link">Login</p>
-        </Link>
-        </div>
-      )}
-      <div>
-      <ul className="nav-list center-links">
-        <li className="nav-item">
-          <Link to="/home">HOME</Link>
-        </li>
-        <li className={`nav-item dropdown ${isMenuOpen ? "open" : ""}`}>
-          <div className="menu-toggle" onClick={toggleMenu}>
-            <span className="nav-span">SHOP</span>
+      <nav className="navbar">
+        {user && user.customer ? (
+          <div className="user-info">
+            <p className="welcome-text">Welcome, {user.customer.firstname}!</p>
+            <button className="logout-text" onClick={handleLogoutModalOpen}>
+              Logout
+            </button>
           </div>
-          {isMenuOpen && (
-            <ul className="dropdown-menu">
-              <li onClick={handleLinkClick}>
-                <Link to="/accessories">ACCESSORIES</Link>
-              </li>
-              <li onClick={handleLinkClick}>
-                <Link to="/tops">TOPS</Link>
-              </li>
-              <li onClick={handleLinkClick}>
-                <Link to="/bottoms">BOTTOMS</Link>
-              </li>
-              <li onClick={handleLinkClick}>
-                <Link to="/decks">DECKS</Link>
-              </li>
-              <li onClick={handleLinkClick}>
-                <Link to="/others">OTHERS</Link>
-              </li>
-            </ul>
-          )}
-        </li>
-        <li id="flor" className="nav-item logo">
-          <Link to="/">
+        ) : (
+          <div className="navbar-login-container">
+            <Link className="login-link" to="/login">
+              <img
+                src="/public/user-icon.jpeg"
+                alt=""
+                className="nav-cart-icon"
+              />
+              <p className="login-link">Login</p>
+            </Link>
+          </div>
+        )}
+        <div>
+          <ul className="nav-list center-links">
+            <li className="nav-item">
+              <Link to="/home">HOME</Link>
+            </li>
+            <li className={`nav-item dropdown ${isMenuOpen ? "open" : ""}`}>
+              <div className="menu-toggle" onClick={toggleMenu}>
+                <span className="nav-span">SHOP</span>
+              </div>
+              {isMenuOpen && (
+                <ul className="dropdown-menu">
+                  <li onClick={handleLinkClick}>
+                    <Link to="/accessories">ACCESSORIES</Link>
+                  </li>
+                  <li onClick={handleLinkClick}>
+                    <Link to="/tops">TOPS</Link>
+                  </li>
+                  <li onClick={handleLinkClick}>
+                    <Link to="/bottoms">BOTTOMS</Link>
+                  </li>
+                  <li onClick={handleLinkClick}>
+                    <Link to="/decks">DECKS</Link>
+                  </li>
+                  <li onClick={handleLinkClick}>
+                    <Link to="/others">OTHERS</Link>
+                  </li>
+                </ul>
+              )}
+            </li>
+            <li id="flor" className="nav-item logo">
+              <Link to="/">
+                <img
+                  className="losi-flor"
+                  src="/public/losiFlor.png"
+                  alt="logo"
+                  style={{ width: "100px", height: "auto" }}
+                />
+              </Link>
+            </li>
+            <li className="nav-item">
+              <Link to="/aboutUs">ABOUT</Link>
+            </li>
+            <li className="nav-item">
+              <Link to="/contact">CONTACT</Link>
+            </li>
+            <li className="nav-item">
+              <Link to="/media">MEDIA</Link>
+            </li>
+          </ul>
+        </div>
+        <div className="nav-icons">
+          <img
+            onClick={openSearchModal}
+            src="/public/search-icon.png"
+            alt=""
+            className="nav-search-icon"
+          />
+          <Link to="#" onClick={toggleCart}>
             <img
-            className="losi-flor"
-              src="/public/losiFlor.png"
-              alt="logo"
-              style={{ width: "100px", height: "auto" }}
+              src="/public/empty-cart-icon.png"
+              alt=""
+              className="nav-cart-icon"
             />
           </Link>
-        </li>
-        <li className="nav-item">
-          <Link to="/aboutUs">ABOUT</Link>
-        </li>
-        <li className="nav-item">
-          <Link to="/contact">CONTACT</Link>
-        </li>
-      </ul>
-      </div>
-      <div className="nav-icons">
-      <img
-        onClick={openSearchModal}
-        src="/public/search-icon.png"
-        alt=""
-        className="nav-search-icon"
-      />
-      <Link to="#" onClick={toggleCart}>
-        <img
-          src="/public/empty-cart-icon.png"
-          alt=""
-          className="nav-cart-icon"
-        />
-      </Link>
-      </div>
-      {isSearchModalOpen && <SearchModal onClose={closeSearchModal} />}
-    </nav>
-    <ModalConfirmLogout 
-        open={showLogoutModal} 
-        onClose={() => setShowLogoutModal(false)} 
+        </div>
+        {isSearchModalOpen && <SearchModal onClose={closeSearchModal} />}
+      </nav>
+      <ModalConfirmLogout
+        open={showLogoutModal}
+        onClose={() => setShowLogoutModal(false)}
         onConfirm={handleLogout}
       />
     </>
@@ -169,4 +175,3 @@ const Navbar = ({ toggleCart }) => {
 };
 
 export default Navbar;
-
