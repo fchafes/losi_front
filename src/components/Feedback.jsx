@@ -8,7 +8,7 @@ import {
   removeFromCart,
   removeAllItems,
 } from "../redux/cartReducer";
-import "./FeedBack.css";
+import "./Feedback.css";
 
 function Feedback() {
   const location = useLocation();
