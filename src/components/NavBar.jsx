@@ -3,7 +3,7 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { clearUser } from "../redux/customerReducer"; // Import clearUser action
 import SearchModal from "./SearchModal";
-import "./Navbar.css";
+import "./NavBar.css";
 import ModalConfirmLogout from "./ModalConfirmLogout";
 import { slide as Menu } from "react-burger-menu";
 import LoginSignupModal from "./LoginSignupModal";
