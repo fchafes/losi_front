@@ -9,7 +9,7 @@ const ForgotPassword = () => {
   const handleResetPassword = async (e) => {
     e.preventDefault();
     try {
-      await axios.post('http://localhost:3000/customers/password-reset/request', { email });
+      await axios.post('http://losi-back-deploy-two.vercel.app/customers/password-reset/request', { email });
       setMessage('An email has been sent with instructions to reset your password.');
     } catch (error) {
       setMessage('Failed to send password reset email. Please try again.');

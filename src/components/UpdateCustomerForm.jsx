@@ -41,7 +41,7 @@ const UpdateCustomerForm = () => {
     e.preventDefault();
     try {
       const response = await axios.patch(
-        `http://localhost:3000/customers/${user.customer.id}`,
+        `http://losi-back-deploy-two.vercel.app/customers/${user.customer.id}`,
         formData
       );
       console.log("Customer information updated successfully:", response.data);

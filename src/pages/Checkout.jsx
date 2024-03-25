@@ -64,7 +64,7 @@ const Checkout = () => {
   const createPreference = async () => {
     try {
       const response = await axios.post(
-        "http://localhost:3000/create_preference",
+        "http://losi-back-deploy-two.vercel.app/create_preference",
         {
           customerId: user.customer.id, // Assuming you have the customer ID in your user object
           payment_method: paymentMethod,

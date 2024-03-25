@@ -23,7 +23,7 @@ const LoginPage = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post('http://localhost:3000/tokens/customer', formData);
+      const response = await axios.post('http://losi-back-deploy-two.vercel.app/tokens/customer', formData);
       dispatch(setUser({  user: response.data, token: response.data.token }));
     } catch (error) {
       console.error('Login error:', error);

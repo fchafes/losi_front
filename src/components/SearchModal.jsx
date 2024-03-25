@@ -12,7 +12,7 @@ const SearchModal = ({ onClose }) => {
 
   const handleSearch = async () => {
     try {
-      const response = await axios.get(`http://localhost:3000/products/search?search=${searchTerm}`);
+      const response = await axios.get(`http://losi-back-deploy-two.vercel.app/products/search?search=${searchTerm}`);
       setSearchResults(response.data);
     } catch (error) {
       console.error("Error searching products:", error);

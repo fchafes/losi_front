@@ -47,7 +47,7 @@ const ProductDetails = ({ toggleCart }) => {
   const fetchProductDetails = async (productId) => {
     try {
       const response = await axios.get(
-        `http://localhost:3000/products/${productId}`
+        `http://losi-back-deploy-two.vercel.app/products/${productId}`
       );
       console.log(response.data);
       setProductDetails(response.data);
@@ -59,7 +59,7 @@ const ProductDetails = ({ toggleCart }) => {
   const fetchProductStock = async (productId) => {
     try {
       const response = await axios.get(
-        `http://localhost:3000/stock/${productId}`
+        `http://losi-back-deploy-two.vercel.app/stock/${productId}`
       );
       console.log(response.data);
       setProductStocks(response.data);
@@ -118,7 +118,7 @@ const ProductDetails = ({ toggleCart }) => {
               src={
                 productDetails.photo.startsWith("https")
                   ? productDetails.photo
-                  : `http://localhost:3000/${productDetails.photo}`
+                  : `http://losi-back-deploy-two.vercel.app/${productDetails.photo}`
               }
               alt={productDetails.name}
             />
