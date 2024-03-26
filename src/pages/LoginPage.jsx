@@ -1,9 +1,9 @@
-import React, { useState, useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { setUser } from '../redux/customerReducer';
-import axios from 'axios';
-import { useNavigate } from 'react-router-dom';
-import Login from '../components/Login';
+import React, { useState, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { setUser } from "../redux/customerReducer";
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
+import Login from "../components/Login";
 
 const LoginPage = () => {
   const navigate = useNavigate();
@@ -11,8 +11,8 @@ const LoginPage = () => {
   const user = useSelector((state) => state.customer.user);
 
   const [formData, setFormData] = useState({
-    email: '',
-    password: ''
+    email: "",
+    password: "",
   });
 
   const handleChange = (e) => {
@@ -23,10 +23,13 @@ const LoginPage = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post('http://losi-back-deploy-two.vercel.app/tokens/customer', formData);
-      dispatch(setUser({  user: response.data, token: response.data.token }));
+      const response = await axios.post(
+        import.meta.env.VITE_API_URL + "tokens/customer",
+        formData
+      );
+      dispatch(setUser({ user: response.data, token: response.data.token }));
     } catch (error) {
-      console.error('Login error:', error);
+      console.error("Login error:", error);
       // Handle login error (e.g., display error message to the user)
     }
   };
@@ -39,7 +42,11 @@ const LoginPage = () => {
 
   return (
     <div>
-        <Login handleSubmit={handleSubmit} handleChange={handleChange} formData={formData} />
+      <Login
+        handleSubmit={handleSubmit}
+        handleChange={handleChange}
+        formData={formData}
+      />
     </div>
   );
 };

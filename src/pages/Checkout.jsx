@@ -60,11 +60,10 @@ const Checkout = () => {
     setShippingAddress(e.target.value);
   };
 
-
   const createPreference = async () => {
     try {
       const response = await axios.post(
-        "http://losi-back-deploy-two.vercel.app/create_preference",
+        import.meta.env.VITE_API_URL + "create_preference",
         {
           customerId: user.customer.id, // Assuming you have the customer ID in your user object
           payment_method: paymentMethod,
@@ -78,7 +77,7 @@ const Checkout = () => {
           })),
         }
       );
-     
+
       const { id } = response.data;
       return id;
     } catch (error) {
@@ -128,11 +127,16 @@ const Checkout = () => {
             <h2>Payment Information</h2>
             <form>
               <label>
-                Payment Method: 
+                Payment Method:
                 <select
                   value={paymentMethod}
                   onChange={handlePaymentMethodChange}
-                  style={{ marginLeft: '10px', padding: '2px', fontFamily: 'Inter Tight', fontSize: '14px'}}
+                  style={{
+                    marginLeft: "10px",
+                    padding: "2px",
+                    fontFamily: "Inter Tight",
+                    fontSize: "14px",
+                  }}
                 >
                   <option value="Mercado Pago">Mercado Pago</option>
                   <option value="Paypal">Paypal</option>
@@ -152,7 +156,9 @@ const Checkout = () => {
               </div>
             </form>
           </div>
-          <button className="btn-buy" onClick={handleBuy}>Buy</button>
+          <button className="btn-buy" onClick={handleBuy}>
+            Buy
+          </button>
           {preferenceId && (
             <Wallet
               initialization={{ preferenceId: preferenceId }}

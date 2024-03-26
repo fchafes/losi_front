@@ -38,28 +38,31 @@ function Feedback() {
 
   const handleCheckout = async () => {
     try {
-      const response = await axios.post("http://losi-back-deploy-two.vercel.app/orders", {
-        customerId: user.customer.id,
-        payment_method: "mercadopago",
-        shipping_address: user.customer.address,
-        collection_id: collectionId,
-        collection_status: collectionStatus,
-        payment_id: paymentId,
-        status: status,
-        payment_type: paymentType,
-        merchant_order_id: merchantOrderId,
-        preference_id: preferenceId,
-        merchant_account_id: merchantAccountId,
-        cartItems: cartItems.map((item) => ({
-          productId: item.id,
-          quantity: item.quantity,
-          selectedSize: item.selectedSize,
-        })),
-      });
+      const response = await axios.post(
+        import.meta.env.VITE_API_URL + "orders",
+        {
+          customerId: user.customer.id,
+          payment_method: "mercadopago",
+          shipping_address: user.customer.address,
+          collection_id: collectionId,
+          collection_status: collectionStatus,
+          payment_id: paymentId,
+          status: status,
+          payment_type: paymentType,
+          merchant_order_id: merchantOrderId,
+          preference_id: preferenceId,
+          merchant_account_id: merchantAccountId,
+          cartItems: cartItems.map((item) => ({
+            productId: item.id,
+            quantity: item.quantity,
+            selectedSize: item.selectedSize,
+          })),
+        }
+      );
       console.log("Order created successfully:", response.data);
     } catch (error) {
       console.error("Error creating order:", error.response.data);
-      setOrderError(true)
+      setOrderError(true);
     } finally {
       setLoading(false); // Set loading to false when the process is complete
     }
@@ -79,7 +82,10 @@ function Feedback() {
       ) : (
         <>
           <h2>Thank you for your order!</h2>
-          <p>An email with your order details has been sent to: {user.customer.email}</p>
+          <p>
+            An email with your order details has been sent to:{" "}
+            {user.customer.email}
+          </p>
           <Link to="/home">
             <button className="home-button">Go to Home</button>
           </Link>

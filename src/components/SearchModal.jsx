@@ -13,7 +13,7 @@ const SearchModal = ({ onClose }) => {
   const handleSearch = async () => {
     try {
       const response = await axios.get(
-        `http://losi-back-deploy-two.vercel.app/products/search?search=${searchTerm}`
+        `${import.meta.env.VITE_API_URL}/products/search?search=${searchTerm}`
       );
       setSearchResults(response.data);
     } catch (error) {

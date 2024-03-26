@@ -92,17 +92,17 @@ const ProductDetails = ({ toggleCart }) => {
                     >
                       {size.size}
                     </button>
-                   
+
                     {selectedSize === size.size && (
                       <p className="stock-number">
                         {
                           productStocks.find(
                             (stock) => stock.sizeId === size.id
                           )?.stock
-                        } - remaining in stock
+                        }{" "}
+                        - remaining in stock
                       </p>
                     )}
-                    
                   </div>
                 ))}
               </div>
@@ -118,7 +118,7 @@ const ProductDetails = ({ toggleCart }) => {
               src={
                 productDetails.photo.startsWith("https")
                   ? productDetails.photo
-                  : `http://losi-back-deploy-two.vercel.app/${productDetails.photo}`
+                  : `${import.meta.env.VITE_API_URL}/stock/${productId}`
               }
               alt={productDetails.name}
             />

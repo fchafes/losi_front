@@ -26,7 +26,7 @@ const Signup = () => {
     e.preventDefault();
     try {
       const response = await axios.post(
-        "http://losi-back-deploy-two.vercel.app/customers",
+        import.meta.env.VITE_API_URL + "customers",
         formData
       );
       console.log("Signup successful:", response.data);
