@@ -14,7 +14,7 @@ const Category = () => {
     const fetchCategory = async () => {
       try {
         const response = await axios.get(
-          `http://localhost:3000/category/${categoryName}`
+          `http://losi-back-deploy-two.vercel.app/category/${categoryName}`
         );
         setCategory(response.data);
         console.log(response.data);
@@ -42,7 +42,7 @@ const Category = () => {
                 imageSrc={
                   product.photo.startsWith("https")
                     ? product.photo
-                    : `http://localhost:3000/${product.photo}`
+                    : `http://losi-back-deploy-two.vercel.app/${product.photo}`
                 }
                 description={`${product.name}\n$${product.price}`}
               />

@@ -17,7 +17,7 @@ function ResetPassword() {
 
     try {
       const token = window.location.pathname.split('/').pop(); // Extract token from URL
-      const response = await axios.patch(`http://localhost:3000/customers/password-reset/${token}`, {
+      const response = await axios.patch(`http://losi-back-deploy-two.vercel.app/customers/password-reset/${token}`, {
         password: password,
       });
       setMessage(response.data.message);

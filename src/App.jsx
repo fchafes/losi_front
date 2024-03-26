@@ -19,6 +19,7 @@ import ForgotPassword from "./pages/ForgotPassword";
 import { useSelector } from "react-redux";
 import Feedback from "./components/Feedback";
 import ErrorComponent from "./components/Error";
+import Media from "./pages/Media";
 function App() {
   const [cartOpen, setCartOpen] = useState(false);
   const token = useSelector((state) => state.customer.token);
@@ -58,6 +59,7 @@ function App() {
         <Route path="/login" element={<LoginPage />} />
         <Route path="/reset/:token" element={<ResetPassword />} />
         <Route path="/forgot-password" element={<ForgotPassword />} />
+        <Route path="/media" element={<Media />} />
       </Routes>
     </>
   );

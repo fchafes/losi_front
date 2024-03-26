@@ -26,7 +26,7 @@ const Signup = () => {
     e.preventDefault();
     try {
       const response = await axios.post(
-        "http://localhost:3000/customers",
+        "http://losi-back-deploy-two.vercel.app/customers",
         formData
       );
       console.log("Signup successful:", response.data);

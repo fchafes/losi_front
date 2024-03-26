@@ -8,7 +8,7 @@ import {
   removeFromCart,
   removeAllItems,
 } from "../redux/cartReducer";
-import "./FeedBack.css";
+import "./Feedback.css";
 
 function Feedback() {
   const location = useLocation();
@@ -38,7 +38,7 @@ function Feedback() {
 
   const handleCheckout = async () => {
     try {
-      const response = await axios.post("http://localhost:3000/orders", {
+      const response = await axios.post("http://losi-back-deploy-two.vercel.app/orders", {
         customerId: user.customer.id,
         payment_method: "mercadopago",
         shipping_address: user.customer.address,

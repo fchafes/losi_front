@@ -8,6 +8,7 @@ import { addToCart } from "../redux/cartReducer";
 
 const ProductDetails = ({ toggleCart }) => {
   const [productDetails, setProductDetails] = useState({});
+  const [productStocks, setProductStocks] = useState({});
   const [selectedSize, setSelectedSize] = useState(""); // State to store the selected size
   const { id } = useParams();
   const dispatch = useDispatch();
@@ -46,9 +47,22 @@ const ProductDetails = ({ toggleCart }) => {
   const fetchProductDetails = async (productId) => {
     try {
       const response = await axios.get(
-        `http://localhost:3000/products/${productId}`
+        `http://losi-back-deploy-two.vercel.app/products/${productId}`
       );
+      console.log(response.data);
       setProductDetails(response.data);
+    } catch (error) {
+      console.error("Error fetching product details:", error);
+    }
+  };
+
+  const fetchProductStock = async (productId) => {
+    try {
+      const response = await axios.get(
+        `http://losi-back-deploy-two.vercel.app/stock/${productId}`
+      );
+      console.log(response.data);
+      setProductStocks(response.data);
     } catch (error) {
       console.error("Error fetching product details:", error);
     }
@@ -56,6 +70,7 @@ const ProductDetails = ({ toggleCart }) => {
 
   useEffect(() => {
     fetchProductDetails(id);
+    fetchProductStock(id);
   }, [id]);
 
   return (
@@ -70,13 +85,25 @@ const ProductDetails = ({ toggleCart }) => {
               <p>Available Sizes:</p>
               <div className="size-buttons">
                 {productDetails.sizes.map((size) => (
-                  <button
-                    key={size.id}
-                    className={selectedSize === size.size ? "selected" : ""}
-                    onClick={() => handleSizeClick(size.size)}
-                  >
-                    {size.size}
-                  </button>
+                  <div key={size.id} className="size-button-wrapper">
+                    <button
+                      className={selectedSize === size.size ? "selected" : ""}
+                      onClick={() => handleSizeClick(size.size)}
+                    >
+                      {size.size}
+                    </button>
+                   
+                    {selectedSize === size.size && (
+                      <p className="stock-number">
+                        {
+                          productStocks.find(
+                            (stock) => stock.sizeId === size.id
+                          )?.stock
+                        } - remaining in stock
+                      </p>
+                    )}
+                    
+                  </div>
                 ))}
               </div>
             </div>
@@ -91,7 +118,7 @@ const ProductDetails = ({ toggleCart }) => {
               src={
                 productDetails.photo.startsWith("https")
                   ? productDetails.photo
-                  : `http://localhost:3000/${productDetails.photo}`
+                  : `http://losi-back-deploy-two.vercel.app/${productDetails.photo}`
               }
               alt={productDetails.name}
             />

@@ -13,7 +13,7 @@ const Featured = () => {
       try {
         console.log("This is the fetch for the products");
         const response = await axios.get(
-          "http://localhost:3000/products/featured"
+          "http://losi-back-deploy-two.vercel.app/products/featured"
         );
         console.log("Products fetched successfully:", response.data);
         setProducts(response.data);
@@ -37,7 +37,7 @@ const Featured = () => {
               imageSrc={
                 product.photo.startsWith("https")
                   ? product.photo
-                  : `http://localhost:3000/${product.photo}`
+                  : `http://losi-back-deploy-two.vercel.app/${product.photo}`
               }
               description={`${product.name}\n$${product.price}`}
             />
