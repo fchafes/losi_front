@@ -12,7 +12,9 @@ const SearchModal = ({ onClose }) => {
 
   const handleSearch = async () => {
     try {
-      const response = await axios.get(`http://localhost:3000/products/search?search=${searchTerm}`);
+      const response = await axios.get(
+        `http://localhost:3000/products/search?search=${searchTerm}`
+      );
       setSearchResults(response.data);
     } catch (error) {
       console.error("Error searching products:", error);
@@ -21,7 +23,10 @@ const SearchModal = ({ onClose }) => {
 
   return (
     <div className="search-modal-overlay" onClick={onClose}>
-      <div className="search-modal-content" onClick={(e) => e.stopPropagation()}>
+      <div
+        className="search-modal-content"
+        onClick={(e) => e.stopPropagation()}
+      >
         <input
           className="input-modal"
           type="text"
@@ -29,20 +34,22 @@ const SearchModal = ({ onClose }) => {
           onChange={searcher}
           autoFocus
         />
-        <button className="modal-button" onClick={handleSearch}>Search</button>
+        <button className="modal-button" onClick={handleSearch}>
+          Search
+        </button>
         <div className="search-results">
           <ul className="product-list">
             {searchResults.map((product) => (
-               <div key={product.id} className="product-item">
-               <a className="product-link" href={`/product/${product.id}`}>
-              <li className="product-item" key={product.id}>  
-                {product.name} 
-                <div className="products-image">
-          <img src={product.photo}/> 
-        </div>
-              </li>
-              </a>
-  </div>
+              <div key={product.id} className="product-item">
+                <a className="product-link" href={`/product/${product.id}`}>
+                  <li className="product-item" key={product.id}>
+                    {product.name}
+                    <div className="products-image">
+                      <img src={product.photo} />
+                    </div>
+                  </li>
+                </a>
+              </div>
             ))}
           </ul>
         </div>
